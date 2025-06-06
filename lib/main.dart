@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:stamp_way_flutter/pages/home_page.dart';
+import 'package:stamp_way_flutter/colors/app_colors.dart';
+import 'package:stamp_way_flutter/pages/main_page.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routerConfig: router,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.black),
       ),
     );
   }

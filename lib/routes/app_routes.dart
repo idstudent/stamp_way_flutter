@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:stamp_way_flutter/pages/home_page.dart';
+import 'package:stamp_way_flutter/pages/main_page.dart';
 
 class AppRoutes {
   static const String home = '/';
@@ -10,7 +10,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRoutes.home,
       name: AppRoutes.home,
-      builder: (context, state) => const HomePage()
+      builder: (context, state) => MainPage()
     )
   ],
 );
