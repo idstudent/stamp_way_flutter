@@ -14,7 +14,7 @@ class AppTextStyle {
       fontSize: 16, color: AppColors.white, fontFamily: 'noto_regular'
   );
 
-  static const TextStyle fontSize14White = TextStyle(
-      fontSize: 14, color: AppColors.white
+  static const TextStyle fontSize14WhiteSemiBold = TextStyle(
+      fontSize: 14, color: AppColors.white, fontFamily: 'noto_semi_bold'
   );
 }

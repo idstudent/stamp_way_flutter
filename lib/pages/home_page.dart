@@ -5,6 +5,7 @@ import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
+import 'package:stamp_way_flutter/widgets/category_widget.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -43,6 +44,58 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: 240,
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: _getStampSection(unVisitedLocations)
+            ),
+            SizedBox(height: 24.0,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: AspectRatio(
+                      aspectRatio: 1.0, // 1:1 비율
+                      child: CategoryWidget(
+                        title: '문화',
+                        icon: Icons.synagogue,
+                        categoryId: 14,
+                      ),
+                    )
+                  ),
+                  SizedBox(width: 12,),
+                  Expanded(
+                      child: AspectRatio(
+                        aspectRatio: 1.0,
+                        child: CategoryWidget(
+                          title: '축제',
+                          icon: Icons.celebration,
+                          categoryId: 15,
+                        ),
+                      )
+                  ),
+                  SizedBox(width: 12,),
+                  Expanded(
+                      child: AspectRatio(
+                        aspectRatio: 1.0,
+                        child: CategoryWidget(
+                          title: '액티비티',
+                          icon: Icons.directions_run,
+                          categoryId: 28,
+                        ),
+                      )
+                  ),
+                  SizedBox(width: 12,),
+                  Expanded(
+                      child: AspectRatio(
+                        aspectRatio: 1.0,
+                        child: CategoryWidget(
+                          title: '음식',
+                          icon: Icons.food_bank,
+                          categoryId: 39,
+                        ),
+                      )
+                  ),
+                ],
+              ),
             )
           ],
         ),
