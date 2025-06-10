@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
@@ -36,8 +37,17 @@ class _HomePageState extends ConsumerState<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 32.0),
-              child: Text('진행 중인 스탬프', style: AppTextStyle.fontSize24WhiteExtraBold,),
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 32),
+              child: Row(
+                children: [
+                  Text('진행 중인 스탬프', style: AppTextStyle.fontSize24WhiteExtraBold,),
+                  Spacer(),
+                  if(unVisitedLocations.length > 4)
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,))
+                ],
+              )
             ),
             SizedBox(height: 20.0,),
             Container(
@@ -96,7 +106,20 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ),
                 ],
               ),
-            )
+            ),
+            Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 36),
+                child: Row(
+                  children: [
+                    Text('근처 여행지', style: AppTextStyle.fontSize24WhiteExtraBold,),
+                    Spacer(),
+                    if(unVisitedLocations.length > 4) // Todo: 조건 바꿔야됨
+                      GestureDetector(
+                          onTap: () {},
+                          child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,))
+                  ],
+                )
+            ),
           ],
         ),
       ),
