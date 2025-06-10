@@ -7,15 +7,14 @@
 이후에도 계속 추가될 예정이나, 현재 기술스택입니다.
 
 언어 : flutter
+라이브러리 : riverpod, freezed, drift, goRouter
 
+현재 브랜치 
+master 브랜치 - 아직 세팅만 되어있는 상태
 
-아키텍처 :
-
-          master 브랜치 - 아직 세팅만 되어있는 상태
-
-          feature/home 브랜치 - 현재 여기서 작업 중
+feature/home 브랜치 - 현재 여기서 작업 중
           
-riverpod, freezed, drift, goRouter
+
 
 
 ## 내용
