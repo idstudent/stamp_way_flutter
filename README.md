@@ -1,16 +1,49 @@
-# stamp_way_flutter
+# 스탬프Way - 나만의 스탬프 투어 -> 토이프로젝트 (기존 안드로이드앱의 플러터버전으로 신규 작업중) 
 
-A new Flutter project.
+## 기간
+2025.06 ~ 진행중
 
-## Getting Started
+## 기술스택 
+이후에도 계속 추가될 예정이나, 현재 기술스택입니다.
 
-This project is a starting point for a Flutter application.
+언어 : flutter
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+아키텍처 :
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+          master 브랜치 - 아직 세팅만 되어있는 상태
+
+          feature/home 브랜치 - 현재 여기서 작업 중
+          
+riverpod, freezed, drift, goRouter
+
+
+## 내용
+공공데이터 API를 이용하여 여행지, 문화시설, 축제, 액티비티, 음식을 주제로 하는 스탬프 투어앱입니다.
+스탬프를 찍으려는 위치에서 반경 300m안에 들어와야 스탬프를 찍을 수 있는 앱입니다.
+기존 안드로이드앱으로 개발되어있으며 플러터를 공부 후 플러터 버전으로 만들고 있습니다.
+
+## 화면 소개 
+
+## 홈
+위치 권한을 받아 나의 근처의 관광지 리스트를 보여줍니다.
+더보기를 누르면 근처 여행지 리스트를 추가적으로 볼 수 있으며,
+그 외에 나의 근처에 있는 문화시설, 축제, 액티비티, 음식점을 볼 수 있습니다.
+진행중인 스탬프는 회원가입해야 이용할 수 있으며, 스탬프를 찍기 위해 등록한 리스트들이 추가됩니다.
+
+## 검색
+검색한 분류를 선택하면 해당 분류에 해당하는 나의 근처의 리스트들을 보여줍니다.
+검색화면에서 상세를 들어간 경우, 최근 검색리스트에 등록됩니다.
+
+## My
+회원가입을 해야 이용가능하며, 파이어베이스를 통해 회원가입을 구현했고, 
+간단하게 이메일, 패스워드, 사용할 닉네임을 받습니다.
+회원가입이 완료되면 입력한 이메일로 이메일 인증 메일이 전송되며, 클릭하여 인증을 완료해야 최종적으로 회원가입이 완료됩니다.
+
+예정리스트에선 찍기 위해 등록한 스탬프 리스트들이 나오며 해당 장소에서 스탬프를 찍어야, 스탬프 찍기가 완료됩니다.
+스탬프를 찍을때마다 분류별로 스탬프 level이 올라가며 갯수 도달시 스탬프 인증 뱃지(?)를 얻습니다.
+
+## 상세
+홈의 나의 근처 리스트, 검색을 통해 상세를 들어가는 경우 버튼을 클릭하여 스탬프를 찍기 위해 장소를 등록할 수 있으며,
+홈의 진행중인 리스트, my를 통해 상세를 들어가는 경우 찍기 버튼을 이용하여 스탬프를 찍을 수 있습니다.
+
