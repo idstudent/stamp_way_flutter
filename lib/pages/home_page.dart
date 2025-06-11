@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
+import 'package:stamp_way_flutter/util/location_permission_dialog.dart';
 import 'package:stamp_way_flutter/widgets/category_widget.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -24,6 +24,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(savedLocationProvider.notifier).startObservingSavedLocations();
+      _checkLocationPermission();
     });
   }
 
@@ -124,6 +125,13 @@ class _HomePageState extends ConsumerState<HomePage> {
         ),
       ),
     );
+  }
+
+  Future<void> _checkLocationPermission() async {
+    bool hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
+    if (hasPermission) {
+       // TODO: 여기 해야됨
+    }
   }
 
   Widget _getStampSection(List<SavedLocation> savedLocation) {
