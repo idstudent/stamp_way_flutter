@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:stamp_way_flutter/util/show_toast.dart';
 
 class LocationPermissionDialog {
   static Future<bool> checkAndRequestLocationPermission(BuildContext context) async {
@@ -9,14 +10,14 @@ class LocationPermissionDialog {
     if(permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if(permission == LocationPermission.denied) {
-        _showToast('위치 권한이 거부되었습니다.');
+        showToast('위치 권한이 거부되었습니다.');
         await _showDeniedDialog(context);
         return false;
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      _showToast('위치 권한이 거부되었습니다.');
+      showToast('위치 권한이 거부되었습니다.');
       await _showDeniedDialog(context);
       return false;
     }
@@ -43,11 +44,4 @@ class LocationPermissionDialog {
     );
   }
 
-  static void _showToast(String msg) {
-    Fluttertoast.showToast(
-      msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM
-    );
-  }
 }
