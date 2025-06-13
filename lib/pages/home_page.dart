@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
+import 'package:stamp_way_flutter/model/tour_mapper.dart';
+import 'package:stamp_way_flutter/provider/get_location_provider.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 import 'package:stamp_way_flutter/util/location_permission_dialog.dart';
+import 'package:stamp_way_flutter/util/show_toast.dart';
 import 'package:stamp_way_flutter/widgets/category_widget.dart';
+
+import '../widgets/tour_item_widget.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -31,6 +37,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     final unVisitedLocations = ref.watch(unVisitedLocationProvider);
+    final nearTourList = ref.watch(getLocationProvider);
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -114,13 +121,35 @@ class _HomePageState extends ConsumerState<HomePage> {
                   children: [
                     Text('근처 여행지', style: AppTextStyle.fontSize24WhiteExtraBold,),
                     Spacer(),
-                    if(unVisitedLocations.length > 4) // Todo: 조건 바꿔야됨
+                    if ((nearTourList.value?.length ?? 0) > 4)
                       GestureDetector(
-                          onTap: () {},
-                          child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,))
+                        onTap: () {},
+                        child: Text('더보기'),
+                      ),
                   ],
                 )
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 40),
+              child: nearTourList.when(
+                data: (item) {
+                  print('nearTourList data 받음: ${item.length}개');
+                  if (item.isNotEmpty) {
+                    print('첫 번째 아이템: ${item.first.title}');
+                    print('첫 번째 이미지: ${item.first.firstimage}');
+                  }
+                  return _getCurrentLocation(item);
+                },
+                error: (error, stack) {
+                  print('nearTourList 에러: $error');
+                  return _emptyCurrentLocation();
+                },
+                loading: () {
+                  print('nearTourList 로딩 중...');
+                  return CircularProgressIndicator();
+                },
+              ),
+            )
           ],
         ),
       ),
@@ -130,7 +159,12 @@ class _HomePageState extends ConsumerState<HomePage> {
   Future<void> _checkLocationPermission() async {
     bool hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
     if (hasPermission) {
-       // TODO: 여기 해야됨
+      try {
+        Position position = await Geolocator.getCurrentPosition();
+        ref.read(getLocationProvider.notifier).getLocationTourList(position.longitude, position.latitude, 1, 12);
+      } catch (e) {
+        showToast('위치 정보를 가져올 수 없어요');
+      }
     }
   }
 
@@ -189,11 +223,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: (location.image != null && location.image!.isNotEmpty)
+                      child: (location.image.isNotEmpty)
                           ? ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
-                          location.image!,
+                          location.image,
                           width: double.infinity,
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
@@ -235,5 +269,53 @@ class _HomePageState extends ConsumerState<HomePage> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  Widget _getCurrentLocation(List<TourMapper> items) {
+    print('_getCurrentLocation 호출됨');
+    print('아이템 개수: ${items.length}');
+
+    if (items.isEmpty) {
+      print('아이템이 비어있음 - _emptyCurrentLocation 표시');
+      return _emptyCurrentLocation();
+    }
+
+    print('ListView.builder 생성 중...');
+    print('take(4).length: ${items.take(4).length}');
+
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: items.take(4).length,
+      itemBuilder: (context, index) {
+        print('itemBuilder 호출됨 - index: $index');
+        print('아이템 제목: ${items[index].title}');
+        return TourItemWidget(item: items[index]);
+      },
+    );
+  }
+
+  Widget _emptyCurrentLocation() {
+    return Container(
+      height: 240,
+      decoration: BoxDecoration(
+        color: AppColors.color2a2a2a,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.help, color: AppColors.white, size: 60,),
+            SizedBox(height: 8,),
+            Text(
+              '아쉽게도 주변에 스탬프 찍을 곳이 없어요\n다른 동네로 떠나볼까요? 🗺️',
+              style: AppTextStyle.fontSize16WhiteRegular,
+              textAlign: TextAlign.center,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
