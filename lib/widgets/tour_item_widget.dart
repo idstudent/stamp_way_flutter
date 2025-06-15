@@ -9,8 +9,7 @@ class TourItemWidget extends StatelessWidget {
   const TourItemWidget({
       required this.item,
       super.key
-    }
-  );
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class TourItemWidget extends StatelessWidget {
           // 상세 페이지 이동
         },
         child: Container(
-          height: 370,
+          height: 400,
           decoration: BoxDecoration(
             color: AppColors.color2a2a2a,
             borderRadius: BorderRadius.circular(12),
@@ -33,8 +32,8 @@ class TourItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 180,
                     width: double.infinity,
+                    height: 180,
                     child: Image.network(
                       item.firstimage,
                       fit: BoxFit.cover,
@@ -46,15 +45,16 @@ class TourItemWidget extends StatelessWidget {
                     style: AppTextStyle.fontSize16WhiteSemiBold,
                   ),
                   SizedBox(height: 8,),
-                  Text(
-                    item.addr1,
-                    style: AppTextStyle.fontSize14WhiteSemiBold,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  Flexible(
+                    child: Text(
+                      item.addr1,
+                      style: AppTextStyle.fontSize14WhiteSemiBold,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Spacer(),
                   Container(
-                    width: double.infinity,
                     height: 40,
                     decoration: BoxDecoration(
                       color: AppColors.colorFF8C00,

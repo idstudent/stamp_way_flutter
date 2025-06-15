@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/pages/main_page.dart';
+import 'package:stamp_way_flutter/pages/near_place_page.dart';
 
 class AppRoutes {
   static const String home = '/';
+  static const String nearPlaceList = '/near-place-list';
 }
 
 final GoRouter router = GoRouter(
@@ -11,6 +13,13 @@ final GoRouter router = GoRouter(
       path: AppRoutes.home,
       name: AppRoutes.home,
       builder: (context, state) => MainPage()
+    ),
+    GoRoute(
+      path: AppRoutes.nearPlaceList,
+      name: AppRoutes.nearPlaceList,
+      builder: (context, state)  {
+        return NearPlacePage();
+      } 
     )
   ],
 );
