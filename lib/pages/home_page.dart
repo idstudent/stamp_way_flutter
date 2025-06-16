@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
@@ -8,6 +9,7 @@ import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 import 'package:stamp_way_flutter/provider/get_location_provider.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
+import 'package:stamp_way_flutter/routes/app_routes.dart';
 import 'package:stamp_way_flutter/util/location_permission_dialog.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 import 'package:stamp_way_flutter/widgets/category_widget.dart';
@@ -123,8 +125,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                     Spacer(),
                     if ((nearTourList.value?.length ?? 0) > 4)
                       GestureDetector(
-                        onTap: () {},
-                        child: Text('더보기'),
+                        onTap: () {
+                          context.pushNamed(
+                            AppRoutes.nearPlaceList,
+                            extra: 12
+                          );
+                        },
+                        child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,),
                       ),
                   ],
                 )
@@ -133,20 +140,13 @@ class _HomePageState extends ConsumerState<HomePage> {
               padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 40),
               child: nearTourList.when(
                 data: (item) {
-                  print('nearTourList data 받음: ${item.length}개');
-                  if (item.isNotEmpty) {
-                    print('첫 번째 아이템: ${item.first.title}');
-                    print('첫 번째 이미지: ${item.first.firstimage}');
-                  }
                   return _getCurrentLocation(item);
                 },
                 error: (error, stack) {
-                  print('nearTourList 에러: $error');
                   return _emptyCurrentLocation();
                 },
                 loading: () {
-                  print('nearTourList 로딩 중...');
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator(),);
                 },
               ),
             )
@@ -272,24 +272,15 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   Widget _getCurrentLocation(List<TourMapper> items) {
-    print('_getCurrentLocation 호출됨');
-    print('아이템 개수: ${items.length}');
-
     if (items.isEmpty) {
-      print('아이템이 비어있음 - _emptyCurrentLocation 표시');
       return _emptyCurrentLocation();
     }
-
-    print('ListView.builder 생성 중...');
-    print('take(4).length: ${items.take(4).length}');
 
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemCount: items.take(4).length,
       itemBuilder: (context, index) {
-        print('itemBuilder 호출됨 - index: $index');
-        print('아이템 제목: ${items[index].title}');
         return TourItemWidget(item: items[index]);
       },
     );
