@@ -15,6 +15,7 @@ import 'package:stamp_way_flutter/util/show_toast.dart';
 import 'package:stamp_way_flutter/widgets/category_widget.dart';
 
 import '../widgets/tour_item_widget.dart';
+import 'main_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -163,7 +164,9 @@ class _HomePageState extends ConsumerState<HomePage> {
         Position position = await Geolocator.getCurrentPosition();
         ref.read(getLocationProvider.notifier).getLocationTourList(position.longitude, position.latitude, 1, 12);
       } catch (e) {
-        showToast('위치 정보를 가져올 수 없어요');
+        if (mounted && ref.read(currentTabProvider) == 0) {
+          showToast('위치 정보를 가져올 수 없어요');
+        }
       }
     }
   }
