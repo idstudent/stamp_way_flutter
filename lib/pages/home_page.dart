@@ -49,9 +49,9 @@ class _HomePageState extends ConsumerState<HomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 32),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('진행 중인 스탬프', style: AppTextStyle.fontSize24WhiteExtraBold,),
-                  Spacer(),
                   if(unVisitedLocations.length > 4)
                     GestureDetector(
                       onTap: () {},
@@ -59,13 +59,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ],
               )
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             Container(
               height: 240,
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: _getStampSection(unVisitedLocations)
             ),
-            SizedBox(height: 24.0,),
+            const SizedBox(height: 24.0,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Row(
@@ -81,7 +81,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       ),
                     )
                   ),
-                  SizedBox(width: 12,),
+                  const SizedBox(width: 12,),
                   Expanded(
                       child: AspectRatio(
                         aspectRatio: 1.0,
@@ -92,7 +92,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ),
                       )
                   ),
-                  SizedBox(width: 12,),
+                  const SizedBox(width: 12,),
                   Expanded(
                       child: AspectRatio(
                         aspectRatio: 1.0,
@@ -103,7 +103,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ),
                       )
                   ),
-                  SizedBox(width: 12,),
+                  const SizedBox(width: 12,),
                   Expanded(
                       child: AspectRatio(
                         aspectRatio: 1.0,
@@ -120,9 +120,9 @@ class _HomePageState extends ConsumerState<HomePage> {
             Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 36),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('근처 여행지', style: AppTextStyle.fontSize24WhiteExtraBold,),
-                    Spacer(),
                     if ((nearTourList.value?.length ?? 0) > 4)
                       GestureDetector(
                         onTap: () {
@@ -187,7 +187,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.hail, color: AppColors.white, size: 60,),
-            SizedBox(height: 8,),
+            const SizedBox(height: 8,),
             Text(
               '새로운 여행을 시작해볼까요?\n방문하고 싶은 장소를 추가해보세요 ✨',
               style: AppTextStyle.fontSize16WhiteRegular,
@@ -248,7 +248,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             },
           ),
         ),
-        SizedBox(height: 8,),
+        const SizedBox(height: 8,),
         SmoothPageIndicator(
           controller: _pageController,
           count: savedLocation.length,
@@ -298,7 +298,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.help, color: AppColors.white, size: 60,),
-            SizedBox(height: 8,),
+            const SizedBox(height: 8,),
             Text(
               '아쉽게도 주변에 스탬프 찍을 곳이 없어요\n다른 동네로 떠나볼까요? 🗺️',
               style: AppTextStyle.fontSize16WhiteRegular,

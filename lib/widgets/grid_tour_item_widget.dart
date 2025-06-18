@@ -37,12 +37,12 @@ class GridTourItemWidget extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 16,),
+                const SizedBox(height: 16,),
                 Text(
                   item.title,
                   style: AppTextStyle.fontSize16WhiteSemiBold,
                 ),
-                SizedBox(height: 8,),
+                const SizedBox(height: 8,),
                 Text(
                   item.addr1,
                   style: AppTextStyle.fontSize14WhiteSemiBold,
