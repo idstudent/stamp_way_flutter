@@ -175,7 +175,7 @@ class MyPage extends StatelessWidget {
                   value: levelInfo.progress / 100.0,
                   backgroundColor: AppColors.color3d3d3d,
                   valueColor: AlwaysStoppedAnimation<Color>(AppColors.colorFF8C00),
-                  minHeight: 8,
+                  minHeight: 16,
                 ),
               )
             ],
