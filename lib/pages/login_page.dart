@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
+import 'package:stamp_way_flutter/provider/login_provider.dart';
+import 'package:stamp_way_flutter/util/show_toast.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -48,6 +50,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               const SizedBox(height: 8,),
 
               TextFormField(
+                obscureText: true,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   enabledBorder: UnderlineInputBorder(
@@ -65,8 +68,22 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               const SizedBox(height: 24,),
 
               GestureDetector(
-                onTap: () {
-                  // TODO: 로그인
+                onTap: () async {
+                  final email = emailController.text;
+                  final password = passwordController.text;
+
+                  if(email.isEmpty || password.isEmpty) {
+                    showToast('이메일과 비밀번호를 입력해주세요');
+                    return;
+                  }
+
+                  final (success, msg) = await ref.read(loginProvider).signIn(email, password);
+
+                  if(success) {
+                    Navigator.of(context).pop();
+                  }else {
+                    showToast(msg!);
+                  }
                 },
                 child: Container(
                   height: 48,

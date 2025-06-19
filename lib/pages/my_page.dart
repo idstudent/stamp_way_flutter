@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/level_info.dart';
+import 'package:stamp_way_flutter/provider/login_provider.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
 
-class MyPage extends StatelessWidget {
+class MyPage extends ConsumerStatefulWidget {
   const MyPage({super.key});
+
+  @override
+  ConsumerState<MyPage> createState() => _MyPageState();
+}
+
+class _MyPageState extends ConsumerState<MyPage> {
+  Map<String, dynamic>? userInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    _getUser();
+  }
+
+  Future<void> _getUser() async {
+    final loginService = ref.read(loginProvider);
+    final user = await loginService.getUser();
+    setState(() {
+      userInfo = user;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +61,13 @@ class MyPage extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           minimumSize: Size.zero,
                         ),
-                        onPressed: (){
-                          context.pushNamed(
-                            AppRoutes.login,
-                          );
+                        onPressed: () async {
+                          if (userInfo == null) {
+                            context.pushNamed(AppRoutes.login);
+                          }
                         },
                         child: Text(
-                          '로그인이 필요해요',
+                          userInfo != null ? userInfo!['nickname'] : '로그인이 필요해요',
                           style: AppTextStyle.fontSize20WhiteRegular,
                         ),
                       )
@@ -158,7 +181,7 @@ class MyPage extends StatelessWidget {
         levelInfo.level == category.intermediateLevel ? '30' :
         '50'
     );
-    
+
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Container(
