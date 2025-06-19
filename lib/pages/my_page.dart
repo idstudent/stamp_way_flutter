@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/level_info.dart';
+import 'package:stamp_way_flutter/routes/app_routes.dart';
 
 class MyPage extends StatelessWidget {
   const MyPage({super.key});
@@ -30,10 +32,22 @@ class MyPage extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16, right: 20),
-                      child: Text(
-                        '로그인이 필요해요',
-                        style: AppTextStyle.fontSize20WhiteRegular,
-                      ),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size.zero,
+                        ),
+                        onPressed: (){
+                          context.pushNamed(
+                            AppRoutes.login,
+                          );
+                        },
+                        child: Text(
+                          '로그인이 필요해요',
+                          style: AppTextStyle.fontSize20WhiteRegular,
+                        ),
+                      )
                     ),
                   )
                 ],
