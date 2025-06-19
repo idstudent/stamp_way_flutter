@@ -6,8 +6,16 @@ class AppTextStyle {
     fontSize: 24, color: AppColors.white, fontFamily: 'noto_extra_bold'
   );
 
-  static const TextStyle fontSize20White = TextStyle(
-    fontSize: 20, color: AppColors.white
+  static const TextStyle fontSize20WhiteExtraBold = TextStyle(
+      fontSize: 20, color: AppColors.white, fontFamily: 'noto_extra_bold'
+  );
+
+  static const TextStyle fontSize16WhiteExtraBold = TextStyle(
+      fontSize: 16, color: AppColors.white, fontFamily: 'noto_extra_bold'
+  );
+
+  static const TextStyle fontSize20WhiteRegular = TextStyle(
+    fontSize: 20, color: AppColors.white, fontFamily: 'noto_regular'
   );
 
   static const TextStyle fontSize16WhiteRegular = TextStyle(
