@@ -41,21 +41,8 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
       .snapshots()
       .listen((snapshot) {
         try {
-          final locations = snapshot.docs.map((doc) {
-            final data = doc.data();
-
-            return SavedLocation(
-              contentId: (data['contentId'] as num?)?.toInt() ?? 0,
-              contentTypeId: (data['contentTypeId'] as num?)?.toInt() ?? 0,
-              title: data['title'] as String,
-              address: data['address'] as String,
-              image: data['image'] as String,
-              latitude: (data['latitude'] as num?)?.toDouble() ?? 0.0,
-              longitude: (data['longitude'] as num?)?.toDouble() ?? 0.0,
-              isVisited: data['isVisited'] as bool,
-              savedAt: data['savedAt'] as Timestamp?,
-            );
-          }).toList();
+          final locations = snapshot.docs
+              .map((doc) => SavedLocation.fromFireStore(doc.data())).toList();
 
           state = locations;
         } catch(e) {

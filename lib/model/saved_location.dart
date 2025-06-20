@@ -21,4 +21,18 @@ class SavedLocation with _$SavedLocation {
 
   factory SavedLocation.fromJson(Map<String, dynamic> json) =>
       _$SavedLocationFromJson(json);
+
+  factory SavedLocation.fromFireStore(Map<String, dynamic> data) {
+    return SavedLocation(
+      contentId: (data['contentId'] as num?)?.toInt() ?? 0,
+      contentTypeId: (data['contentTypeId'] as num?)?.toInt() ?? 0,
+      title: data['title'] ?? '',
+      address: data['address'] ?? '',
+      image: data['image'] ?? '',
+      latitude: (data['latitude'] as num?)?.toDouble() ?? 0.0,
+      longitude: (data['longitude'] as num?)?.toDouble() ?? 0.0,
+      isVisited: data['isVisited'] ?? false,
+      savedAt: data['savedAt'] as Timestamp?,
+    );
+  }
 }

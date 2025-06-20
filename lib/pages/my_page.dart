@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/level_info.dart';
+import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/login_provider.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
 
@@ -33,6 +34,22 @@ class _MyPageState extends ConsumerState<MyPage> {
 
   @override
   Widget build(BuildContext context) {
+    final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
+    final tourListCount = (userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited).length;
+    final cultureListCount = (userInfo?['cultureList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited).length;
+    final eventListCount = (userInfo?['eventList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited).length;
+    final activityListCount = (userInfo?['activityList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited).length;
+    final foodListCount = (userInfo?['foodList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited).length;
+
+    final completeCount = allList.where((location) => location.isVisited).length;
+    final notCompleteCount = allList.where((location) => !location.isVisited).length;
+    final certifyCount = userInfo?['certificationCount'] as int? ?? 0;
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -67,7 +84,7 @@ class _MyPageState extends ConsumerState<MyPage> {
                           }
                         },
                         child: Text(
-                          userInfo != null ? userInfo!['nickname'] : '로그인이 필요해요',
+                          userInfo?['nickname'] as String? ?? '로그인이 필요해요',
                           style: AppTextStyle.fontSize20WhiteRegular,
                         ),
                       )
@@ -93,7 +110,7 @@ class _MyPageState extends ConsumerState<MyPage> {
                               const SizedBox(height: 20,),
                               Icon(Icons.tour, size: 40, color: AppColors.colorFF8C00,),
                               const SizedBox(height: 8,),
-                              Text('0', style: AppTextStyle.fontSize20WhiteExtraBold,),
+                              Text(completeCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
                               Text('완료', style: AppTextStyle.fontSize16WhiteExtraBold,),
                               const SizedBox(height: 20,)
                             ],
@@ -110,7 +127,7 @@ class _MyPageState extends ConsumerState<MyPage> {
                               const SizedBox(height: 20,),
                               Icon(Icons.checklist, size: 40, color: AppColors.colorFF8C00,),
                               const SizedBox(height: 8,),
-                              Text('0', style: AppTextStyle.fontSize20WhiteExtraBold,),
+                              Text(notCompleteCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
                               Text('예정', style: AppTextStyle.fontSize16WhiteExtraBold,),
                               const SizedBox(height: 20,)
                             ],
@@ -127,7 +144,7 @@ class _MyPageState extends ConsumerState<MyPage> {
                               const SizedBox(height: 20,),
                               Icon(Icons.auto_awesome, size: 40, color: AppColors.colorFF8C00,),
                               const SizedBox(height: 8,),
-                              Text('0', style: AppTextStyle.fontSize20WhiteExtraBold,),
+                              Text(certifyCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
                               Text('인증 획득', style: AppTextStyle.fontSize16WhiteExtraBold,),
                               const SizedBox(height: 20,)
                             ],
@@ -142,12 +159,21 @@ class _MyPageState extends ConsumerState<MyPage> {
                 padding: const EdgeInsets.only(top: 48),
                 child: Text('나의 모험 레벨', style: AppTextStyle.fontSize20WhiteExtraBold),
               ),
-              _levelWidget(CategoryLevel.tour, calculateLevel(0, CategoryLevel.tour)),
-              _levelWidget(CategoryLevel.culture, calculateLevel(0, CategoryLevel.culture)),
-              _levelWidget(CategoryLevel.event, calculateLevel(0, CategoryLevel.event)),
-              _levelWidget(CategoryLevel.activity, calculateLevel(0, CategoryLevel.activity)),
-              _levelWidget(CategoryLevel.food, calculateLevel(0, CategoryLevel.food)),
-              const SizedBox(height: 20,),
+              _levelWidget(CategoryLevel.tour, calculateLevel(tourListCount, CategoryLevel.tour)),
+              _levelWidget(CategoryLevel.culture, calculateLevel(cultureListCount, CategoryLevel.culture)),
+              _levelWidget(CategoryLevel.event, calculateLevel(eventListCount, CategoryLevel.event)),
+              _levelWidget(CategoryLevel.activity, calculateLevel(activityListCount, CategoryLevel.activity)),
+              _levelWidget(CategoryLevel.food, calculateLevel(foodListCount, CategoryLevel.food)),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: (){
+                    // TODO: 로그아웃
+                  },
+                  child: Text('로그아웃', style: AppTextStyle.fontSize14WhiteRegular,)
+                ),
+              ),
+              const SizedBox(height: 48,),
             ],
           ),
         ),
