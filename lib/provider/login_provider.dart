@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:stamp_way_flutter/model/saved_location.dart';
 
 class LoginService {
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
+  final _fireStore = FirebaseFirestore.instance;
 
   Future<(bool, String?)> signIn(String email, String password) async {
     try  {
@@ -40,13 +41,54 @@ class LoginService {
     if(user == null) return null;
 
     try {
-      final doc = await _firestore.collection('users').doc(user.uid).get();
-      return doc.data();
+      final doc = await _fireStore.collection('users').doc(user.uid).get();
+      final userInfo = doc.data();
+
+      final locations = await _fireStore
+        .collection('saved_locations')
+        .where('userId', isEqualTo: user.uid)
+        .get();
+
+      final savedLocations = locations.docs
+          .map((doc)=> SavedLocation.fromFireStore(doc.data())).toList();
+
+      final tourPlaceList = savedLocations.where((location) => location.contentTypeId == 12).toList();
+      final cultureList = savedLocations.where((location) => location.contentTypeId == 14).toList();
+      final eventsList = savedLocations.where((location) => location.contentTypeId == 15).toList();
+      final activityList = savedLocations.where((location) => location.contentTypeId == 28).toList();
+      final foodList = savedLocations.where((location) => location.contentTypeId == 39).toList();
+
+      final tourBadges = calculateBadgeCount(tourPlaceList.where((location) => location.isVisited).length);
+      final cultureBadges = calculateBadgeCount(cultureList.where((location) => location.isVisited).length);
+      final eventsBadges = calculateBadgeCount(eventsList.where((location) => location.isVisited).length);
+      final activityBadges = calculateBadgeCount(activityList.where((location) => location.isVisited).length);
+      final foodBadges = calculateBadgeCount(foodList.where((location) => location.isVisited).length);
+
+      final certificationCount = tourBadges + cultureBadges + eventsBadges + activityBadges + foodBadges;
+
+      return {
+        ...userInfo ?? {},
+        'allList': savedLocations,
+        'tourPlaceList': tourPlaceList,
+        'cultureList': cultureList,
+        'eventList': eventsList,
+        'activityList': activityList,
+        'foodList': foodList,
+        'certificationCount': certificationCount,
+      };
     } catch (e) {
       print('error $e');
       return null;
     }
 
+  }
+
+  int calculateBadgeCount(int visitedCount) {
+    if (visitedCount >= 100) return 4;
+    if (visitedCount >= 50) return 3;
+    if (visitedCount >= 30) return 2;
+    if (visitedCount >= 10) return 1;
+    return 0;
   }
 }
 
