@@ -54,6 +54,35 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
       }
     );
   }
+
+  void updateVisitStatus(int contentId, Function(bool success, String? msg) onComplete) async {
+    final userId = _auth.currentUser?.uid;
+    if(userId == null) {
+      onComplete(false, '로그인이 필요해요');
+      return;
+    }
+
+    try {
+      await _db.collection('saved_locations')
+          .doc('${userId}_$contentId')
+          .update({
+            'isVisited': true,
+            'visitedAt': FieldValue.serverTimestamp()
+          });
+
+      state = state.map((location) {
+        if(location.contentId == contentId) {
+          return location.copyWith(isVisited: true);
+        }else {
+          return location;
+        }
+      }).toList();
+
+      onComplete(true, '스탬프를 찍었어요!');
+    }catch(e) {
+      onComplete(false, '스탬프 찍기에 실패했어요');
+    }
+  }
 }
 
 

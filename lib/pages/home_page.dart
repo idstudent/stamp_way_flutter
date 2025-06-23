@@ -26,6 +26,7 @@ class HomePage extends ConsumerStatefulWidget {
 
 class _HomePageState extends ConsumerState<HomePage> {
   final PageController _pageController = PageController();
+  bool hasPermission = false;
 
   @override
   void initState() {
@@ -157,7 +158,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   Future<void> _checkLocationPermission() async {
-    bool hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
+    hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
     if (hasPermission) {
       try {
         Position position = await Geolocator.getCurrentPosition();
@@ -175,6 +176,42 @@ class _HomePageState extends ConsumerState<HomePage> {
       return SizedBox(height: 240, child: _emptyTodayStampView());
     }else {
       return SizedBox(height: 260, child: _myStampViewPager(savedLocation));
+    }
+  }
+
+  Future<void> _clickStamp(SavedLocation savedLocation) async {
+    try {
+      if(!hasPermission) {
+        showToast('위치 권한이 필요해요');
+        return;
+      }
+
+      Position position = await Geolocator.getCurrentPosition();
+
+      double distanceBetween = Geolocator.distanceBetween(
+        position.latitude,
+        position.longitude,
+        savedLocation.latitude,
+        savedLocation.longitude,
+      );
+
+      if(distanceBetween <= 300) {
+        ref.read(savedLocationProvider.notifier).updateVisitStatus(
+            savedLocation.contentId, (success, message) {
+              if (message != null) {
+                showToast(message);
+              }
+            }
+        );
+      }else {
+        showToast("해당 장소와의 거리가 너무 멀어요! (${distanceBetween.toStringAsFixed(1)}m)");
+      }
+    }on LocationServiceDisabledException {
+      showToast('위치 권한이 없습니다');
+    } on PermissionDeniedException {
+      showToast('위치 권한이 없습니다');
+    } catch (e) {
+      showToast('위치 정보를 가져올 수 없어요');
     }
   }
 
@@ -277,7 +314,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                             ),
                             SizedBox(width: 16),
                             GestureDetector(
-                              onTap: (){},
+                              onTap: () => _clickStamp(location),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: AppColors.colorFF8C00,
