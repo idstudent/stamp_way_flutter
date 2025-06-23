@@ -62,8 +62,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             const SizedBox(height: 20.0,),
             Container(
-              height: 240,
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.symmetric(horizontal: 12),
               child: _getStampSection(unVisitedLocations)
             ),
             const SizedBox(height: 24.0,),
@@ -173,30 +172,33 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   Widget _getStampSection(List<SavedLocation> savedLocation) {
     if(savedLocation.isEmpty) {
-      return _emptyTodayStampView();
+      return SizedBox(height: 240, child: _emptyTodayStampView());
     }else {
-      return _myStampViewPager(savedLocation);
+      return SizedBox(height: 260, child: _myStampViewPager(savedLocation));
     }
   }
 
   Widget _emptyTodayStampView() {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.color2a2a2a,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.hail, color: AppColors.white, size: 60,),
-            const SizedBox(height: 8,),
-            Text(
-              '새로운 여행을 시작해볼까요?\n방문하고 싶은 장소를 추가해보세요 ✨',
-              style: AppTextStyle.fontSize16WhiteRegular,
-              textAlign: TextAlign.center,
-            )
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.color2a2a2a,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.hail, color: AppColors.white, size: 60,),
+              const SizedBox(height: 8,),
+              Text(
+                '새로운 여행을 시작해볼까요?\n방문하고 싶은 장소를 추가해보세요 ✨',
+                style: AppTextStyle.fontSize16WhiteRegular,
+                textAlign: TextAlign.center,
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -207,7 +209,8 @@ class _HomePageState extends ConsumerState<HomePage> {
       children: [
         Expanded(
           child: PageView.builder(
-            itemCount: savedLocation.length,
+            controller: _pageController,
+            itemCount: savedLocation.length > 5 ? 5 : savedLocation.length,
             itemBuilder: (context, index) {
               final location = savedLocation[index];
 
@@ -244,6 +247,51 @@ class _HomePageState extends ConsumerState<HomePage> {
                           width: double.infinity,
                           color: AppColors.color2a2a2a
                       ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    location.title,
+                                    style: AppTextStyle.fontSize16WhiteSemiBold,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    location.address,
+                                    style: AppTextStyle.fontSize14WhiteRegular,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              )
+                            ),
+                            SizedBox(width: 16),
+                            GestureDetector(
+                              onTap: (){},
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: AppColors.colorFF8C00,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('스탬프 찍기', style: AppTextStyle.fontSize16WhiteSemiBold,),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -254,7 +302,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         const SizedBox(height: 8,),
         SmoothPageIndicator(
           controller: _pageController,
-          count: savedLocation.length,
+          count: savedLocation.length > 5 ? 5 : savedLocation.length,
           effect: ColorTransitionEffect(
             dotColor: AppColors.colorFF8C00.withValues(alpha: 0.3),
             activeDotColor: AppColors.colorFF8C00,
