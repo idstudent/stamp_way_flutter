@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
+import 'package:stamp_way_flutter/model/save_result.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 import 'package:stamp_way_flutter/provider/get_location_provider.dart';
@@ -369,7 +370,29 @@ class _HomePageState extends ConsumerState<HomePage> {
       physics: NeverScrollableScrollPhysics(),
       itemCount: items.take(4).length,
       itemBuilder: (context, index) {
-        return TourItemWidget(item: items[index]);
+        return TourItemWidget(
+          item: items[index],
+          itemClick: (item) {},
+          buttonClick: () {
+            ref.read(savedLocationProvider.notifier).saveTourLocation(items[index], (result) {
+              switch(result) {
+                case Success():
+                  showToast(result.message);
+                  break;
+                case Failure():
+                  showToast(result.message);
+                  break;
+                case LoginRequired():
+                  showToast(result.message);
+                  context.pushNamed(AppRoutes.login);
+                  break;
+                case MaxLimitReached():
+                  showToast(result.message);
+                  break;
+              }
+            });
+          }
+        );
       },
     );
   }
