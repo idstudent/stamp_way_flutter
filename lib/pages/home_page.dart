@@ -372,7 +372,9 @@ class _HomePageState extends ConsumerState<HomePage> {
       itemBuilder: (context, index) {
         return TourItemWidget(
           item: items[index],
-          itemClick: (item) {},
+          itemClick: (item) {
+            // TODO: 상세 페이지 이동
+          },
           buttonClick: () {
             ref.read(savedLocationProvider.notifier).saveTourLocation(items[index], (result) {
               switch(result) {

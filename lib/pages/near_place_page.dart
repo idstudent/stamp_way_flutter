@@ -3,10 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
+import 'package:stamp_way_flutter/model/save_result.dart';
 import 'package:stamp_way_flutter/provider/get_location_provider.dart';
+import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 import 'package:stamp_way_flutter/util/location_permission_dialog.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 
+import '../routes/app_routes.dart';
 import '../widgets/grid_tour_item_widget.dart';
 
 class NearPlacePage extends ConsumerStatefulWidget {
@@ -123,22 +126,40 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
               controller: _scrollController,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisExtent: 410,
+                mainAxisExtent: 370,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
               ),
               itemCount: allItems.length,
               itemBuilder: (context, index) {
-                return GridTourItemWidget(item: allItems[index]);
+                return GridTourItemWidget(
+                  item: allItems[index],
+                  itemClick: (item) {
+                   // TODO: 상세페이지 이동
+                  },
+                  buttonClick: () {
+                    ref.read(savedLocationProvider.notifier).saveTourLocation(allItems[index], (result) {
+                      switch(result) {
+                        case Success():
+                          showToast(result.message);
+                          break;
+                        case Failure():
+                          showToast(result.message);
+                          break;
+                        case LoginRequired():
+                          showToast(result.message);
+                          context.pushNamed(AppRoutes.login);
+                          break;
+                        case MaxLimitReached():
+                          showToast(result.message);
+                          break;
+                      }
+                    });
+                  },
+                );
               }
           ),
         ),
-
-        if (isLoading && allItems.isNotEmpty)
-          Container(
-            padding: EdgeInsets.all(16),
-            child: CircularProgressIndicator(),
-          ),
       ],
     );
   }
