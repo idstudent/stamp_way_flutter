@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
+import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 
-class GridTourItemWidget extends ConsumerStatefulWidget {
-  final TourMapper item;
-  final Function(TourMapper) itemClick;
+class GridMyTourItemWidget extends ConsumerStatefulWidget {
+  final SavedLocation item;
+  final Function(SavedLocation) itemClick;
   final VoidCallback buttonClick;
 
-  const GridTourItemWidget({
+  const GridMyTourItemWidget({
     required this.item,
     required this.itemClick,
     required this.buttonClick,
@@ -18,14 +19,14 @@ class GridTourItemWidget extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<GridTourItemWidget> createState() => _GridTourItemWidgetState();
+  ConsumerState<GridMyTourItemWidget> createState() => _GridMyTourItemWidgetState();
 }
 
-class _GridTourItemWidgetState extends ConsumerState<GridTourItemWidget> {
+class _GridMyTourItemWidgetState extends ConsumerState<GridMyTourItemWidget> {
   @override
   Widget build(BuildContext context) {
     final savedLocations = ref.watch(savedLocationProvider);
-    final isSaved = savedLocations.any((location) => location.contentId == widget.item.contentid);
+    final isSaved = savedLocations.any((location) => location.contentId == widget.item.contentId);
 
     return GestureDetector(
       onTap: () => widget.itemClick(widget.item),
@@ -44,7 +45,7 @@ class _GridTourItemWidgetState extends ConsumerState<GridTourItemWidget> {
                   width: double.infinity,
                   height: 180,
                   child: Image.network(
-                    widget.item.firstimage,
+                    widget.item.image,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
@@ -69,7 +70,7 @@ class _GridTourItemWidgetState extends ConsumerState<GridTourItemWidget> {
                 ),
                 const SizedBox(height: 8,),
                 Text(
-                  widget.item.addr1,
+                  widget.item.address,
                   style: AppTextStyle.fontSize14WhiteSemiBold.copyWith(
                     height: 1.2,
                   ),
@@ -83,18 +84,16 @@ class _GridTourItemWidgetState extends ConsumerState<GridTourItemWidget> {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    if(!isSaved) {
-                      widget.buttonClick();
-                    }
+                    widget.buttonClick();
                   },
                   child: Container(
                     height: 40,
                     decoration: BoxDecoration(
-                      color: isSaved ? AppColors.color3d3d3d : AppColors.colorFF8C00,
+                      color: AppColors.colorFF8C00,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
-                      child: Text('등록', style: AppTextStyle.fontSize16WhiteSemiBold,),
+                      child: Text('스탬프 찍기', style: AppTextStyle.fontSize16WhiteSemiBold,),
                     ),
                   ),
                 )

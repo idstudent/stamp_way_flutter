@@ -13,7 +13,7 @@ final _db = FirebaseFirestore.instance;
 final savedLocationProvider = NotifierProvider<SavedLocationProvider, List<SavedLocation>>(SavedLocationProvider.new);
 final unVisitedLocationProvider = Provider<List<SavedLocation>>((ref) {
   final savedLocations = ref.watch(savedLocationProvider);
-  return savedLocations.where((location) => location.isVisited != true).toList();
+  return savedLocations.where((location) => location.isVisited == false).toList();
 });
 
 class SavedLocationProvider extends Notifier<List<SavedLocation>> {
@@ -106,10 +106,10 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
     }
   }
 
-  void updateVisitStatus(int contentId, Function(bool success, String? msg) onComplete) async {
+  void updateVisitStatus(int contentId, Function(String? msg) onComplete) async {
     final userId = _auth.currentUser?.uid;
     if(userId == null) {
-      onComplete(false, '로그인이 필요해요');
+      onComplete('로그인이 필요해요');
       return;
     }
 
@@ -129,9 +129,9 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
         }
       }).toList();
 
-      onComplete(true, '스탬프를 찍었어요!');
+      onComplete('스탬프를 찍었어요!');
     }catch(e) {
-      onComplete(false, '스탬프 찍기에 실패했어요');
+      onComplete('스탬프 찍기에 실패했어요');
     }
   }
 

@@ -34,8 +34,10 @@ class _HomePageState extends ConsumerState<HomePage> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(savedLocationProvider.notifier).startObservingSavedLocations();
-      _checkLocationPermission();
+      if(mounted) {
+        ref.read(savedLocationProvider.notifier).startObservingSavedLocations();
+        _checkLocationPermission();
+      }
     });
   }
 
@@ -57,8 +59,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                   Text('진행 중인 스탬프', style: AppTextStyle.fontSize24WhiteExtraBold,),
                   if(unVisitedLocations.length > 4)
                     GestureDetector(
-                      onTap: () {},
-                      child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,))
+                      onTap: () {
+                        context.pushNamed(AppRoutes.myTourPlaceList);
+                      },
+                      child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,)
+                    )
                 ],
               )
             ),
@@ -198,7 +203,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
       if(distanceBetween <= 300) {
         ref.read(savedLocationProvider.notifier).updateVisitStatus(
-            savedLocation.contentId, (success, message) {
+            savedLocation.contentId, (message) {
               if (message != null) {
                 showToast(message);
               }
