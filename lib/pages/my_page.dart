@@ -63,7 +63,9 @@ class _MyPageState extends ConsumerState<MyPage> {
                 child: IconButton(
                   icon: const Icon(Icons.settings, size: 32,),
                   color: AppColors.white,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(AppRoutes.setting);
+                  },
                 ),
               ),
               Row(
