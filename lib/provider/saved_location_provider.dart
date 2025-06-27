@@ -13,7 +13,7 @@ final _db = FirebaseFirestore.instance;
 final savedLocationProvider = NotifierProvider<SavedLocationProvider, List<SavedLocation>>(SavedLocationProvider.new);
 final unVisitedLocationProvider = Provider<List<SavedLocation>>((ref) {
   final savedLocations = ref.watch(savedLocationProvider);
-  return savedLocations.where((location) => location.isVisited != true).toList();
+  return savedLocations.where((location) => location.isVisited == false).toList();
 });
 
 class SavedLocationProvider extends Notifier<List<SavedLocation>> {

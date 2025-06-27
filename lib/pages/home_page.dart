@@ -34,8 +34,10 @@ class _HomePageState extends ConsumerState<HomePage> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(savedLocationProvider.notifier).startObservingSavedLocations();
-      _checkLocationPermission();
+      if(mounted) {
+        ref.read(savedLocationProvider.notifier).startObservingSavedLocations();
+        _checkLocationPermission();
+      }
     });
   }
 
@@ -57,8 +59,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                   Text('진행 중인 스탬프', style: AppTextStyle.fontSize24WhiteExtraBold,),
                   if(unVisitedLocations.length > 4)
                     GestureDetector(
-                      onTap: () {},
-                      child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,))
+                      onTap: () {
+                        context.pushNamed(AppRoutes.myTourList);
+                      },
+                      child: Text('더보기', style: AppTextStyle.fontSize14WhiteRegular,)
+                    )
                 ],
               )
             ),
@@ -147,9 +152,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 error: (error, stack) {
                   return _emptyCurrentLocation();
                 },
-                loading: () {
-                  return Center(child: CircularProgressIndicator(),);
-                },
+                loading: () => Center(child: CircularProgressIndicator(),),
               ),
             )
           ],
@@ -197,13 +200,9 @@ class _HomePageState extends ConsumerState<HomePage> {
       );
 
       if(distanceBetween <= 300) {
-        ref.read(savedLocationProvider.notifier).updateVisitStatus(
-            savedLocation.contentId, (success, message) {
-              if (message != null) {
-                showToast(message);
-              }
-            }
-        );
+        ref.read(savedLocationProvider.notifier).updateVisitStatus(savedLocation.contentId, (_, message) {
+          showToast(message!);
+        });
       }else {
         showToast("해당 장소와의 거리가 너무 멀어요! (${distanceBetween.toStringAsFixed(1)}m)");
       }
@@ -252,86 +251,91 @@ class _HomePageState extends ConsumerState<HomePage> {
             itemBuilder: (context, index) {
               final location = savedLocation[index];
 
-              return Card(
-                margin: EdgeInsets.symmetric(horizontal: 8),
-                color: AppColors.color2a2a2a,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 140,
-                      margin: EdgeInsets.only(top: 8, left: 8, right: 8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: (location.image.isNotEmpty)
-                          ? ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          location.image,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Container(
-                              width: double.infinity,
-                              color: AppColors.color2a2a2a,
-                            );
-                          },
+              return GestureDetector(
+                onTap: () {
+                  context.pushNamed(AppRoutes.myTourDetail, extra: location);
+                },
+                child: Card(
+                  margin: EdgeInsets.symmetric(horizontal: 8),
+                  color: AppColors.color2a2a2a,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 140,
+                        margin: EdgeInsets.only(top: 8, left: 8, right: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      ): Container(
-                          width: double.infinity,
-                          color: AppColors.color2a2a2a
+                        child: (location.image.isNotEmpty)
+                            ? ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            location.image,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                width: double.infinity,
+                                color: AppColors.color2a2a2a,
+                              );
+                            },
+                          ),
+                        ): Container(
+                            width: double.infinity,
+                            color: AppColors.color2a2a2a
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    location.title,
-                                    style: AppTextStyle.fontSize16WhiteSemiBold,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  Text(
-                                    location.address,
-                                    style: AppTextStyle.fontSize14WhiteRegular,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              )
-                            ),
-                            SizedBox(width: 16),
-                            GestureDetector(
-                              onTap: () => _clickStamp(location),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.colorFF8C00,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text('스탬프 찍기', style: AppTextStyle.fontSize16WhiteSemiBold,),
-                                ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      location.title,
+                                      style: AppTextStyle.fontSize16WhiteSemiBold,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      location.address,
+                                      style: AppTextStyle.fontSize14WhiteRegular,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                )
                               ),
-                            )
-                          ],
+                              SizedBox(width: 16),
+                              GestureDetector(
+                                onTap: () => _clickStamp(location),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: AppColors.colorFF8C00,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('스탬프 찍기', style: AppTextStyle.fontSize16WhiteSemiBold,),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               );
             },
@@ -372,7 +376,12 @@ class _HomePageState extends ConsumerState<HomePage> {
       itemBuilder: (context, index) {
         return TourItemWidget(
           item: items[index],
-          itemClick: (item) {},
+          itemClick: (item) {
+            context.push(
+              AppRoutes.tourDetail,
+              extra: item
+            );
+          },
           buttonClick: () {
             ref.read(savedLocationProvider.notifier).saveTourLocation(items[index], (result) {
               switch(result) {

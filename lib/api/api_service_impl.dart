@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:stamp_way_flutter/api/api_service.dart';
+import 'package:stamp_way_flutter/model/tour_detail_response.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 
 class ApiServiceImpl implements ApiService {
@@ -39,6 +40,40 @@ class ApiServiceImpl implements ApiService {
 
       if(response.statusCode == 200) {
         return TourismResponse.fromJson(response.data);
+      } else {
+        throw Exception('API call fail: ${response.statusCode}');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<TourDetailResponse> getTourDetail({
+    String os = "AND",
+    String mobileOs = "TEST",
+    String type = "json",
+    required int contentId,
+    required int contentTypeId,
+    int pageResultCount = 20,
+    int pageNo = 1
+  }) async {
+    try {
+      final response = await _dio.get(
+        'detailIntro1',
+        queryParameters: {
+          'MobileOS': os,
+          'MobileApp': mobileOs,
+          '_type': type,
+          'contentId': contentId,
+          'contentTypeId': contentTypeId,
+          'numOfRows': pageResultCount,
+          'pageNo': pageNo,
+        }
+      );
+
+      if(response.statusCode == 200) {
+        return TourDetailResponse.fromJson(response.data);
       } else {
         throw Exception('API call fail: ${response.statusCode}');
       }
