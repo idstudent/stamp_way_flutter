@@ -133,7 +133,7 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
           return GridNearTourItemWidget(
             item: allItems[index],
             itemClick: (item) {
-             // TODO: 상세페이지 이동
+             context.pushNamed(AppRoutes.tourDetail, extra: allItems[index]);
             },
             buttonClick: () {
               ref.read(savedLocationProvider.notifier).saveTourLocation(allItems[index], (result) {
