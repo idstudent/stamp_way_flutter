@@ -7,13 +7,10 @@
 이후에도 계속 추가될 예정이나, 현재 기술스택입니다.
 
 언어 : flutter
-라이브러리 : riverpod, freezed, drift, goRouter
+라이브러리 : riverpod, freezed, goRouter, firebase, html, geolocator 
 
 현재 브랜치 
-master 브랜치 - 아직 세팅만 되어있는 상태
-
-feature/home 브랜치 - 현재 여기서 작업 중
-          
+master 브랜치 - 현재 작업된대로 최신화 되어있습니다. 홈, 상세, 근처 리스트 등 구현완료 (검색은 작업예정, my는 거의 완료된 상태입니다)
 
 
 
