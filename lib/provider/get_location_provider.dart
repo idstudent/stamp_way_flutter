@@ -7,17 +7,16 @@ final getLocationProvider = NotifierProvider<GetLocationProvider, AsyncValue<Lis
 class GetLocationProvider extends Notifier<AsyncValue<List<TourMapper>>>{
   @override
   AsyncValue<List<TourMapper>> build() {
-    return const AsyncValue.data([]);
+    return const AsyncValue.loading();
   }
 
   Future<void> getLocationTourList(double longitude, double latitude, int pageNo, int contentTypeId,) async {
     try {
-      final repository = ref.read(tourRepositoryProvider);
+      final repository = ref.read(locationTourRepositoryProvider);
 
       final item = await repository.getLocationTourList(longitude, latitude, pageNo, contentTypeId);
       state = AsyncValue.data(item);
     } catch (e, stackTrace) {
-      print('Provider 에러: $e');
       state = AsyncValue.error(e, stackTrace);
     }
   }

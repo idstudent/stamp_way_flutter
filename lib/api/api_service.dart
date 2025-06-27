@@ -1,3 +1,5 @@
+import 'package:stamp_way_flutter/model/tour_detail_response.dart';
+
 import '../model/tour_mapper.dart';
 
 abstract class ApiService {
@@ -14,5 +16,15 @@ abstract class ApiService {
     required double latitude,
     int radiusInt = 10000,
     required int contentTypeId,
+  });
+
+  Future<TourDetailResponse> getTourDetail({
+    String os = "AND",
+    String mobileOs = "TEST",
+    String type = "json",
+    required int contentId,
+    required int contentTypeId,
+    int pageResultCount = 20,
+    int pageNo = 1,
   });
 }

@@ -3,11 +3,13 @@ import 'package:stamp_way_flutter/pages/login_page.dart';
 import 'package:stamp_way_flutter/pages/main_page.dart';
 import 'package:stamp_way_flutter/pages/my_tour_list_page.dart';
 import 'package:stamp_way_flutter/pages/near_place_page.dart';
+import 'package:stamp_way_flutter/pages/tour_detail_page.dart';
 
 class AppRoutes {
   static const String home = '/';
   static const String myTourPlaceList = '/my-tour-place-list';
   static const String nearPlaceList = '/near-place-list';
+  static const String tourDetail = '/tour-detail';
   static const String login = '/login';
 }
 
@@ -37,6 +39,13 @@ final GoRouter router = GoRouter(
       name: AppRoutes.myTourPlaceList,
       builder: (context, state) {
         return MyTourListPage();
+      }
+    ),
+    GoRoute(
+      path: AppRoutes.tourDetail,
+      name: AppRoutes.tourDetail,
+      builder: (context, state) {
+        return TourDetailPage();
       }
     )
   ],

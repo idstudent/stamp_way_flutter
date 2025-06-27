@@ -5,7 +5,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:stamp_way_flutter/api/api_service.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:stamp_way_flutter/api/api_service_impl.dart';
-import 'package:stamp_way_flutter/repository/tour_repository.dart';
+import 'package:stamp_way_flutter/repository/location_tour_repository.dart';
+import 'package:stamp_way_flutter/repository/tour_detail_repository.dart';
 
 final dioProvider = Provider<Dio>((ref) {
   final dio = Dio();
@@ -41,7 +42,12 @@ final apiServiceProvider = Provider<ApiService>((ref) {
   return ApiServiceImpl(dio);
 });
 
-final tourRepositoryProvider = Provider<TourRepository>((ref) {
+final locationTourRepositoryProvider = Provider<LocationTourRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
-  return TourRepository(apiService);
+  return LocationTourRepository(apiService);
+});
+
+final tourDetailRepositoryProvider = Provider<TourDetailRepository>((ref) {
+  final apiService = ref.watch(apiServiceProvider);
+  return TourDetailRepository(apiService);
 });

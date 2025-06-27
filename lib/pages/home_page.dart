@@ -152,9 +152,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 error: (error, stack) {
                   return _emptyCurrentLocation();
                 },
-                loading: () {
-                  return Center(child: CircularProgressIndicator(),);
-                },
+                loading: () => Center(child: CircularProgressIndicator(),),
               ),
             )
           ],
@@ -257,6 +255,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             itemBuilder: (context, index) {
               final location = savedLocation[index];
 
+              //TODO: 클릭시 상세 페이지
               return Card(
                 margin: EdgeInsets.symmetric(horizontal: 8),
                 color: AppColors.color2a2a2a,
@@ -378,7 +377,10 @@ class _HomePageState extends ConsumerState<HomePage> {
         return TourItemWidget(
           item: items[index],
           itemClick: (item) {
-            // TODO: 상세 페이지 이동
+            context.push(
+              AppRoutes.tourDetail,
+              extra: item
+            );
           },
           buttonClick: () {
             ref.read(savedLocationProvider.notifier).saveTourLocation(items[index], (result) {
