@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
+import 'package:stamp_way_flutter/routes/app_routes.dart';
 import 'package:stamp_way_flutter/util/location_permission_dialog.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 
@@ -69,7 +71,7 @@ class _MyTourListPageState extends ConsumerState<MyTourListPage> {
         return GridMyTourItemWidget(
           item: savedLocations[index],
           itemClick: (item) {
-            // TODO: 상세페이지 이동
+            context.pushNamed(AppRoutes.myTourDetail, extra: savedLocations[index]);
           },
           buttonClick: () {
             _clickStamp(savedLocations[index]);
@@ -95,11 +97,8 @@ class _MyTourListPageState extends ConsumerState<MyTourListPage> {
       );
 
       if(distanceBetween <= 300) {
-        ref.read(savedLocationProvider.notifier).updateVisitStatus(
-            savedLocation.contentId, (message) {
-          if(message != null) {
-            showToast(message);
-          }
+        ref.read(savedLocationProvider.notifier).updateVisitStatus(savedLocation.contentId, (_, message) {
+          showToast(message!);
         });
       }else {
         showToast("해당 장소와의 거리가 너무 멀어요! (${distanceBetween.toStringAsFixed(1)}m)");

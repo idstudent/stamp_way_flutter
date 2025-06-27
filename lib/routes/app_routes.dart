@@ -5,11 +5,14 @@ import 'package:stamp_way_flutter/pages/my_tour_list_page.dart';
 import 'package:stamp_way_flutter/pages/near_place_page.dart';
 import 'package:stamp_way_flutter/pages/tour_detail_page.dart';
 
+import '../pages/my_tour_detail_page.dart';
+
 class AppRoutes {
   static const String home = '/';
-  static const String myTourPlaceList = '/my-tour-place-list';
+  static const String myTourList = '/my-tour-list';
   static const String nearPlaceList = '/near-place-list';
   static const String tourDetail = '/tour-detail';
+  static const String myTourDetail = '/my-tour-detail';
   static const String login = '/login';
 }
 
@@ -35,8 +38,8 @@ final GoRouter router = GoRouter(
       }
     ),
     GoRoute(
-      path: AppRoutes.myTourPlaceList,
-      name: AppRoutes.myTourPlaceList,
+      path: AppRoutes.myTourList,
+      name: AppRoutes.myTourList,
       builder: (context, state) {
         return MyTourListPage();
       }
@@ -47,6 +50,13 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         return TourDetailPage();
       }
+    ),
+    GoRoute(
+        path: AppRoutes.myTourDetail,
+        name: AppRoutes.myTourDetail,
+        builder: (context, state) {
+          return MyTourDetailPage();
+        }
     )
   ],
 );
