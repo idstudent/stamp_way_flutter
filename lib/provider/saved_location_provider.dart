@@ -16,14 +16,19 @@ final unVisitedLocationProvider = Provider<List<SavedLocation>>((ref) {
   return savedLocations.where((location) => location.isVisited == false).toList();
 });
 
-final processedLocationDataProvider = Provider<Map<String, dynamic>>((ref) {
+final visitedLocationProvider = Provider<Map<String, dynamic>>((ref) {
   final savedLocations = ref.watch(savedLocationProvider);
 
-  final tourPlaceList = savedLocations.where((location) => location.contentTypeId == 12).toList();
-  final cultureList = savedLocations.where((location) => location.contentTypeId == 14).toList();
-  final eventsList = savedLocations.where((location) => location.contentTypeId == 15).toList();
-  final activityList = savedLocations.where((location) => location.contentTypeId == 28).toList();
-  final foodList = savedLocations.where((location) => location.contentTypeId == 39).toList();
+  final tourPlaceList = savedLocations.where((location) => location.contentTypeId == 12)
+      .where((location) => location.isVisited).toList();
+  final cultureList = savedLocations.where((location) => location.contentTypeId == 14)
+      .where((location) => location.isVisited).toList();
+  final eventsList = savedLocations.where((location) => location.contentTypeId == 15)
+      .where((location) => location.isVisited).toList();
+  final activityList = savedLocations.where((location) => location.contentTypeId == 28)
+      .where((location) => location.isVisited).toList();
+  final foodList = savedLocations.where((location) => location.contentTypeId == 39)
+      .where((location) => location.isVisited).toList();
 
   return {
     'allList': savedLocations,
@@ -52,9 +57,17 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
       _snapshotListener?.cancel();
     });
 
-    if(_auth.currentUser != null) {
-      startObservingSavedLocations();
-    }
+    _auth.authStateChanges().listen((user) {
+      if (user == null) {
+        // 로그아웃되면 상태 초기화
+        state = [];
+        _snapshotListener?.cancel();
+      } else {
+        // 로그인되면 데이터 로드
+        startObservingSavedLocations();
+      }
+    });
+
     return [];
   }
 

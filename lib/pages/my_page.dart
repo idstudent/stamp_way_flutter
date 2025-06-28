@@ -21,34 +21,23 @@ class _MyPageState extends ConsumerState<MyPage> {
   @override
   Widget build(BuildContext context) {
     final userInfo = ref.watch(loginProvider);
-    final locationData = ref.watch(processedLocationDataProvider);
+    final visitedLocation = ref.watch(visitedLocationProvider);
 
-    final allList = locationData['allList'] as List<SavedLocation>? ?? [];
+    final allList = visitedLocation['allList'] as List<SavedLocation>? ?? [];
 
-    final tourList = (locationData['tourPlaceList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
-
+    final tourList = (visitedLocation['tourPlaceList'] as List<SavedLocation>? ?? []);
     final tourListCount = tourList.length;
 
-    final cultureList = (locationData['cultureList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
+    final cultureList = (visitedLocation['cultureList'] as List<SavedLocation>? ?? []);
     final cultureListCount = cultureList.length;
 
-    final eventList = (locationData['eventList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
+    final eventList = (visitedLocation['eventList'] as List<SavedLocation>? ?? []);
     final eventListCount = eventList.length;
 
-    final activityList = (locationData['activityList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
+    final activityList = (visitedLocation['activityList'] as List<SavedLocation>? ?? []);
     final activityListCount = activityList.length;
 
-    final foodList = (locationData['foodList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
+    final foodList = (visitedLocation['foodList'] as List<SavedLocation>? ?? []);
     final foodListCount = foodList.length;
 
     final completeCount = allList.where((location) => location.isVisited).length;
@@ -186,16 +175,18 @@ class _MyPageState extends ConsumerState<MyPage> {
               _levelWidget(CategoryLevel.event, calculateLevel(eventListCount, CategoryLevel.event)),
               _levelWidget(CategoryLevel.activity, calculateLevel(activityListCount, CategoryLevel.activity)),
               _levelWidget(CategoryLevel.food, calculateLevel(foodListCount, CategoryLevel.food)),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: (){
-                    logout();
-                  },
-                  child: Text('로그아웃', style: AppTextStyle.fontSize14WhiteRegular,)
-                ),
-              ),
-              const SizedBox(height: 48,),
+              userInfo != null
+                  ? Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: (){
+                        logout();
+                      },
+                      child: Text('로그아웃', style: AppTextStyle.fontSize14WhiteRegular,)
+                    ),
+                  )
+                  : SizedBox.shrink(),
+                const SizedBox(height: 48,),
             ],
           ),
         ),
