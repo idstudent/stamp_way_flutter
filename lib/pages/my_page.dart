@@ -6,7 +6,9 @@ import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/level_info.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/login_provider.dart';
+import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
+import 'package:stamp_way_flutter/util/show_toast.dart';
 
 class MyPage extends ConsumerStatefulWidget {
   const MyPage({super.key});
@@ -16,40 +18,27 @@ class MyPage extends ConsumerStatefulWidget {
 }
 
 class _MyPageState extends ConsumerState<MyPage> {
-  Map<String, dynamic>? userInfo;
-
-  @override
-  void initState() {
-    super.initState();
-    _getUser();
-  }
-
-  Future<void> _getUser() async {
-    final loginService = ref.read(loginProvider);
-    final user = await loginService.getUser();
-    setState(() {
-      userInfo = user;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
+    final userInfo = ref.watch(loginProvider);
+    final visitedLocation = ref.watch(visitedLocationProvider);
 
-    final tourList = (userInfo?['tourPlaceList'] as List<SavedLocation>?) ?? [];
-    final tourListCount = tourList.where((location) => location.isVisited).length;
+    final allList = visitedLocation['allList'] as List<SavedLocation>? ?? [];
 
-    final cultureList = userInfo?['cultureList'] as List<SavedLocation>? ?? [];
-    final cultureListCount = cultureList.where((location) => location.isVisited).length;
+    final tourList = (visitedLocation['tourPlaceList'] as List<SavedLocation>? ?? []);
+    final tourListCount = tourList.length;
 
-    final eventList = userInfo?['eventList'] as List<SavedLocation>? ?? [];
-    final eventListCount = eventList.where((location) => location.isVisited).length;
+    final cultureList = (visitedLocation['cultureList'] as List<SavedLocation>? ?? []);
+    final cultureListCount = cultureList.length;
 
-    final activityList = userInfo?['activityList'] as List<SavedLocation>? ?? [];
-    final activityListCount = activityList.where((location) => location.isVisited).length;
+    final eventList = (visitedLocation['eventList'] as List<SavedLocation>? ?? []);
+    final eventListCount = eventList.length;
 
-    final foodList = userInfo?['foodList'] as List<SavedLocation>? ?? [];
-    final foodListCount = foodList.where((location) => location.isVisited).length;
+    final activityList = (visitedLocation['activityList'] as List<SavedLocation>? ?? []);
+    final activityListCount = activityList.length;
+
+    final foodList = (visitedLocation['foodList'] as List<SavedLocation>? ?? []);
+    final foodListCount = foodList.length;
 
     final completeCount = allList.where((location) => location.isVisited).length;
     final notCompleteCount = allList.where((location) => !location.isVisited).length;
@@ -138,18 +127,21 @@ class _MyPageState extends ConsumerState<MyPage> {
                       ),
 
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8, right: 8),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 20,),
-                              Icon(Icons.checklist, size: 40, color: AppColors.colorFF8C00,),
-                              const SizedBox(height: 8,),
-                              Text(notCompleteCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
-                              Text('예정', style: AppTextStyle.fontSize16WhiteExtraBold,),
-                              const SizedBox(height: 20,)
-                            ],
+                        child: GestureDetector(
+                          onTap: () => context.pushNamed(AppRoutes.myTourList),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 20,),
+                                Icon(Icons.checklist, size: 40, color: AppColors.colorFF8C00,),
+                                const SizedBox(height: 8,),
+                                Text(notCompleteCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
+                                Text('예정', style: AppTextStyle.fontSize16WhiteExtraBold,),
+                                const SizedBox(height: 20,)
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -183,21 +175,32 @@ class _MyPageState extends ConsumerState<MyPage> {
               _levelWidget(CategoryLevel.event, calculateLevel(eventListCount, CategoryLevel.event)),
               _levelWidget(CategoryLevel.activity, calculateLevel(activityListCount, CategoryLevel.activity)),
               _levelWidget(CategoryLevel.food, calculateLevel(foodListCount, CategoryLevel.food)),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: (){
-                    // TODO: 로그아웃
-                  },
-                  child: Text('로그아웃', style: AppTextStyle.fontSize14WhiteRegular,)
-                ),
-              ),
-              const SizedBox(height: 48,),
+              userInfo != null
+                  ? Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: (){
+                        logout();
+                      },
+                      child: Text('로그아웃', style: AppTextStyle.fontSize14WhiteRegular,)
+                    ),
+                  )
+                  : SizedBox.shrink(),
+                const SizedBox(height: 48,),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<void> logout() async {
+    try {
+      await ref.read(loginProvider.notifier).logout();
+      showToast('로그아웃 되었어요');
+    }catch(e) {
+      showToast('로그아웃이 실패했어요');
+    }
   }
 
   Widget _levelWidget(CategoryLevel category, LevelInfo levelInfo) {

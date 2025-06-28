@@ -26,21 +26,11 @@ class _MyCompleteListPageState extends ConsumerState<MyCompleteListPage> {
     super.didChangeDependencies();
 
     final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-    tourList = (data?['tourList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
-    cultureList =( data?['cultureList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
-    eventList = (data?['eventList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
-    activityList = (data?['activityList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
-    foodList = (data?['foodList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited)
-        .toList();
+    tourList = data?['tourList'] as List<SavedLocation>? ?? [];
+    cultureList = data?['cultureList'] as List<SavedLocation>? ?? [];
+    eventList = data?['eventList'] as List<SavedLocation>? ?? [];
+    activityList = data?['activityList'] as List<SavedLocation>? ?? [];
+    foodList = data?['foodList'] as List<SavedLocation>? ?? [];
   }
   @override
   Widget build(BuildContext context) {
