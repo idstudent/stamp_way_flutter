@@ -6,6 +6,7 @@ import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/level_info.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/login_provider.dart';
+import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 
@@ -20,31 +21,32 @@ class _MyPageState extends ConsumerState<MyPage> {
   @override
   Widget build(BuildContext context) {
     final userInfo = ref.watch(loginProvider);
+    final locationData = ref.watch(processedLocationDataProvider);
 
-    final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
+    final allList = locationData['allList'] as List<SavedLocation>? ?? [];
 
-    final tourList = (userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [])
+    final tourList = (locationData['tourPlaceList'] as List<SavedLocation>? ?? [])
         .where((location) => location.isVisited)
         .toList();
 
     final tourListCount = tourList.length;
 
-    final cultureList = (userInfo?['cultureList'] as List<SavedLocation>? ?? [])
+    final cultureList = (locationData['cultureList'] as List<SavedLocation>? ?? [])
         .where((location) => location.isVisited)
         .toList();
     final cultureListCount = cultureList.length;
 
-    final eventList = (userInfo?['eventList'] as List<SavedLocation>? ?? [])
+    final eventList = (locationData['eventList'] as List<SavedLocation>? ?? [])
         .where((location) => location.isVisited)
         .toList();
     final eventListCount = eventList.length;
 
-    final activityList = (userInfo?['activityList'] as List<SavedLocation>? ?? [])
+    final activityList = (locationData['activityList'] as List<SavedLocation>? ?? [])
         .where((location) => location.isVisited)
         .toList();
     final activityListCount = activityList.length;
 
-    final foodList = (userInfo?['foodList'] as List<SavedLocation>? ?? [])
+    final foodList = (locationData['foodList'] as List<SavedLocation>? ?? [])
         .where((location) => location.isVisited)
         .toList();
     final foodListCount = foodList.length;

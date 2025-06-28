@@ -16,6 +16,33 @@ final unVisitedLocationProvider = Provider<List<SavedLocation>>((ref) {
   return savedLocations.where((location) => location.isVisited == false).toList();
 });
 
+final processedLocationDataProvider = Provider<Map<String, dynamic>>((ref) {
+  final savedLocations = ref.watch(savedLocationProvider);
+
+  final tourPlaceList = savedLocations.where((location) => location.contentTypeId == 12).toList();
+  final cultureList = savedLocations.where((location) => location.contentTypeId == 14).toList();
+  final eventsList = savedLocations.where((location) => location.contentTypeId == 15).toList();
+  final activityList = savedLocations.where((location) => location.contentTypeId == 28).toList();
+  final foodList = savedLocations.where((location) => location.contentTypeId == 39).toList();
+
+  return {
+    'allList': savedLocations,
+    'tourPlaceList': tourPlaceList,
+    'cultureList': cultureList,
+    'eventList': eventsList,
+    'activityList': activityList,
+    'foodList': foodList,
+  };
+});
+
+int calculateBadgeCount(int visitedCount) {
+  if (visitedCount >= 100) return 4;
+  if (visitedCount >= 50) return 3;
+  if (visitedCount >= 30) return 2;
+  if (visitedCount >= 10) return 1;
+  return 0;
+}
+
 class SavedLocationProvider extends Notifier<List<SavedLocation>> {
   StreamSubscription<QuerySnapshot>? _snapshotListener;
 
@@ -67,6 +94,7 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
     try {
       final doc = await _db.collection('saved_locations')
           .where('userId', isEqualTo: userId)
+          .where('isVisited', isEqualTo: false)
           .get();
 
       if(doc.docs.length >= 30) {

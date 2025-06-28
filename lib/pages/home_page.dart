@@ -169,7 +169,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         ref.read(getLocationProvider.notifier).getLocationTourList(position.longitude, position.latitude, 1, 12);
       } catch (e) {
         if (mounted && ref.read(currentTabProvider) == 0) {
-          showToast('위치 정보를 가져올 수 없어요');
+          showToast('1 위치 정보를 가져올 수 없어요');
         }
       }
     }
@@ -211,7 +211,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     } on PermissionDeniedException {
       showToast('위치 권한이 없습니다');
     } catch (e) {
-      showToast('위치 정보를 가져올 수 없어요');
+      showToast('2 위치 정보를 가져올 수 없어요');
     }
   }
 

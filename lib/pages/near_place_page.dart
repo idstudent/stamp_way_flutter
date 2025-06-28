@@ -61,32 +61,38 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
   @override
   Widget build(BuildContext context) {
     ref.listen(getLocationProvider, (previous, next) {
+      print('getLocationProvider 상태 변경됨: ${next.runtimeType}');
       next.when(
         data: (newItems) {
-          setState(() {
-            if (page == 1) {
-              allItems = List.from(newItems);
-            } else {
-              // 중복 제거
-              final item = newItems.where((newItem) {
-                return !allItems.any((existingItem) =>
-                existingItem.contentid == newItem.contentid);
-              }).toList();
+          print('데이터 받음: ${newItems.length}개, page: $page');
+          if(mounted) {
+            setState(() {
+              if (page == 1) {
+                allItems = List.from(newItems);
+              } else {
+                // 중복 제거
+                final item = newItems.where((newItem) {
+                  return !allItems.any((existingItem) =>
+                  existingItem.contentid == newItem.contentid);
+                }).toList();
 
-              allItems.addAll(item);
+                allItems.addAll(item);
 
-              if (newItems.length < 20) {
-                hasMore = false;
+                if (newItems.length < 20) {
+                  hasMore = false;
+                }
               }
-            }
-            isLoading = false;
-          });
+              isLoading = false;
+            });
+          }
         },
         error: (error, stack) {
           print('에러: $error');
-          setState(() {
-            isLoading = false;
-          });
+          if(mounted) {
+            setState(() {
+              isLoading = false;
+            });
+          }
         },
         loading: () {},
       );
@@ -168,15 +174,17 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
         longitude = position.longitude;
         latitude = position.latitude;
 
-        setState(() {
-          page = 1;
-          allItems.clear();
-          hasMore = true;
-          isLoading = true;
-        });
+        if (mounted) {
+          setState(() {
+            page = 1;
+            allItems.clear();
+            hasMore = true;
+            isLoading = true;
+          });
 
-        ref.read(getLocationProvider.notifier).getLocationTourList(
-            longitude!, latitude!, page, typeId!);
+          ref.read(getLocationProvider.notifier).getLocationTourList(
+              longitude!, latitude!, page, typeId!);
+        }
       }catch(e) {
         showToast('위치 정보를 가져올 수 없어요');
       }
@@ -184,15 +192,17 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
   }
 
   void _loadNextPage() {
-    if (isLoading || !hasMore) return;
+    if (isLoading || !hasMore || !mounted) return;
 
-    setState(() {
-      isLoading = true;
-      page++;
-    });
+    if(mounted) {
+      setState(() {
+        isLoading = true;
+        page++;
+      });
 
-    ref.read(getLocationProvider.notifier).getLocationTourList(
-        longitude!, latitude!, page, typeId!);
+      ref.read(getLocationProvider.notifier).getLocationTourList(
+          longitude!, latitude!, page, typeId!);
+    }
   }
 
   String _getTitle() {
