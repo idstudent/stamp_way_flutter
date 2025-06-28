@@ -36,7 +36,7 @@ class _MyPageState extends ConsumerState<MyPage> {
   Widget build(BuildContext context) {
     final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
 
-    final tourList = userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [];
+    final tourList = (userInfo?['tourPlaceList'] as List<SavedLocation>?) ?? [];
     final tourListCount = tourList.where((location) => location.isVisited).length;
 
     final cultureList = userInfo?['cultureList'] as List<SavedLocation>? ?? [];
