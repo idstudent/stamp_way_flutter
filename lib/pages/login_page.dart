@@ -77,7 +77,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     return;
                   }
 
-                  final (success, msg) = await ref.read(loginProvider).signIn(email, password);
+                  final (success, msg) = await ref.read(loginProvider.notifier).signIn(email, password);
 
                   if(success) {
                     Navigator.of(context).pop();

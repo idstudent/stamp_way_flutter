@@ -7,6 +7,7 @@ import 'package:stamp_way_flutter/model/level_info.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 import 'package:stamp_way_flutter/provider/login_provider.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
+import 'package:stamp_way_flutter/util/show_toast.dart';
 
 class MyPage extends ConsumerStatefulWidget {
   const MyPage({super.key});
@@ -16,24 +17,10 @@ class MyPage extends ConsumerStatefulWidget {
 }
 
 class _MyPageState extends ConsumerState<MyPage> {
-  Map<String, dynamic>? userInfo;
-
-  @override
-  void initState() {
-    super.initState();
-    _getUser();
-  }
-
-  Future<void> _getUser() async {
-    final loginService = ref.read(loginProvider);
-    final user = await loginService.getUser();
-    setState(() {
-      userInfo = user;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final userInfo = ref.watch(loginProvider);
+
     final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
 
     final tourList = (userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [])
@@ -201,7 +188,7 @@ class _MyPageState extends ConsumerState<MyPage> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: (){
-                    // TODO: 로그아웃
+                    logout();
                   },
                   child: Text('로그아웃', style: AppTextStyle.fontSize14WhiteRegular,)
                 ),
@@ -212,6 +199,15 @@ class _MyPageState extends ConsumerState<MyPage> {
         ),
       ),
     );
+  }
+
+  Future<void> logout() async {
+    try {
+      await ref.read(loginProvider.notifier).logout();
+      showToast('로그아웃 되었어요');
+    }catch(e) {
+      showToast('로그아웃이 실패했어요');
+    }
   }
 
   Widget _levelWidget(CategoryLevel category, LevelInfo levelInfo) {

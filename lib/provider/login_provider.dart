@@ -3,9 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 
-class LoginService {
+final loginProvider = NotifierProvider<LoginProvider, Map<String, dynamic>?>(LoginProvider.new);
+
+class LoginProvider extends Notifier<Map<String, dynamic>?> {
   final _auth = FirebaseAuth.instance;
   final _fireStore = FirebaseFirestore.instance;
+
+  @override
+  Map<String, dynamic>? build() {
+    getUser();
+    return null;
+  }
 
   Future<(bool, String?)> signIn(String email, String password) async {
     try  {
@@ -15,6 +23,7 @@ class LoginService {
       );
 
       if(auth.user?.emailVerified == true) {
+        getUser();
         return(true, null);
       } else {
         await _auth.signOut();
@@ -35,19 +44,25 @@ class LoginService {
       return (false, errorMessage);
     }
   }
+  Future<void> logout() async {
+    await _auth.signOut();
+    state = null;
+  }
 
   Future<Map<String, dynamic>?> getUser() async {
     final user = _auth.currentUser;
-    if(user == null) return null;
-
+    if(user == null) {
+      state = null;
+      return null;
+    }
     try {
       final doc = await _fireStore.collection('users').doc(user.uid).get();
       final userInfo = doc.data();
 
       final locations = await _fireStore
-        .collection('saved_locations')
-        .where('userId', isEqualTo: user.uid)
-        .get();
+          .collection('saved_locations')
+          .where('userId', isEqualTo: user.uid)
+          .get();
 
       final savedLocations = locations.docs
           .map((doc)=> SavedLocation.fromFireStore(doc.data())).toList();
@@ -66,7 +81,7 @@ class LoginService {
 
       final certificationCount = tourBadges + cultureBadges + eventsBadges + activityBadges + foodBadges;
 
-      return {
+      final userData = {
         ...userInfo ?? {},
         'allList': savedLocations,
         'tourPlaceList': tourPlaceList,
@@ -76,11 +91,13 @@ class LoginService {
         'foodList': foodList,
         'certificationCount': certificationCount,
       };
+
+      state = userData;
+      return userData;
     } catch (e) {
       print('error $e');
       return null;
     }
-
   }
 
   int calculateBadgeCount(int visitedCount) {
@@ -92,4 +109,3 @@ class LoginService {
   }
 }
 
-final loginProvider = Provider((ref) => LoginService());
