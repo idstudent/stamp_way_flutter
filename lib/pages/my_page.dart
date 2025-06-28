@@ -36,20 +36,31 @@ class _MyPageState extends ConsumerState<MyPage> {
   Widget build(BuildContext context) {
     final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
 
-    final tourList = userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [];
-    final tourListCount = tourList.where((location) => location.isVisited).length;
+    final tourList = (userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited)
+        .toList();
 
-    final cultureList = userInfo?['cultureList'] as List<SavedLocation>? ?? [];
-    final cultureListCount = cultureList.where((location) => location.isVisited).length;
+    final tourListCount = tourList.length;
 
-    final eventList = userInfo?['eventList'] as List<SavedLocation>? ?? [];
-    final eventListCount = eventList.where((location) => location.isVisited).length;
+    final cultureList = (userInfo?['cultureList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited)
+        .toList();
+    final cultureListCount = cultureList.length;
 
-    final activityList = userInfo?['activityList'] as List<SavedLocation>? ?? [];
-    final activityListCount = activityList.where((location) => location.isVisited).length;
+    final eventList = (userInfo?['eventList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited)
+        .toList();
+    final eventListCount = eventList.length;
 
-    final foodList = userInfo?['foodList'] as List<SavedLocation>? ?? [];
-    final foodListCount = foodList.where((location) => location.isVisited).length;
+    final activityList = (userInfo?['activityList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited)
+        .toList();
+    final activityListCount = activityList.length;
+
+    final foodList = (userInfo?['foodList'] as List<SavedLocation>? ?? [])
+        .where((location) => location.isVisited)
+        .toList();
+    final foodListCount = foodList.length;
 
     final completeCount = allList.where((location) => location.isVisited).length;
     final notCompleteCount = allList.where((location) => !location.isVisited).length;
