@@ -36,15 +36,13 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    if (typeId == null) {
-      typeId = GoRouterState.of(context).extra as int? ?? 12;
+    typeId ??= GoRouterState.of(context).extra as int? ?? 12;
 
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) {
-          _checkLocationPermission();
-        }
-      });
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        _checkLocationPermission();
+      }
+    });
   }
 
   @override
@@ -130,13 +128,15 @@ class _NearPlacePageState extends ConsumerState<NearPlacePage> {
         ),
         itemCount: allItems.length,
         itemBuilder: (context, index) {
+          final location = allItems[index];
+
           return GridNearTourItemWidget(
-            item: allItems[index],
+            item: location,
             itemClick: (item) {
-             context.pushNamed(AppRoutes.tourDetail, extra: allItems[index]);
+             context.pushNamed(AppRoutes.tourDetail, extra: location);
             },
             buttonClick: () {
-              ref.read(savedLocationProvider.notifier).saveTourLocation(allItems[index], (result) {
+              ref.read(savedLocationProvider.notifier).saveTourLocation(location, (result) {
                 switch(result) {
                   case Success():
                     showToast(result.message);

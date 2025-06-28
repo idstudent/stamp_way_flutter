@@ -35,19 +35,25 @@ class _MyPageState extends ConsumerState<MyPage> {
   @override
   Widget build(BuildContext context) {
     final allList = userInfo?['allList'] as List<SavedLocation>? ?? [];
-    final tourListCount = (userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited).length;
-    final cultureListCount = (userInfo?['cultureList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited).length;
-    final eventListCount = (userInfo?['eventList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited).length;
-    final activityListCount = (userInfo?['activityList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited).length;
-    final foodListCount = (userInfo?['foodList'] as List<SavedLocation>? ?? [])
-        .where((location) => location.isVisited).length;
+
+    final tourList = userInfo?['tourPlaceList'] as List<SavedLocation>? ?? [];
+    final tourListCount = tourList.where((location) => location.isVisited).length;
+
+    final cultureList = userInfo?['cultureList'] as List<SavedLocation>? ?? [];
+    final cultureListCount = cultureList.where((location) => location.isVisited).length;
+
+    final eventList = userInfo?['eventList'] as List<SavedLocation>? ?? [];
+    final eventListCount = eventList.where((location) => location.isVisited).length;
+
+    final activityList = userInfo?['activityList'] as List<SavedLocation>? ?? [];
+    final activityListCount = activityList.where((location) => location.isVisited).length;
+
+    final foodList = userInfo?['foodList'] as List<SavedLocation>? ?? [];
+    final foodListCount = foodList.where((location) => location.isVisited).length;
 
     final completeCount = allList.where((location) => location.isVisited).length;
     final notCompleteCount = allList.where((location) => !location.isVisited).length;
+
     final certifyCount = userInfo?['certificationCount'] as int? ?? 0;
 
     return SafeArea(
@@ -104,18 +110,29 @@ class _MyPageState extends ConsumerState<MyPage> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 16),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 20,),
-                              Icon(Icons.tour, size: 40, color: AppColors.colorFF8C00,),
-                              const SizedBox(height: 8,),
-                              Text(completeCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
-                              Text('완료', style: AppTextStyle.fontSize16WhiteExtraBold,),
-                              const SizedBox(height: 20,)
-                            ],
+                        child: GestureDetector(
+                          onTap: () {
+                            context.pushNamed(AppRoutes.myCompleteList, extra: {
+                              'tourList': tourList,
+                              'cultureList': cultureList,
+                              'eventList': eventList,
+                              'activityList': activityList,
+                              'foodList': foodList,
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 20,),
+                                Icon(Icons.tour, size: 40, color: AppColors.colorFF8C00,),
+                                const SizedBox(height: 8,),
+                                Text(completeCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
+                                Text('완료', style: AppTextStyle.fontSize16WhiteExtraBold,),
+                                const SizedBox(height: 20,)
+                              ],
+                            ),
                           ),
                         ),
                       ),

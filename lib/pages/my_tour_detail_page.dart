@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
@@ -24,12 +26,15 @@ class MyTourDetailPage extends ConsumerStatefulWidget {
 class _TourDetailPageState extends ConsumerState<MyTourDetailPage> {
   SavedLocation? savedLocation;
   bool hasPermission = false;
+  bool btnVisible = true;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    savedLocation ??= GoRouterState.of(context).extra as SavedLocation?;
+    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+    savedLocation ??= data?['savedLocation'] as SavedLocation?;
+    btnVisible ??= data?['btnVisible'] as bool? ?? true;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -92,22 +97,24 @@ class _TourDetailPageState extends ConsumerState<MyTourDetailPage> {
         )
       ),
 
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.colorFF8C00
-        ),
-        margin: EdgeInsets.all(20),
-        height: 48,
-        child: TextButton(
-          onPressed: () {
-            if(savedLocation != null) {
-              _stampClick();
-            }
-          },
-          child: Text('스탬프 찍기', style: AppTextStyle.fontSize20WhiteSemiBold,),
-        ),
-      ),
+      bottomNavigationBar: btnVisible
+          ? Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: AppColors.colorFF8C00
+              ),
+              margin: EdgeInsets.all(20),
+              height: 48,
+              child: TextButton(
+                onPressed: () {
+                  if(savedLocation != null) {
+                    _stampClick();
+                  }
+                },
+                child: Text('스탬프 찍기', style: AppTextStyle.fontSize20WhiteSemiBold,),
+              ),
+            )
+          : null
     );
   }
 
