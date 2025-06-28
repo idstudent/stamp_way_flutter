@@ -149,18 +149,21 @@ class _MyPageState extends ConsumerState<MyPage> {
                       ),
 
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8, right: 8),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 20,),
-                              Icon(Icons.checklist, size: 40, color: AppColors.colorFF8C00,),
-                              const SizedBox(height: 8,),
-                              Text(notCompleteCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
-                              Text('예정', style: AppTextStyle.fontSize16WhiteExtraBold,),
-                              const SizedBox(height: 20,)
-                            ],
+                        child: GestureDetector(
+                          onTap: () => context.pushNamed(AppRoutes.myTourList),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 20,),
+                                Icon(Icons.checklist, size: 40, color: AppColors.colorFF8C00,),
+                                const SizedBox(height: 8,),
+                                Text(notCompleteCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
+                                Text('예정', style: AppTextStyle.fontSize16WhiteExtraBold,),
+                                const SizedBox(height: 20,)
+                              ],
+                            ),
                           ),
                         ),
                       ),
