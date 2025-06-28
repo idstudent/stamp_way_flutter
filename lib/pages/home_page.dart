@@ -253,7 +253,10 @@ class _HomePageState extends ConsumerState<HomePage> {
 
               return GestureDetector(
                 onTap: () {
-                  context.pushNamed(AppRoutes.myTourDetail, extra: location);
+                  context.pushNamed(AppRoutes.myTourDetail, extra: {
+                    'savedLocation': location,
+                    'btnVisible':true
+                  });
                 },
                 child: Card(
                   margin: EdgeInsets.symmetric(horizontal: 8),

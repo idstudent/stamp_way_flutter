@@ -71,7 +71,10 @@ class _MyTourListPageState extends ConsumerState<MyTourListPage> {
         return GridMyTourItemWidget(
           item: savedLocations[index],
           itemClick: (item) {
-            context.pushNamed(AppRoutes.myTourDetail, extra: savedLocations[index]);
+            context.pushNamed(AppRoutes.myTourDetail, extra: {
+              'savedLocation':savedLocations[index],
+              'btnVisible':true
+            });
           },
           buttonClick: () {
             _clickStamp(savedLocations[index]);
