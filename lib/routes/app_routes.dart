@@ -5,6 +5,7 @@ import 'package:stamp_way_flutter/pages/my_complete_list_page.dart';
 import 'package:stamp_way_flutter/pages/my_tour_list_page.dart';
 import 'package:stamp_way_flutter/pages/near_place_page.dart';
 import 'package:stamp_way_flutter/pages/setting_page.dart';
+import 'package:stamp_way_flutter/pages/sign_up_page.dart';
 import 'package:stamp_way_flutter/pages/tour_detail_page.dart';
 
 import '../pages/my_tour_detail_page.dart';
@@ -17,6 +18,7 @@ class AppRoutes {
   static const String myTourDetail = '/my-tour-detail';
   static const String myCompleteList = '/my-complete-list';
   static const String login = '/login';
+  static const String signUp = '/sign-up';
   static const String setting = '/setting';
 }
 
@@ -74,6 +76,13 @@ final GoRouter router = GoRouter(
         name: AppRoutes.myCompleteList,
         builder: (context, state) {
           return MyCompleteListPage();
+        }
+    ),
+    GoRoute(
+        path: AppRoutes.signUp,
+        name: AppRoutes.signUp,
+        builder: (context, state) {
+          return SignUpPage();
         }
     ),
   ],

@@ -22,13 +22,8 @@ class LoginProvider extends Notifier<Map<String, dynamic>?> {
           password: password
       );
 
-      if(auth.user?.emailVerified == true) {
-        getUser();
-        return(true, null);
-      } else {
-        await _auth.signOut();
-        return (false, '이메일 인증이 필요합니다. 이메일을 확인해주세요.');
-      }
+      getUser();
+      return(true, null);
     } on FirebaseAuthException catch (e) {
       String errorMessage;
       switch (e.code) {
@@ -44,6 +39,63 @@ class LoginProvider extends Notifier<Map<String, dynamic>?> {
       return (false, errorMessage);
     }
   }
+
+  Future<(bool, String?)> signUp(String email, String password, String nickName) async {
+    UserCredential? userCredential;
+
+    try {
+      final nickNameCheck = await _fireStore
+          .collection('users')
+          .where('nickname', isEqualTo: nickName)
+          .get();
+
+      if(nickNameCheck.docs.isNotEmpty) {
+        return (false, '이미 사용중인 닉네임이에요');
+      }
+
+      userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+
+      final user = {
+        'uid': userCredential.user!.uid,
+        'email': email,
+        'nickname': nickName,
+        'createdAt': FieldValue.serverTimestamp(),
+      };
+
+      await _fireStore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set(user);
+
+      await _auth.signOut();
+
+      return (true, null);
+    } on FirebaseAuthException catch (e) {
+      String errorMessage;
+      switch (e.code) {
+        case 'weak-password':
+          errorMessage = '비밀번호는 6자 이상이어야 합니다';
+          break;
+        case 'invalid-email':
+          errorMessage = '잘못된 이메일 형식입니다';
+          break;
+        case 'email-already-in-use':
+          errorMessage = '이미 사용 중인 이메일입니다';
+          break;
+        default:
+          errorMessage = e.message ?? '알 수 없는 오류가 발생했습니다';
+      }
+
+      if (userCredential?.user != null) {
+        await userCredential!.user!.delete();
+      }
+
+      return (false, errorMessage);
+    } catch (e) {
+      return (false, '회원가입 중 오류가 발생했어요: ${e.toString()}');
+    }
+  }
+
   Future<void> logout() async {
     await _auth.signOut();
     state = null;

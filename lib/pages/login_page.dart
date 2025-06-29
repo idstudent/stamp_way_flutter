@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/provider/login_provider.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
+
+import '../routes/app_routes.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -96,28 +99,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                 ),
               ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        //TODO: 회원가입
-                    },
-                      child: Text('회원가입', style: AppTextStyle.fontSize16WhiteRegular)
-                    )
-                  ),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        // TODO: 비밀번호 찾기
-                      },
-                      child: Text('비밀번호 찾기', style: AppTextStyle.fontSize16WhiteRegular)
-                    )
-                  ),
-                ],
-              )
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    context.pushNamed(AppRoutes.signUp);
+                  },
+                  child: Text('회원가입', style: AppTextStyle.fontSize16WhiteRegular)
+                ),
+              ),
             ],
           ),
         )
