@@ -300,8 +300,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
             item: items[index],
             itemClick: (item) {
               context.pushNamed(
-                //TODO: 검색상세 만들면 변경
-                AppRoutes.tourDetail,
+                AppRoutes.searchTourDetail,
                 extra: item
               );
             },
