@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
+import 'package:stamp_way_flutter/provider/get_location_provider.dart';
 
+import '../model/save_result.dart';
 import '../model/tour_mapper.dart';
+import '../provider/saved_location_provider.dart';
+import '../routes/app_routes.dart';
+import '../util/location_permission_dialog.dart';
+import '../util/show_toast.dart';
+import '../widgets/tour_item_widget.dart';
 
 final keywordProvider = StateProvider<String?>((ref) => null);
 final contentTypeIdProvider = StateProvider<int>((ref) => -1);
@@ -15,11 +24,25 @@ class SearchPage extends ConsumerStatefulWidget {
   ConsumerState<SearchPage> createState() => _SearchPageState();
 }
 
+
 class _SearchPageState extends ConsumerState<SearchPage> {
   List<TourMapper> recentlySearchItem = [];
-  List<TourMapper> nearSearchItem = [];
+  bool hasPermission = false;
+  double? longitude;
+  double? latitude;
 
   final _keywordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(mounted) {
+        _checkLocationPermission();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +145,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 Text('내 근처에는 뭐가 있지', style: AppTextStyle.fontSize20WhiteExtraBold,),
                 const SizedBox(height: 16,),
                 Container(
-                  child: _getMyNearSearchResult(nearSearchItem),
+                  child: _getMyNearSearchResult(),
                 ),
                 const SizedBox(height: 48,),
               ],
@@ -170,6 +193,13 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     return GestureDetector(
       onTap: () {
         ref.read(contentTypeIdProvider.notifier).state = contentTypeId;
+
+        if(longitude != null && latitude != null) {
+          ref.read(getLocationProvider.notifier).getLocationTourList(longitude!, latitude!, 1, contentTypeId);
+        }else {
+          showToast('위치 정보를 가져올 수 없어요');
+        }
+
         Navigator.pop(context);
       },
       child: Container(
@@ -209,12 +239,25 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     return Placeholder();
   }
 
-  Widget _getMyNearSearchResult(List<TourMapper> item) {
-    if(item.isEmpty) {
+  Widget _getMyNearSearchResult() {
+    final contentTypeId = ref.watch(contentTypeIdProvider);
+    if (contentTypeId == -1) {
       return SizedBox(height: 160, child: _emptyNearResultView());
-    }else {
-      return SizedBox(height: 160, child: _nearResultView());
     }
+
+    final getNearLocations = ref.watch(getLocationProvider);
+
+    return getNearLocations.when(
+      data: (item) {
+        if(item.isEmpty) {
+          return SizedBox(height: 160, child: _emptyNearResultView());
+        }else {
+          return _nearResultView(item);
+        }
+      },
+      error: (error, stackTrace) => _emptyNearResultView(),
+      loading: () => Center(child: CircularProgressIndicator()),
+    );
   }
   Widget _emptyNearResultView() {
     return Container(
@@ -232,7 +275,57 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     );
   }
 
-  Widget _nearResultView() {
-    return Placeholder();
+  Future<void> _checkLocationPermission() async {
+    hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
+    if (hasPermission) {
+      try {
+        Position position = await Geolocator.getCurrentPosition();
+        longitude = position.longitude;
+        latitude = position.latitude;
+      } catch (e) {
+        if (mounted) {
+          showToast('위치 정보를 가져올 수 없어요');
+        }
+      }
+    }
+  }
+
+  Widget _nearResultView(List<TourMapper> items) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: items.take(4).length,
+      itemBuilder: (context, index) {
+        return TourItemWidget(
+            item: items[index],
+            itemClick: (item) {
+              context.pushNamed(
+                //TODO: 검색상세 만들면 변경
+                AppRoutes.tourDetail,
+                extra: item
+              );
+            },
+            buttonClick: () {
+              ref.read(savedLocationProvider.notifier).saveTourLocation(items[index], (result) {
+                switch(result) {
+                  case Success():
+                    showToast(result.message);
+                    break;
+                  case Failure():
+                    showToast(result.message);
+                    break;
+                  case LoginRequired():
+                    showToast(result.message);
+                    context.pushNamed(AppRoutes.login);
+                    break;
+                  case MaxLimitReached():
+                    showToast(result.message);
+                    break;
+                }
+              });
+            }
+        );
+      },
+    );
   }
 }
