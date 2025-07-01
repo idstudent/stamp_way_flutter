@@ -81,4 +81,42 @@ class ApiServiceImpl implements ApiService {
       rethrow;
     }
   }
+
+  @override
+  Future<TourismResponse> getSearchKeyword({
+    int pageResultCount = 20,
+    int pageNo = 1,
+    String os = "AND",
+    String mobileOs = "TEST",
+    String type = "json",
+    String listYN = "Y",
+    String arrange = "C",
+    required String keyword,
+    required int contentTypeId
+  }) async {
+    try {
+      final response = await _dio.get(
+        '/searchKeyword1',
+        queryParameters: {
+          'numOfRows': pageResultCount,
+          'pageNo': pageNo,
+          'MobileOS': os,
+          'MobileApp': mobileOs,
+          '_type': type,
+          'listYN': listYN,
+          'arrange': arrange,
+          'keyword': keyword,
+          'contentTypeId': contentTypeId,
+        },
+      );
+
+      if(response.statusCode == 200) {
+        return TourismResponse.fromJson(response.data);
+      } else {
+        throw Exception('API call fail: ${response.statusCode}');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

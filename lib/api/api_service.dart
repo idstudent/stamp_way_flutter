@@ -27,4 +27,18 @@ abstract class ApiService {
     int pageResultCount = 20,
     int pageNo = 1,
   });
+
+
+  Future<TourismResponse> getSearchKeyword({
+    int pageResultCount = 20,
+    int pageNo = 1,
+    String os = "AND",
+    String mobileOs = "TEST",
+    String type = "json",
+    String listYN = "Y",
+    String arrange = "C",
+    required String keyword,
+    required int contentTypeId,
+  });
+
 }

@@ -20,10 +20,10 @@ class MyTourDetailPage extends ConsumerStatefulWidget {
   const MyTourDetailPage({super.key});
 
   @override
-  ConsumerState<MyTourDetailPage> createState() => _TourDetailPageState();
+  ConsumerState<MyTourDetailPage> createState() => _MyTourDetailPageState();
 }
 
-class _TourDetailPageState extends ConsumerState<MyTourDetailPage> {
+class _MyTourDetailPageState extends ConsumerState<MyTourDetailPage> {
   SavedLocation? savedLocation;
   bool hasPermission = false;
   bool btnVisible = true;
@@ -34,7 +34,7 @@ class _TourDetailPageState extends ConsumerState<MyTourDetailPage> {
 
     final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
     savedLocation ??= data?['savedLocation'] as SavedLocation?;
-    btnVisible ??= data?['btnVisible'] as bool? ?? true;
+    btnVisible = data?['btnVisible'] ?? true;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {

@@ -18,10 +18,10 @@ class SearchTourDetailPage extends ConsumerStatefulWidget {
   const SearchTourDetailPage({super.key});
 
   @override
-  ConsumerState<SearchTourDetailPage> createState() => _TourDetailPageState();
+  ConsumerState<SearchTourDetailPage> createState() => _SearchTourDetailPageState();
 }
 
-class _TourDetailPageState extends ConsumerState<SearchTourDetailPage> {
+class _SearchTourDetailPageState extends ConsumerState<SearchTourDetailPage> {
   TourMapper? tourMapper;
 
   @override

@@ -118,7 +118,16 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                     const SizedBox(width: 12,),
                     GestureDetector(
                       onTap: () {
-                        // TODO: 검색
+                        final keyword = _keywordController.text.toString();
+
+                        if(contentTypeId != -1 && keyword != '') {
+                          context.pushNamed(AppRoutes.searchPlaceList,  extra: {
+                            'contentTypeId': contentTypeId,
+                            'keyword': keyword
+                          });
+                        }else {
+                          showToast('검색어를 입력하세요');
+                        }
                       },
                       child: Container(
                         decoration: BoxDecoration(
