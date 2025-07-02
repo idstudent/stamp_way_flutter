@@ -1,9 +1,11 @@
+import 'package:floor/floor.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tour_mapper.freezed.dart';
 part 'tour_mapper.g.dart';
 
 @freezed
+@Entity(tableName: 'stamp')
 class TourMapper with _$TourMapper {
   const factory TourMapper({
     required int numOfRows,

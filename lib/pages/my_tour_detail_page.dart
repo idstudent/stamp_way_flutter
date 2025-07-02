@@ -29,30 +29,23 @@ class _MyTourDetailPageState extends ConsumerState<MyTourDetailPage> {
   bool btnVisible = true;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-    savedLocation ??= data?['savedLocation'] as SavedLocation?;
-    btnVisible = data?['btnVisible'] ?? true;
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        ref.read(tourDetailProvider.notifier).getTourDetail(
-          savedLocation?.contentId ?? -1,
-          savedLocation?.contentTypeId ?? -1
-        );
-      }
-    });
-  }
-
-  @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async{
       if(mounted) {
+        setState(() {
+          final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+          savedLocation = data?['savedLocation'] as SavedLocation?;
+          btnVisible = data?['btnVisible'] ?? true;
+        });
+
         hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
+
+        ref.read(tourDetailProvider.notifier).getTourDetail(
+            savedLocation?.contentId ?? -1,
+            savedLocation?.contentTypeId ?? -1
+        );
       }
     });
   }

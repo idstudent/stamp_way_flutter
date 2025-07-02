@@ -20,18 +20,25 @@ class _MyCompleteListPageState extends ConsumerState<MyCompleteListPage> {
   List<SavedLocation> eventList = [];
   List<SavedLocation> activityList = [];
   List<SavedLocation> foodList = [];
-  
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
 
-    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-    tourList = data?['tourList'] as List<SavedLocation>? ?? [];
-    cultureList = data?['cultureList'] as List<SavedLocation>? ?? [];
-    eventList = data?['eventList'] as List<SavedLocation>? ?? [];
-    activityList = data?['activityList'] as List<SavedLocation>? ?? [];
-    foodList = data?['foodList'] as List<SavedLocation>? ?? [];
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+        setState(() {
+          tourList = data?['tourList'] as List<SavedLocation>? ?? [];
+          cultureList = data?['cultureList'] as List<SavedLocation>? ?? [];
+          eventList = data?['eventList'] as List<SavedLocation>? ?? [];
+          activityList = data?['activityList'] as List<SavedLocation>? ?? [];
+          foodList = data?['foodList'] as List<SavedLocation>? ?? [];
+        });
+      }
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

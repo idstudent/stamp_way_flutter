@@ -65,14 +65,16 @@ Map<String, dynamic> _$$TourMapperImplToJson(_$TourMapperImpl instance) =>
     };
 
 _$TourismResponseImpl _$$TourismResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$TourismResponseImpl(
-  response: Response.fromJson(json['response'] as Map<String, dynamic>),
-);
+        Map<String, dynamic> json) =>
+    _$TourismResponseImpl(
+      response: Response.fromJson(json['response'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$$TourismResponseImplToJson(
-  _$TourismResponseImpl instance,
-) => <String, dynamic>{'response': instance.response};
+        _$TourismResponseImpl instance) =>
+    <String, dynamic>{
+      'response': instance.response,
+    };
 
 _$ResponseImpl _$$ResponseImplFromJson(Map<String, dynamic> json) =>
     _$ResponseImpl(
@@ -81,12 +83,15 @@ _$ResponseImpl _$$ResponseImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$ResponseImplToJson(_$ResponseImpl instance) =>
-    <String, dynamic>{'header': instance.header, 'body': instance.body};
+    <String, dynamic>{
+      'header': instance.header,
+      'body': instance.body,
+    };
 
 _$HeaderImpl _$$HeaderImplFromJson(Map<String, dynamic> json) => _$HeaderImpl(
-  resultCode: json['resultCode'] as String,
-  resultMsg: json['resultMsg'] as String,
-);
+      resultCode: json['resultCode'] as String,
+      resultMsg: json['resultMsg'] as String,
+    );
 
 Map<String, dynamic> _$$HeaderImplToJson(_$HeaderImpl instance) =>
     <String, dynamic>{
@@ -95,11 +100,11 @@ Map<String, dynamic> _$$HeaderImplToJson(_$HeaderImpl instance) =>
     };
 
 _$BodyImpl _$$BodyImplFromJson(Map<String, dynamic> json) => _$BodyImpl(
-  items: Items.fromJson(json['items'] as Map<String, dynamic>),
-  numOfRows: (json['numOfRows'] as num).toInt(),
-  pageNo: (json['pageNo'] as num).toInt(),
-  totalCount: (json['totalCount'] as num).toInt(),
-);
+      items: Items.fromJson(json['items'] as Map<String, dynamic>),
+      numOfRows: (json['numOfRows'] as num).toInt(),
+      pageNo: (json['pageNo'] as num).toInt(),
+      totalCount: (json['totalCount'] as num).toInt(),
+    );
 
 Map<String, dynamic> _$$BodyImplToJson(_$BodyImpl instance) =>
     <String, dynamic>{
@@ -110,14 +115,15 @@ Map<String, dynamic> _$$BodyImplToJson(_$BodyImpl instance) =>
     };
 
 _$ItemsImpl _$$ItemsImplFromJson(Map<String, dynamic> json) => _$ItemsImpl(
-  item:
-      (json['item'] as List<dynamic>)
+      item: (json['item'] as List<dynamic>)
           .map((e) => TourItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-);
+    );
 
 Map<String, dynamic> _$$ItemsImplToJson(_$ItemsImpl instance) =>
-    <String, dynamic>{'item': instance.item};
+    <String, dynamic>{
+      'item': instance.item,
+    };
 
 _$TourItemImpl _$$TourItemImplFromJson(Map<String, dynamic> json) =>
     _$TourItemImpl(

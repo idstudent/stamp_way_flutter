@@ -12,8 +12,7 @@ part of 'saved_location.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SavedLocation _$SavedLocationFromJson(Map<String, dynamic> json) {
   return _SavedLocation.fromJson(json);
@@ -45,21 +44,20 @@ mixin _$SavedLocation {
 /// @nodoc
 abstract class $SavedLocationCopyWith<$Res> {
   factory $SavedLocationCopyWith(
-    SavedLocation value,
-    $Res Function(SavedLocation) then,
-  ) = _$SavedLocationCopyWithImpl<$Res, SavedLocation>;
+          SavedLocation value, $Res Function(SavedLocation) then) =
+      _$SavedLocationCopyWithImpl<$Res, SavedLocation>;
   @useResult
-  $Res call({
-    int contentId,
-    int contentTypeId,
-    String title,
-    String address,
-    String image,
-    double latitude,
-    double longitude,
-    bool isVisited,
-    @JsonKey(includeFromJson: false, includeToJson: false) Timestamp? savedAt,
-  });
+  $Res call(
+      {int contentId,
+      int contentTypeId,
+      String title,
+      String address,
+      String image,
+      double latitude,
+      double longitude,
+      bool isVisited,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      Timestamp? savedAt});
 }
 
 /// @nodoc
@@ -87,56 +85,44 @@ class _$SavedLocationCopyWithImpl<$Res, $Val extends SavedLocation>
     Object? isVisited = null,
     Object? savedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            contentId:
-                null == contentId
-                    ? _value.contentId
-                    : contentId // ignore: cast_nullable_to_non_nullable
-                        as int,
-            contentTypeId:
-                null == contentTypeId
-                    ? _value.contentTypeId
-                    : contentTypeId // ignore: cast_nullable_to_non_nullable
-                        as int,
-            title:
-                null == title
-                    ? _value.title
-                    : title // ignore: cast_nullable_to_non_nullable
-                        as String,
-            address:
-                null == address
-                    ? _value.address
-                    : address // ignore: cast_nullable_to_non_nullable
-                        as String,
-            image:
-                null == image
-                    ? _value.image
-                    : image // ignore: cast_nullable_to_non_nullable
-                        as String,
-            latitude:
-                null == latitude
-                    ? _value.latitude
-                    : latitude // ignore: cast_nullable_to_non_nullable
-                        as double,
-            longitude:
-                null == longitude
-                    ? _value.longitude
-                    : longitude // ignore: cast_nullable_to_non_nullable
-                        as double,
-            isVisited:
-                null == isVisited
-                    ? _value.isVisited
-                    : isVisited // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            savedAt:
-                freezed == savedAt
-                    ? _value.savedAt
-                    : savedAt // ignore: cast_nullable_to_non_nullable
-                        as Timestamp?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      contentId: null == contentId
+          ? _value.contentId
+          : contentId // ignore: cast_nullable_to_non_nullable
+              as int,
+      contentTypeId: null == contentTypeId
+          ? _value.contentTypeId
+          : contentTypeId // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      isVisited: null == isVisited
+          ? _value.isVisited
+          : isVisited // ignore: cast_nullable_to_non_nullable
+              as bool,
+      savedAt: freezed == savedAt
+          ? _value.savedAt
+          : savedAt // ignore: cast_nullable_to_non_nullable
+              as Timestamp?,
+    ) as $Val);
   }
 }
 
@@ -144,22 +130,21 @@ class _$SavedLocationCopyWithImpl<$Res, $Val extends SavedLocation>
 abstract class _$$SavedLocationImplCopyWith<$Res>
     implements $SavedLocationCopyWith<$Res> {
   factory _$$SavedLocationImplCopyWith(
-    _$SavedLocationImpl value,
-    $Res Function(_$SavedLocationImpl) then,
-  ) = __$$SavedLocationImplCopyWithImpl<$Res>;
+          _$SavedLocationImpl value, $Res Function(_$SavedLocationImpl) then) =
+      __$$SavedLocationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int contentId,
-    int contentTypeId,
-    String title,
-    String address,
-    String image,
-    double latitude,
-    double longitude,
-    bool isVisited,
-    @JsonKey(includeFromJson: false, includeToJson: false) Timestamp? savedAt,
-  });
+  $Res call(
+      {int contentId,
+      int contentTypeId,
+      String title,
+      String address,
+      String image,
+      double latitude,
+      double longitude,
+      bool isVisited,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      Timestamp? savedAt});
 }
 
 /// @nodoc
@@ -167,9 +152,8 @@ class __$$SavedLocationImplCopyWithImpl<$Res>
     extends _$SavedLocationCopyWithImpl<$Res, _$SavedLocationImpl>
     implements _$$SavedLocationImplCopyWith<$Res> {
   __$$SavedLocationImplCopyWithImpl(
-    _$SavedLocationImpl _value,
-    $Res Function(_$SavedLocationImpl) _then,
-  ) : super(_value, _then);
+      _$SavedLocationImpl _value, $Res Function(_$SavedLocationImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SavedLocation
   /// with the given fields replaced by the non-null parameter values.
@@ -186,72 +170,60 @@ class __$$SavedLocationImplCopyWithImpl<$Res>
     Object? isVisited = null,
     Object? savedAt = freezed,
   }) {
-    return _then(
-      _$SavedLocationImpl(
-        contentId:
-            null == contentId
-                ? _value.contentId
-                : contentId // ignore: cast_nullable_to_non_nullable
-                    as int,
-        contentTypeId:
-            null == contentTypeId
-                ? _value.contentTypeId
-                : contentTypeId // ignore: cast_nullable_to_non_nullable
-                    as int,
-        title:
-            null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String,
-        address:
-            null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                    as String,
-        image:
-            null == image
-                ? _value.image
-                : image // ignore: cast_nullable_to_non_nullable
-                    as String,
-        latitude:
-            null == latitude
-                ? _value.latitude
-                : latitude // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitude:
-            null == longitude
-                ? _value.longitude
-                : longitude // ignore: cast_nullable_to_non_nullable
-                    as double,
-        isVisited:
-            null == isVisited
-                ? _value.isVisited
-                : isVisited // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        savedAt:
-            freezed == savedAt
-                ? _value.savedAt
-                : savedAt // ignore: cast_nullable_to_non_nullable
-                    as Timestamp?,
-      ),
-    );
+    return _then(_$SavedLocationImpl(
+      contentId: null == contentId
+          ? _value.contentId
+          : contentId // ignore: cast_nullable_to_non_nullable
+              as int,
+      contentTypeId: null == contentTypeId
+          ? _value.contentTypeId
+          : contentTypeId // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      isVisited: null == isVisited
+          ? _value.isVisited
+          : isVisited // ignore: cast_nullable_to_non_nullable
+              as bool,
+      savedAt: freezed == savedAt
+          ? _value.savedAt
+          : savedAt // ignore: cast_nullable_to_non_nullable
+              as Timestamp?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SavedLocationImpl implements _SavedLocation {
-  const _$SavedLocationImpl({
-    this.contentId = 0,
-    this.contentTypeId = 0,
-    this.title = '',
-    this.address = '',
-    this.image = '',
-    this.latitude = 0.0,
-    this.longitude = 0.0,
-    this.isVisited = false,
-    @JsonKey(includeFromJson: false, includeToJson: false) this.savedAt,
-  });
+  const _$SavedLocationImpl(
+      {this.contentId = 0,
+      this.contentTypeId = 0,
+      this.title = '',
+      this.address = '',
+      this.image = '',
+      this.latitude = 0.0,
+      this.longitude = 0.0,
+      this.isVisited = false,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.savedAt});
 
   factory _$SavedLocationImpl.fromJson(Map<String, dynamic> json) =>
       _$$SavedLocationImplFromJson(json);
@@ -312,18 +284,8 @@ class _$SavedLocationImpl implements _SavedLocation {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    contentId,
-    contentTypeId,
-    title,
-    address,
-    image,
-    latitude,
-    longitude,
-    isVisited,
-    savedAt,
-  );
+  int get hashCode => Object.hash(runtimeType, contentId, contentTypeId, title,
+      address, image, latitude, longitude, isVisited, savedAt);
 
   /// Create a copy of SavedLocation
   /// with the given fields replaced by the non-null parameter values.
@@ -335,23 +297,24 @@ class _$SavedLocationImpl implements _SavedLocation {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SavedLocationImplToJson(this);
+    return _$$SavedLocationImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _SavedLocation implements SavedLocation {
-  const factory _SavedLocation({
-    final int contentId,
-    final int contentTypeId,
-    final String title,
-    final String address,
-    final String image,
-    final double latitude,
-    final double longitude,
-    final bool isVisited,
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    final Timestamp? savedAt,
-  }) = _$SavedLocationImpl;
+  const factory _SavedLocation(
+      {final int contentId,
+      final int contentTypeId,
+      final String title,
+      final String address,
+      final String image,
+      final double latitude,
+      final double longitude,
+      final bool isVisited,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final Timestamp? savedAt}) = _$SavedLocationImpl;
 
   factory _SavedLocation.fromJson(Map<String, dynamic> json) =
       _$SavedLocationImpl.fromJson;

@@ -5,6 +5,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:stamp_way_flutter/api/api_service.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:stamp_way_flutter/api/api_service_impl.dart';
+import 'package:stamp_way_flutter/db/stamp_database.dart';
 import 'package:stamp_way_flutter/provider/search_keyword_provider.dart';
 import 'package:stamp_way_flutter/repository/location_tour_repository.dart';
 import 'package:stamp_way_flutter/repository/search_keyword_repository.dart';
@@ -44,6 +45,10 @@ final apiServiceProvider = Provider<ApiService>((ref) {
   return ApiServiceImpl(dio);
 });
 
+final databaseProvider = FutureProvider<StampDatabase>((ref) async {
+  return await StampDatabase.getInstance();
+});
+
 final locationTourRepositoryProvider = Provider<LocationTourRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   return LocationTourRepository(apiService);
@@ -51,7 +56,13 @@ final locationTourRepositoryProvider = Provider<LocationTourRepository>((ref) {
 
 final tourDetailRepositoryProvider = Provider<TourDetailRepository>((ref) {
   final apiService = ref.watch(apiServiceProvider);
-  return TourDetailRepository(apiService);
+  final database = ref.watch(databaseProvider);
+
+  return database.when(
+    data: (db) => TourDetailRepository(apiService, db),
+    error: (error, stack) => throw error,
+    loading: () => throw Exception('db exception')
+  );
 });
 
 final searchKeywordRepositoryProvider = Provider<SearchKeywordRepository>((ref) {

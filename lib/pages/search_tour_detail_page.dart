@@ -13,7 +13,6 @@ import '../model/tour_detail_response.dart';
 import '../model/tour_mapper.dart';
 import '../routes/app_routes.dart';
 
-// TODO: 진입시 db insert 작업
 class SearchTourDetailPage extends ConsumerStatefulWidget {
   const SearchTourDetailPage({super.key});
 
@@ -25,17 +24,23 @@ class _SearchTourDetailPageState extends ConsumerState<SearchTourDetailPage> {
   TourMapper? tourMapper;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    tourMapper ??= GoRouterState.of(context).extra as TourMapper?;
+  void initState() {
+    super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
+        setState(() {
+          tourMapper ??= GoRouterState.of(context).extra as TourMapper?;
+        });
+
         ref.read(tourDetailProvider.notifier).getTourDetail(
-          tourMapper?.contentid ?? -1,
-          tourMapper?.contenttypeid ?? -1
+            tourMapper?.contentid ?? -1,
+            tourMapper?.contenttypeid ?? -1
         );
+
+        if(tourMapper != null) {
+          ref.read(tourDetailProvider.notifier).insertItem(tourMapper!);
+        }
       }
     });
   }

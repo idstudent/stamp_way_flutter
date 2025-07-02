@@ -7,14 +7,17 @@ part of 'tour_detail_response.dart';
 // **************************************************************************
 
 _$TourDetailResponseImpl _$$TourDetailResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$TourDetailResponseImpl(
-  response: DetailResponse.fromJson(json['response'] as Map<String, dynamic>),
-);
+        Map<String, dynamic> json) =>
+    _$TourDetailResponseImpl(
+      response:
+          DetailResponse.fromJson(json['response'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$$TourDetailResponseImplToJson(
-  _$TourDetailResponseImpl instance,
-) => <String, dynamic>{'response': instance.response};
+        _$TourDetailResponseImpl instance) =>
+    <String, dynamic>{
+      'response': instance.response,
+    };
 
 _$DetailResponseImpl _$$DetailResponseImplFromJson(Map<String, dynamic> json) =>
     _$DetailResponseImpl(
@@ -23,8 +26,11 @@ _$DetailResponseImpl _$$DetailResponseImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$DetailResponseImplToJson(
-  _$DetailResponseImpl instance,
-) => <String, dynamic>{'header': instance.header, 'body': instance.body};
+        _$DetailResponseImpl instance) =>
+    <String, dynamic>{
+      'header': instance.header,
+      'body': instance.body,
+    };
 
 _$DetailHeaderImpl _$$DetailHeaderImplFromJson(Map<String, dynamic> json) =>
     _$DetailHeaderImpl(
@@ -44,18 +50,21 @@ _$DetailBodyImpl _$$DetailBodyImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$DetailBodyImplToJson(_$DetailBodyImpl instance) =>
-    <String, dynamic>{'items': instance.items};
+    <String, dynamic>{
+      'items': instance.items,
+    };
 
 _$DetailItemsImpl _$$DetailItemsImplFromJson(Map<String, dynamic> json) =>
     _$DetailItemsImpl(
-      item:
-          (json['item'] as List<dynamic>)
-              .map((e) => DetailItem.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      item: (json['item'] as List<dynamic>)
+          .map((e) => DetailItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$DetailItemsImplToJson(_$DetailItemsImpl instance) =>
-    <String, dynamic>{'item': instance.item};
+    <String, dynamic>{
+      'item': instance.item,
+    };
 
 _$DetailItemImpl _$$DetailItemImplFromJson(Map<String, dynamic> json) =>
     _$DetailItemImpl(

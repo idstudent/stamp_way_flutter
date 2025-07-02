@@ -12,8 +12,7 @@ part of 'tour_detail_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TourDetailResponse _$TourDetailResponseFromJson(Map<String, dynamic> json) {
   return _TourDetailResponse.fromJson(json);
@@ -36,9 +35,8 @@ mixin _$TourDetailResponse {
 /// @nodoc
 abstract class $TourDetailResponseCopyWith<$Res> {
   factory $TourDetailResponseCopyWith(
-    TourDetailResponse value,
-    $Res Function(TourDetailResponse) then,
-  ) = _$TourDetailResponseCopyWithImpl<$Res, TourDetailResponse>;
+          TourDetailResponse value, $Res Function(TourDetailResponse) then) =
+      _$TourDetailResponseCopyWithImpl<$Res, TourDetailResponse>;
   @useResult
   $Res call({DetailResponse response});
 
@@ -59,17 +57,15 @@ class _$TourDetailResponseCopyWithImpl<$Res, $Val extends TourDetailResponse>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? response = null}) {
-    return _then(
-      _value.copyWith(
-            response:
-                null == response
-                    ? _value.response
-                    : response // ignore: cast_nullable_to_non_nullable
-                        as DetailResponse,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? response = null,
+  }) {
+    return _then(_value.copyWith(
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as DetailResponse,
+    ) as $Val);
   }
 
   /// Create a copy of TourDetailResponse
@@ -86,10 +82,9 @@ class _$TourDetailResponseCopyWithImpl<$Res, $Val extends TourDetailResponse>
 /// @nodoc
 abstract class _$$TourDetailResponseImplCopyWith<$Res>
     implements $TourDetailResponseCopyWith<$Res> {
-  factory _$$TourDetailResponseImplCopyWith(
-    _$TourDetailResponseImpl value,
-    $Res Function(_$TourDetailResponseImpl) then,
-  ) = __$$TourDetailResponseImplCopyWithImpl<$Res>;
+  factory _$$TourDetailResponseImplCopyWith(_$TourDetailResponseImpl value,
+          $Res Function(_$TourDetailResponseImpl) then) =
+      __$$TourDetailResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DetailResponse response});
@@ -102,25 +97,23 @@ abstract class _$$TourDetailResponseImplCopyWith<$Res>
 class __$$TourDetailResponseImplCopyWithImpl<$Res>
     extends _$TourDetailResponseCopyWithImpl<$Res, _$TourDetailResponseImpl>
     implements _$$TourDetailResponseImplCopyWith<$Res> {
-  __$$TourDetailResponseImplCopyWithImpl(
-    _$TourDetailResponseImpl _value,
-    $Res Function(_$TourDetailResponseImpl) _then,
-  ) : super(_value, _then);
+  __$$TourDetailResponseImplCopyWithImpl(_$TourDetailResponseImpl _value,
+      $Res Function(_$TourDetailResponseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TourDetailResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? response = null}) {
-    return _then(
-      _$TourDetailResponseImpl(
-        response:
-            null == response
-                ? _value.response
-                : response // ignore: cast_nullable_to_non_nullable
-                    as DetailResponse,
-      ),
-    );
+  $Res call({
+    Object? response = null,
+  }) {
+    return _then(_$TourDetailResponseImpl(
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as DetailResponse,
+    ));
   }
 }
 
@@ -160,13 +153,13 @@ class _$TourDetailResponseImpl implements _TourDetailResponse {
   @pragma('vm:prefer-inline')
   _$$TourDetailResponseImplCopyWith<_$TourDetailResponseImpl> get copyWith =>
       __$$TourDetailResponseImplCopyWithImpl<_$TourDetailResponseImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TourDetailResponseImplToJson(this);
+    return _$$TourDetailResponseImplToJson(
+      this,
+    );
   }
 }
 
@@ -210,9 +203,8 @@ mixin _$DetailResponse {
 /// @nodoc
 abstract class $DetailResponseCopyWith<$Res> {
   factory $DetailResponseCopyWith(
-    DetailResponse value,
-    $Res Function(DetailResponse) then,
-  ) = _$DetailResponseCopyWithImpl<$Res, DetailResponse>;
+          DetailResponse value, $Res Function(DetailResponse) then) =
+      _$DetailResponseCopyWithImpl<$Res, DetailResponse>;
   @useResult
   $Res call({DetailHeader header, DetailBody body});
 
@@ -234,22 +226,20 @@ class _$DetailResponseCopyWithImpl<$Res, $Val extends DetailResponse>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? header = null, Object? body = null}) {
-    return _then(
-      _value.copyWith(
-            header:
-                null == header
-                    ? _value.header
-                    : header // ignore: cast_nullable_to_non_nullable
-                        as DetailHeader,
-            body:
-                null == body
-                    ? _value.body
-                    : body // ignore: cast_nullable_to_non_nullable
-                        as DetailBody,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? header = null,
+    Object? body = null,
+  }) {
+    return _then(_value.copyWith(
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as DetailHeader,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as DetailBody,
+    ) as $Val);
   }
 
   /// Create a copy of DetailResponse
@@ -276,10 +266,9 @@ class _$DetailResponseCopyWithImpl<$Res, $Val extends DetailResponse>
 /// @nodoc
 abstract class _$$DetailResponseImplCopyWith<$Res>
     implements $DetailResponseCopyWith<$Res> {
-  factory _$$DetailResponseImplCopyWith(
-    _$DetailResponseImpl value,
-    $Res Function(_$DetailResponseImpl) then,
-  ) = __$$DetailResponseImplCopyWithImpl<$Res>;
+  factory _$$DetailResponseImplCopyWith(_$DetailResponseImpl value,
+          $Res Function(_$DetailResponseImpl) then) =
+      __$$DetailResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DetailHeader header, DetailBody body});
@@ -295,29 +284,27 @@ class __$$DetailResponseImplCopyWithImpl<$Res>
     extends _$DetailResponseCopyWithImpl<$Res, _$DetailResponseImpl>
     implements _$$DetailResponseImplCopyWith<$Res> {
   __$$DetailResponseImplCopyWithImpl(
-    _$DetailResponseImpl _value,
-    $Res Function(_$DetailResponseImpl) _then,
-  ) : super(_value, _then);
+      _$DetailResponseImpl _value, $Res Function(_$DetailResponseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DetailResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? header = null, Object? body = null}) {
-    return _then(
-      _$DetailResponseImpl(
-        header:
-            null == header
-                ? _value.header
-                : header // ignore: cast_nullable_to_non_nullable
-                    as DetailHeader,
-        body:
-            null == body
-                ? _value.body
-                : body // ignore: cast_nullable_to_non_nullable
-                    as DetailBody,
-      ),
-    );
+  $Res call({
+    Object? header = null,
+    Object? body = null,
+  }) {
+    return _then(_$DetailResponseImpl(
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as DetailHeader,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as DetailBody,
+    ));
   }
 }
 
@@ -359,21 +346,20 @@ class _$DetailResponseImpl implements _DetailResponse {
   @pragma('vm:prefer-inline')
   _$$DetailResponseImplCopyWith<_$DetailResponseImpl> get copyWith =>
       __$$DetailResponseImplCopyWithImpl<_$DetailResponseImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DetailResponseImplToJson(this);
+    return _$$DetailResponseImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _DetailResponse implements DetailResponse {
-  const factory _DetailResponse({
-    required final DetailHeader header,
-    required final DetailBody body,
-  }) = _$DetailResponseImpl;
+  const factory _DetailResponse(
+      {required final DetailHeader header,
+      required final DetailBody body}) = _$DetailResponseImpl;
 
   factory _DetailResponse.fromJson(Map<String, dynamic> json) =
       _$DetailResponseImpl.fromJson;
@@ -413,9 +399,8 @@ mixin _$DetailHeader {
 /// @nodoc
 abstract class $DetailHeaderCopyWith<$Res> {
   factory $DetailHeaderCopyWith(
-    DetailHeader value,
-    $Res Function(DetailHeader) then,
-  ) = _$DetailHeaderCopyWithImpl<$Res, DetailHeader>;
+          DetailHeader value, $Res Function(DetailHeader) then) =
+      _$DetailHeaderCopyWithImpl<$Res, DetailHeader>;
   @useResult
   $Res call({String resultCode, String resultMsg});
 }
@@ -434,22 +419,20 @@ class _$DetailHeaderCopyWithImpl<$Res, $Val extends DetailHeader>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? resultCode = null, Object? resultMsg = null}) {
-    return _then(
-      _value.copyWith(
-            resultCode:
-                null == resultCode
-                    ? _value.resultCode
-                    : resultCode // ignore: cast_nullable_to_non_nullable
-                        as String,
-            resultMsg:
-                null == resultMsg
-                    ? _value.resultMsg
-                    : resultMsg // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? resultCode = null,
+    Object? resultMsg = null,
+  }) {
+    return _then(_value.copyWith(
+      resultCode: null == resultCode
+          ? _value.resultCode
+          : resultCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      resultMsg: null == resultMsg
+          ? _value.resultMsg
+          : resultMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -457,9 +440,8 @@ class _$DetailHeaderCopyWithImpl<$Res, $Val extends DetailHeader>
 abstract class _$$DetailHeaderImplCopyWith<$Res>
     implements $DetailHeaderCopyWith<$Res> {
   factory _$$DetailHeaderImplCopyWith(
-    _$DetailHeaderImpl value,
-    $Res Function(_$DetailHeaderImpl) then,
-  ) = __$$DetailHeaderImplCopyWithImpl<$Res>;
+          _$DetailHeaderImpl value, $Res Function(_$DetailHeaderImpl) then) =
+      __$$DetailHeaderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String resultCode, String resultMsg});
@@ -470,29 +452,27 @@ class __$$DetailHeaderImplCopyWithImpl<$Res>
     extends _$DetailHeaderCopyWithImpl<$Res, _$DetailHeaderImpl>
     implements _$$DetailHeaderImplCopyWith<$Res> {
   __$$DetailHeaderImplCopyWithImpl(
-    _$DetailHeaderImpl _value,
-    $Res Function(_$DetailHeaderImpl) _then,
-  ) : super(_value, _then);
+      _$DetailHeaderImpl _value, $Res Function(_$DetailHeaderImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DetailHeader
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? resultCode = null, Object? resultMsg = null}) {
-    return _then(
-      _$DetailHeaderImpl(
-        resultCode:
-            null == resultCode
-                ? _value.resultCode
-                : resultCode // ignore: cast_nullable_to_non_nullable
-                    as String,
-        resultMsg:
-            null == resultMsg
-                ? _value.resultMsg
-                : resultMsg // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? resultCode = null,
+    Object? resultMsg = null,
+  }) {
+    return _then(_$DetailHeaderImpl(
+      resultCode: null == resultCode
+          ? _value.resultCode
+          : resultCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      resultMsg: null == resultMsg
+          ? _value.resultMsg
+          : resultMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -539,15 +519,16 @@ class _$DetailHeaderImpl implements _DetailHeader {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DetailHeaderImplToJson(this);
+    return _$$DetailHeaderImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _DetailHeader implements DetailHeader {
-  const factory _DetailHeader({
-    required final String resultCode,
-    required final String resultMsg,
-  }) = _$DetailHeaderImpl;
+  const factory _DetailHeader(
+      {required final String resultCode,
+      required final String resultMsg}) = _$DetailHeaderImpl;
 
   factory _DetailHeader.fromJson(Map<String, dynamic> json) =
       _$DetailHeaderImpl.fromJson;
@@ -586,9 +567,8 @@ mixin _$DetailBody {
 /// @nodoc
 abstract class $DetailBodyCopyWith<$Res> {
   factory $DetailBodyCopyWith(
-    DetailBody value,
-    $Res Function(DetailBody) then,
-  ) = _$DetailBodyCopyWithImpl<$Res, DetailBody>;
+          DetailBody value, $Res Function(DetailBody) then) =
+      _$DetailBodyCopyWithImpl<$Res, DetailBody>;
   @useResult
   $Res call({DetailItems items});
 
@@ -609,17 +589,15 @@ class _$DetailBodyCopyWithImpl<$Res, $Val extends DetailBody>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? items = null}) {
-    return _then(
-      _value.copyWith(
-            items:
-                null == items
-                    ? _value.items
-                    : items // ignore: cast_nullable_to_non_nullable
-                        as DetailItems,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_value.copyWith(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as DetailItems,
+    ) as $Val);
   }
 
   /// Create a copy of DetailBody
@@ -637,9 +615,8 @@ class _$DetailBodyCopyWithImpl<$Res, $Val extends DetailBody>
 abstract class _$$DetailBodyImplCopyWith<$Res>
     implements $DetailBodyCopyWith<$Res> {
   factory _$$DetailBodyImplCopyWith(
-    _$DetailBodyImpl value,
-    $Res Function(_$DetailBodyImpl) then,
-  ) = __$$DetailBodyImplCopyWithImpl<$Res>;
+          _$DetailBodyImpl value, $Res Function(_$DetailBodyImpl) then) =
+      __$$DetailBodyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DetailItems items});
@@ -653,24 +630,22 @@ class __$$DetailBodyImplCopyWithImpl<$Res>
     extends _$DetailBodyCopyWithImpl<$Res, _$DetailBodyImpl>
     implements _$$DetailBodyImplCopyWith<$Res> {
   __$$DetailBodyImplCopyWithImpl(
-    _$DetailBodyImpl _value,
-    $Res Function(_$DetailBodyImpl) _then,
-  ) : super(_value, _then);
+      _$DetailBodyImpl _value, $Res Function(_$DetailBodyImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DetailBody
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? items = null}) {
-    return _then(
-      _$DetailBodyImpl(
-        items:
-            null == items
-                ? _value.items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as DetailItems,
-      ),
-    );
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_$DetailBodyImpl(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as DetailItems,
+    ));
   }
 }
 
@@ -712,7 +687,9 @@ class _$DetailBodyImpl implements _DetailBody {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DetailBodyImplToJson(this);
+    return _$$DetailBodyImplToJson(
+      this,
+    );
   }
 }
 
@@ -755,9 +732,8 @@ mixin _$DetailItems {
 /// @nodoc
 abstract class $DetailItemsCopyWith<$Res> {
   factory $DetailItemsCopyWith(
-    DetailItems value,
-    $Res Function(DetailItems) then,
-  ) = _$DetailItemsCopyWithImpl<$Res, DetailItems>;
+          DetailItems value, $Res Function(DetailItems) then) =
+      _$DetailItemsCopyWithImpl<$Res, DetailItems>;
   @useResult
   $Res call({List<DetailItem> item});
 }
@@ -776,17 +752,15 @@ class _$DetailItemsCopyWithImpl<$Res, $Val extends DetailItems>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? item = null}) {
-    return _then(
-      _value.copyWith(
-            item:
-                null == item
-                    ? _value.item
-                    : item // ignore: cast_nullable_to_non_nullable
-                        as List<DetailItem>,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_value.copyWith(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as List<DetailItem>,
+    ) as $Val);
   }
 }
 
@@ -794,9 +768,8 @@ class _$DetailItemsCopyWithImpl<$Res, $Val extends DetailItems>
 abstract class _$$DetailItemsImplCopyWith<$Res>
     implements $DetailItemsCopyWith<$Res> {
   factory _$$DetailItemsImplCopyWith(
-    _$DetailItemsImpl value,
-    $Res Function(_$DetailItemsImpl) then,
-  ) = __$$DetailItemsImplCopyWithImpl<$Res>;
+          _$DetailItemsImpl value, $Res Function(_$DetailItemsImpl) then) =
+      __$$DetailItemsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<DetailItem> item});
@@ -807,24 +780,22 @@ class __$$DetailItemsImplCopyWithImpl<$Res>
     extends _$DetailItemsCopyWithImpl<$Res, _$DetailItemsImpl>
     implements _$$DetailItemsImplCopyWith<$Res> {
   __$$DetailItemsImplCopyWithImpl(
-    _$DetailItemsImpl _value,
-    $Res Function(_$DetailItemsImpl) _then,
-  ) : super(_value, _then);
+      _$DetailItemsImpl _value, $Res Function(_$DetailItemsImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DetailItems
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? item = null}) {
-    return _then(
-      _$DetailItemsImpl(
-        item:
-            null == item
-                ? _value._item
-                : item // ignore: cast_nullable_to_non_nullable
-                    as List<DetailItem>,
-      ),
-    );
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$DetailItemsImpl(
+      item: null == item
+          ? _value._item
+          : item // ignore: cast_nullable_to_non_nullable
+              as List<DetailItem>,
+    ));
   }
 }
 
@@ -832,7 +803,7 @@ class __$$DetailItemsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DetailItemsImpl implements _DetailItems {
   const _$DetailItemsImpl({required final List<DetailItem> item})
-    : _item = item;
+      : _item = item;
 
   factory _$DetailItemsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailItemsImplFromJson(json);
@@ -873,7 +844,9 @@ class _$DetailItemsImpl implements _DetailItems {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DetailItemsImplToJson(this);
+    return _$$DetailItemsImplToJson(
+      this,
+    );
   }
 }
 
@@ -975,42 +948,40 @@ mixin _$DetailItem {
 /// @nodoc
 abstract class $DetailItemCopyWith<$Res> {
   factory $DetailItemCopyWith(
-    DetailItem value,
-    $Res Function(DetailItem) then,
-  ) = _$DetailItemCopyWithImpl<$Res, DetailItem>;
+          DetailItem value, $Res Function(DetailItem) then) =
+      _$DetailItemCopyWithImpl<$Res, DetailItem>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'contentid') String contentId,
-    @JsonKey(name: 'contenttypeid') String contentTypeId,
-    @JsonKey(name: 'opendate') String? openDate,
-    @JsonKey(name: 'restdate') String? restDate,
-    @JsonKey(name: 'usetime') String? useTime,
-    @JsonKey(name: 'usefee') String? culturePrice,
-    @JsonKey(name: 'infocenterculture') String? cultureInfoCenter,
-    @JsonKey(name: 'usetimeculture') String? cultureUseTime,
-    @JsonKey(name: 'restdateculture') String? cultureRestDate,
-    @JsonKey(name: 'parkingculture') String? cultureParking,
-    @JsonKey(name: 'parkingfee') String? cultureParkingFee,
-    @JsonKey(name: 'eventstartdate') String? eventStartDate,
-    @JsonKey(name: 'eventenddate') String? eventEndDate,
-    @JsonKey(name: 'playtime') String? eventPlayTime,
-    @JsonKey(name: 'eventplace') String? eventPlace,
-    @JsonKey(name: 'usetimefestival') String? eventUsePrice,
-    @JsonKey(name: 'sponsor1') String? eventSponsor,
-    @JsonKey(name: 'sponsor1tel') String? eventSponsorTel,
-    @JsonKey(name: 'reservation') String? activityReservation,
-    @JsonKey(name: 'infocenterleports') String? activityInfoCenter,
-    @JsonKey(name: 'restdateleports') String? activityRestDate,
-    @JsonKey(name: 'usetimeleports') String? activityUseTime,
-    @JsonKey(name: 'expagerangeleports') String? activityPossibleAge,
-    @JsonKey(name: 'parkingleports') String? activityParking,
-    @JsonKey(name: 'firstmenu') String? foodFirstMenu,
-    @JsonKey(name: 'treatmenu') String? foodTreatMenu,
-    @JsonKey(name: 'infocenterfood') String? foodInfoCenter,
-    @JsonKey(name: 'packing') String? foodTakeOut,
-    @JsonKey(name: 'opentimefood') String? foodOpenTime,
-    @JsonKey(name: 'restdatefood') String? foodRestTime,
-  });
+  $Res call(
+      {@JsonKey(name: 'contentid') String contentId,
+      @JsonKey(name: 'contenttypeid') String contentTypeId,
+      @JsonKey(name: 'opendate') String? openDate,
+      @JsonKey(name: 'restdate') String? restDate,
+      @JsonKey(name: 'usetime') String? useTime,
+      @JsonKey(name: 'usefee') String? culturePrice,
+      @JsonKey(name: 'infocenterculture') String? cultureInfoCenter,
+      @JsonKey(name: 'usetimeculture') String? cultureUseTime,
+      @JsonKey(name: 'restdateculture') String? cultureRestDate,
+      @JsonKey(name: 'parkingculture') String? cultureParking,
+      @JsonKey(name: 'parkingfee') String? cultureParkingFee,
+      @JsonKey(name: 'eventstartdate') String? eventStartDate,
+      @JsonKey(name: 'eventenddate') String? eventEndDate,
+      @JsonKey(name: 'playtime') String? eventPlayTime,
+      @JsonKey(name: 'eventplace') String? eventPlace,
+      @JsonKey(name: 'usetimefestival') String? eventUsePrice,
+      @JsonKey(name: 'sponsor1') String? eventSponsor,
+      @JsonKey(name: 'sponsor1tel') String? eventSponsorTel,
+      @JsonKey(name: 'reservation') String? activityReservation,
+      @JsonKey(name: 'infocenterleports') String? activityInfoCenter,
+      @JsonKey(name: 'restdateleports') String? activityRestDate,
+      @JsonKey(name: 'usetimeleports') String? activityUseTime,
+      @JsonKey(name: 'expagerangeleports') String? activityPossibleAge,
+      @JsonKey(name: 'parkingleports') String? activityParking,
+      @JsonKey(name: 'firstmenu') String? foodFirstMenu,
+      @JsonKey(name: 'treatmenu') String? foodTreatMenu,
+      @JsonKey(name: 'infocenterfood') String? foodInfoCenter,
+      @JsonKey(name: 'packing') String? foodTakeOut,
+      @JsonKey(name: 'opentimefood') String? foodOpenTime,
+      @JsonKey(name: 'restdatefood') String? foodRestTime});
 }
 
 /// @nodoc
@@ -1059,161 +1030,128 @@ class _$DetailItemCopyWithImpl<$Res, $Val extends DetailItem>
     Object? foodOpenTime = freezed,
     Object? foodRestTime = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            contentId:
-                null == contentId
-                    ? _value.contentId
-                    : contentId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            contentTypeId:
-                null == contentTypeId
-                    ? _value.contentTypeId
-                    : contentTypeId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            openDate:
-                freezed == openDate
-                    ? _value.openDate
-                    : openDate // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            restDate:
-                freezed == restDate
-                    ? _value.restDate
-                    : restDate // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            useTime:
-                freezed == useTime
-                    ? _value.useTime
-                    : useTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            culturePrice:
-                freezed == culturePrice
-                    ? _value.culturePrice
-                    : culturePrice // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cultureInfoCenter:
-                freezed == cultureInfoCenter
-                    ? _value.cultureInfoCenter
-                    : cultureInfoCenter // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cultureUseTime:
-                freezed == cultureUseTime
-                    ? _value.cultureUseTime
-                    : cultureUseTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cultureRestDate:
-                freezed == cultureRestDate
-                    ? _value.cultureRestDate
-                    : cultureRestDate // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cultureParking:
-                freezed == cultureParking
-                    ? _value.cultureParking
-                    : cultureParking // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cultureParkingFee:
-                freezed == cultureParkingFee
-                    ? _value.cultureParkingFee
-                    : cultureParkingFee // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventStartDate:
-                freezed == eventStartDate
-                    ? _value.eventStartDate
-                    : eventStartDate // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventEndDate:
-                freezed == eventEndDate
-                    ? _value.eventEndDate
-                    : eventEndDate // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventPlayTime:
-                freezed == eventPlayTime
-                    ? _value.eventPlayTime
-                    : eventPlayTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventPlace:
-                freezed == eventPlace
-                    ? _value.eventPlace
-                    : eventPlace // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventUsePrice:
-                freezed == eventUsePrice
-                    ? _value.eventUsePrice
-                    : eventUsePrice // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventSponsor:
-                freezed == eventSponsor
-                    ? _value.eventSponsor
-                    : eventSponsor // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eventSponsorTel:
-                freezed == eventSponsorTel
-                    ? _value.eventSponsorTel
-                    : eventSponsorTel // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            activityReservation:
-                freezed == activityReservation
-                    ? _value.activityReservation
-                    : activityReservation // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            activityInfoCenter:
-                freezed == activityInfoCenter
-                    ? _value.activityInfoCenter
-                    : activityInfoCenter // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            activityRestDate:
-                freezed == activityRestDate
-                    ? _value.activityRestDate
-                    : activityRestDate // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            activityUseTime:
-                freezed == activityUseTime
-                    ? _value.activityUseTime
-                    : activityUseTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            activityPossibleAge:
-                freezed == activityPossibleAge
-                    ? _value.activityPossibleAge
-                    : activityPossibleAge // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            activityParking:
-                freezed == activityParking
-                    ? _value.activityParking
-                    : activityParking // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            foodFirstMenu:
-                freezed == foodFirstMenu
-                    ? _value.foodFirstMenu
-                    : foodFirstMenu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            foodTreatMenu:
-                freezed == foodTreatMenu
-                    ? _value.foodTreatMenu
-                    : foodTreatMenu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            foodInfoCenter:
-                freezed == foodInfoCenter
-                    ? _value.foodInfoCenter
-                    : foodInfoCenter // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            foodTakeOut:
-                freezed == foodTakeOut
-                    ? _value.foodTakeOut
-                    : foodTakeOut // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            foodOpenTime:
-                freezed == foodOpenTime
-                    ? _value.foodOpenTime
-                    : foodOpenTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            foodRestTime:
-                freezed == foodRestTime
-                    ? _value.foodRestTime
-                    : foodRestTime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      contentId: null == contentId
+          ? _value.contentId
+          : contentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      contentTypeId: null == contentTypeId
+          ? _value.contentTypeId
+          : contentTypeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      openDate: freezed == openDate
+          ? _value.openDate
+          : openDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      restDate: freezed == restDate
+          ? _value.restDate
+          : restDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      useTime: freezed == useTime
+          ? _value.useTime
+          : useTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      culturePrice: freezed == culturePrice
+          ? _value.culturePrice
+          : culturePrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureInfoCenter: freezed == cultureInfoCenter
+          ? _value.cultureInfoCenter
+          : cultureInfoCenter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureUseTime: freezed == cultureUseTime
+          ? _value.cultureUseTime
+          : cultureUseTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureRestDate: freezed == cultureRestDate
+          ? _value.cultureRestDate
+          : cultureRestDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureParking: freezed == cultureParking
+          ? _value.cultureParking
+          : cultureParking // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureParkingFee: freezed == cultureParkingFee
+          ? _value.cultureParkingFee
+          : cultureParkingFee // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventStartDate: freezed == eventStartDate
+          ? _value.eventStartDate
+          : eventStartDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventEndDate: freezed == eventEndDate
+          ? _value.eventEndDate
+          : eventEndDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventPlayTime: freezed == eventPlayTime
+          ? _value.eventPlayTime
+          : eventPlayTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventPlace: freezed == eventPlace
+          ? _value.eventPlace
+          : eventPlace // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventUsePrice: freezed == eventUsePrice
+          ? _value.eventUsePrice
+          : eventUsePrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventSponsor: freezed == eventSponsor
+          ? _value.eventSponsor
+          : eventSponsor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventSponsorTel: freezed == eventSponsorTel
+          ? _value.eventSponsorTel
+          : eventSponsorTel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityReservation: freezed == activityReservation
+          ? _value.activityReservation
+          : activityReservation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityInfoCenter: freezed == activityInfoCenter
+          ? _value.activityInfoCenter
+          : activityInfoCenter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityRestDate: freezed == activityRestDate
+          ? _value.activityRestDate
+          : activityRestDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityUseTime: freezed == activityUseTime
+          ? _value.activityUseTime
+          : activityUseTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityPossibleAge: freezed == activityPossibleAge
+          ? _value.activityPossibleAge
+          : activityPossibleAge // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityParking: freezed == activityParking
+          ? _value.activityParking
+          : activityParking // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodFirstMenu: freezed == foodFirstMenu
+          ? _value.foodFirstMenu
+          : foodFirstMenu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodTreatMenu: freezed == foodTreatMenu
+          ? _value.foodTreatMenu
+          : foodTreatMenu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodInfoCenter: freezed == foodInfoCenter
+          ? _value.foodInfoCenter
+          : foodInfoCenter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodTakeOut: freezed == foodTakeOut
+          ? _value.foodTakeOut
+          : foodTakeOut // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodOpenTime: freezed == foodOpenTime
+          ? _value.foodOpenTime
+          : foodOpenTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodRestTime: freezed == foodRestTime
+          ? _value.foodRestTime
+          : foodRestTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -1221,43 +1159,41 @@ class _$DetailItemCopyWithImpl<$Res, $Val extends DetailItem>
 abstract class _$$DetailItemImplCopyWith<$Res>
     implements $DetailItemCopyWith<$Res> {
   factory _$$DetailItemImplCopyWith(
-    _$DetailItemImpl value,
-    $Res Function(_$DetailItemImpl) then,
-  ) = __$$DetailItemImplCopyWithImpl<$Res>;
+          _$DetailItemImpl value, $Res Function(_$DetailItemImpl) then) =
+      __$$DetailItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'contentid') String contentId,
-    @JsonKey(name: 'contenttypeid') String contentTypeId,
-    @JsonKey(name: 'opendate') String? openDate,
-    @JsonKey(name: 'restdate') String? restDate,
-    @JsonKey(name: 'usetime') String? useTime,
-    @JsonKey(name: 'usefee') String? culturePrice,
-    @JsonKey(name: 'infocenterculture') String? cultureInfoCenter,
-    @JsonKey(name: 'usetimeculture') String? cultureUseTime,
-    @JsonKey(name: 'restdateculture') String? cultureRestDate,
-    @JsonKey(name: 'parkingculture') String? cultureParking,
-    @JsonKey(name: 'parkingfee') String? cultureParkingFee,
-    @JsonKey(name: 'eventstartdate') String? eventStartDate,
-    @JsonKey(name: 'eventenddate') String? eventEndDate,
-    @JsonKey(name: 'playtime') String? eventPlayTime,
-    @JsonKey(name: 'eventplace') String? eventPlace,
-    @JsonKey(name: 'usetimefestival') String? eventUsePrice,
-    @JsonKey(name: 'sponsor1') String? eventSponsor,
-    @JsonKey(name: 'sponsor1tel') String? eventSponsorTel,
-    @JsonKey(name: 'reservation') String? activityReservation,
-    @JsonKey(name: 'infocenterleports') String? activityInfoCenter,
-    @JsonKey(name: 'restdateleports') String? activityRestDate,
-    @JsonKey(name: 'usetimeleports') String? activityUseTime,
-    @JsonKey(name: 'expagerangeleports') String? activityPossibleAge,
-    @JsonKey(name: 'parkingleports') String? activityParking,
-    @JsonKey(name: 'firstmenu') String? foodFirstMenu,
-    @JsonKey(name: 'treatmenu') String? foodTreatMenu,
-    @JsonKey(name: 'infocenterfood') String? foodInfoCenter,
-    @JsonKey(name: 'packing') String? foodTakeOut,
-    @JsonKey(name: 'opentimefood') String? foodOpenTime,
-    @JsonKey(name: 'restdatefood') String? foodRestTime,
-  });
+  $Res call(
+      {@JsonKey(name: 'contentid') String contentId,
+      @JsonKey(name: 'contenttypeid') String contentTypeId,
+      @JsonKey(name: 'opendate') String? openDate,
+      @JsonKey(name: 'restdate') String? restDate,
+      @JsonKey(name: 'usetime') String? useTime,
+      @JsonKey(name: 'usefee') String? culturePrice,
+      @JsonKey(name: 'infocenterculture') String? cultureInfoCenter,
+      @JsonKey(name: 'usetimeculture') String? cultureUseTime,
+      @JsonKey(name: 'restdateculture') String? cultureRestDate,
+      @JsonKey(name: 'parkingculture') String? cultureParking,
+      @JsonKey(name: 'parkingfee') String? cultureParkingFee,
+      @JsonKey(name: 'eventstartdate') String? eventStartDate,
+      @JsonKey(name: 'eventenddate') String? eventEndDate,
+      @JsonKey(name: 'playtime') String? eventPlayTime,
+      @JsonKey(name: 'eventplace') String? eventPlace,
+      @JsonKey(name: 'usetimefestival') String? eventUsePrice,
+      @JsonKey(name: 'sponsor1') String? eventSponsor,
+      @JsonKey(name: 'sponsor1tel') String? eventSponsorTel,
+      @JsonKey(name: 'reservation') String? activityReservation,
+      @JsonKey(name: 'infocenterleports') String? activityInfoCenter,
+      @JsonKey(name: 'restdateleports') String? activityRestDate,
+      @JsonKey(name: 'usetimeleports') String? activityUseTime,
+      @JsonKey(name: 'expagerangeleports') String? activityPossibleAge,
+      @JsonKey(name: 'parkingleports') String? activityParking,
+      @JsonKey(name: 'firstmenu') String? foodFirstMenu,
+      @JsonKey(name: 'treatmenu') String? foodTreatMenu,
+      @JsonKey(name: 'infocenterfood') String? foodInfoCenter,
+      @JsonKey(name: 'packing') String? foodTakeOut,
+      @JsonKey(name: 'opentimefood') String? foodOpenTime,
+      @JsonKey(name: 'restdatefood') String? foodRestTime});
 }
 
 /// @nodoc
@@ -1265,9 +1201,8 @@ class __$$DetailItemImplCopyWithImpl<$Res>
     extends _$DetailItemCopyWithImpl<$Res, _$DetailItemImpl>
     implements _$$DetailItemImplCopyWith<$Res> {
   __$$DetailItemImplCopyWithImpl(
-    _$DetailItemImpl _value,
-    $Res Function(_$DetailItemImpl) _then,
-  ) : super(_value, _then);
+      _$DetailItemImpl _value, $Res Function(_$DetailItemImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DetailItem
   /// with the given fields replaced by the non-null parameter values.
@@ -1305,198 +1240,165 @@ class __$$DetailItemImplCopyWithImpl<$Res>
     Object? foodOpenTime = freezed,
     Object? foodRestTime = freezed,
   }) {
-    return _then(
-      _$DetailItemImpl(
-        contentId:
-            null == contentId
-                ? _value.contentId
-                : contentId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        contentTypeId:
-            null == contentTypeId
-                ? _value.contentTypeId
-                : contentTypeId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        openDate:
-            freezed == openDate
-                ? _value.openDate
-                : openDate // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        restDate:
-            freezed == restDate
-                ? _value.restDate
-                : restDate // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        useTime:
-            freezed == useTime
-                ? _value.useTime
-                : useTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        culturePrice:
-            freezed == culturePrice
-                ? _value.culturePrice
-                : culturePrice // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cultureInfoCenter:
-            freezed == cultureInfoCenter
-                ? _value.cultureInfoCenter
-                : cultureInfoCenter // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cultureUseTime:
-            freezed == cultureUseTime
-                ? _value.cultureUseTime
-                : cultureUseTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cultureRestDate:
-            freezed == cultureRestDate
-                ? _value.cultureRestDate
-                : cultureRestDate // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cultureParking:
-            freezed == cultureParking
-                ? _value.cultureParking
-                : cultureParking // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cultureParkingFee:
-            freezed == cultureParkingFee
-                ? _value.cultureParkingFee
-                : cultureParkingFee // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventStartDate:
-            freezed == eventStartDate
-                ? _value.eventStartDate
-                : eventStartDate // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventEndDate:
-            freezed == eventEndDate
-                ? _value.eventEndDate
-                : eventEndDate // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventPlayTime:
-            freezed == eventPlayTime
-                ? _value.eventPlayTime
-                : eventPlayTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventPlace:
-            freezed == eventPlace
-                ? _value.eventPlace
-                : eventPlace // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventUsePrice:
-            freezed == eventUsePrice
-                ? _value.eventUsePrice
-                : eventUsePrice // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventSponsor:
-            freezed == eventSponsor
-                ? _value.eventSponsor
-                : eventSponsor // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eventSponsorTel:
-            freezed == eventSponsorTel
-                ? _value.eventSponsorTel
-                : eventSponsorTel // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        activityReservation:
-            freezed == activityReservation
-                ? _value.activityReservation
-                : activityReservation // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        activityInfoCenter:
-            freezed == activityInfoCenter
-                ? _value.activityInfoCenter
-                : activityInfoCenter // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        activityRestDate:
-            freezed == activityRestDate
-                ? _value.activityRestDate
-                : activityRestDate // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        activityUseTime:
-            freezed == activityUseTime
-                ? _value.activityUseTime
-                : activityUseTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        activityPossibleAge:
-            freezed == activityPossibleAge
-                ? _value.activityPossibleAge
-                : activityPossibleAge // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        activityParking:
-            freezed == activityParking
-                ? _value.activityParking
-                : activityParking // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        foodFirstMenu:
-            freezed == foodFirstMenu
-                ? _value.foodFirstMenu
-                : foodFirstMenu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        foodTreatMenu:
-            freezed == foodTreatMenu
-                ? _value.foodTreatMenu
-                : foodTreatMenu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        foodInfoCenter:
-            freezed == foodInfoCenter
-                ? _value.foodInfoCenter
-                : foodInfoCenter // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        foodTakeOut:
-            freezed == foodTakeOut
-                ? _value.foodTakeOut
-                : foodTakeOut // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        foodOpenTime:
-            freezed == foodOpenTime
-                ? _value.foodOpenTime
-                : foodOpenTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        foodRestTime:
-            freezed == foodRestTime
-                ? _value.foodRestTime
-                : foodRestTime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$DetailItemImpl(
+      contentId: null == contentId
+          ? _value.contentId
+          : contentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      contentTypeId: null == contentTypeId
+          ? _value.contentTypeId
+          : contentTypeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      openDate: freezed == openDate
+          ? _value.openDate
+          : openDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      restDate: freezed == restDate
+          ? _value.restDate
+          : restDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      useTime: freezed == useTime
+          ? _value.useTime
+          : useTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      culturePrice: freezed == culturePrice
+          ? _value.culturePrice
+          : culturePrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureInfoCenter: freezed == cultureInfoCenter
+          ? _value.cultureInfoCenter
+          : cultureInfoCenter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureUseTime: freezed == cultureUseTime
+          ? _value.cultureUseTime
+          : cultureUseTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureRestDate: freezed == cultureRestDate
+          ? _value.cultureRestDate
+          : cultureRestDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureParking: freezed == cultureParking
+          ? _value.cultureParking
+          : cultureParking // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cultureParkingFee: freezed == cultureParkingFee
+          ? _value.cultureParkingFee
+          : cultureParkingFee // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventStartDate: freezed == eventStartDate
+          ? _value.eventStartDate
+          : eventStartDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventEndDate: freezed == eventEndDate
+          ? _value.eventEndDate
+          : eventEndDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventPlayTime: freezed == eventPlayTime
+          ? _value.eventPlayTime
+          : eventPlayTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventPlace: freezed == eventPlace
+          ? _value.eventPlace
+          : eventPlace // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventUsePrice: freezed == eventUsePrice
+          ? _value.eventUsePrice
+          : eventUsePrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventSponsor: freezed == eventSponsor
+          ? _value.eventSponsor
+          : eventSponsor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventSponsorTel: freezed == eventSponsorTel
+          ? _value.eventSponsorTel
+          : eventSponsorTel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityReservation: freezed == activityReservation
+          ? _value.activityReservation
+          : activityReservation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityInfoCenter: freezed == activityInfoCenter
+          ? _value.activityInfoCenter
+          : activityInfoCenter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityRestDate: freezed == activityRestDate
+          ? _value.activityRestDate
+          : activityRestDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityUseTime: freezed == activityUseTime
+          ? _value.activityUseTime
+          : activityUseTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityPossibleAge: freezed == activityPossibleAge
+          ? _value.activityPossibleAge
+          : activityPossibleAge // ignore: cast_nullable_to_non_nullable
+              as String?,
+      activityParking: freezed == activityParking
+          ? _value.activityParking
+          : activityParking // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodFirstMenu: freezed == foodFirstMenu
+          ? _value.foodFirstMenu
+          : foodFirstMenu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodTreatMenu: freezed == foodTreatMenu
+          ? _value.foodTreatMenu
+          : foodTreatMenu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodInfoCenter: freezed == foodInfoCenter
+          ? _value.foodInfoCenter
+          : foodInfoCenter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodTakeOut: freezed == foodTakeOut
+          ? _value.foodTakeOut
+          : foodTakeOut // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodOpenTime: freezed == foodOpenTime
+          ? _value.foodOpenTime
+          : foodOpenTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      foodRestTime: freezed == foodRestTime
+          ? _value.foodRestTime
+          : foodRestTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DetailItemImpl implements _DetailItem {
-  const _$DetailItemImpl({
-    @JsonKey(name: 'contentid') required this.contentId,
-    @JsonKey(name: 'contenttypeid') required this.contentTypeId,
-    @JsonKey(name: 'opendate') this.openDate,
-    @JsonKey(name: 'restdate') this.restDate,
-    @JsonKey(name: 'usetime') this.useTime,
-    @JsonKey(name: 'usefee') this.culturePrice,
-    @JsonKey(name: 'infocenterculture') this.cultureInfoCenter,
-    @JsonKey(name: 'usetimeculture') this.cultureUseTime,
-    @JsonKey(name: 'restdateculture') this.cultureRestDate,
-    @JsonKey(name: 'parkingculture') this.cultureParking,
-    @JsonKey(name: 'parkingfee') this.cultureParkingFee,
-    @JsonKey(name: 'eventstartdate') this.eventStartDate,
-    @JsonKey(name: 'eventenddate') this.eventEndDate,
-    @JsonKey(name: 'playtime') this.eventPlayTime,
-    @JsonKey(name: 'eventplace') this.eventPlace,
-    @JsonKey(name: 'usetimefestival') this.eventUsePrice,
-    @JsonKey(name: 'sponsor1') this.eventSponsor,
-    @JsonKey(name: 'sponsor1tel') this.eventSponsorTel,
-    @JsonKey(name: 'reservation') this.activityReservation,
-    @JsonKey(name: 'infocenterleports') this.activityInfoCenter,
-    @JsonKey(name: 'restdateleports') this.activityRestDate,
-    @JsonKey(name: 'usetimeleports') this.activityUseTime,
-    @JsonKey(name: 'expagerangeleports') this.activityPossibleAge,
-    @JsonKey(name: 'parkingleports') this.activityParking,
-    @JsonKey(name: 'firstmenu') this.foodFirstMenu,
-    @JsonKey(name: 'treatmenu') this.foodTreatMenu,
-    @JsonKey(name: 'infocenterfood') this.foodInfoCenter,
-    @JsonKey(name: 'packing') this.foodTakeOut,
-    @JsonKey(name: 'opentimefood') this.foodOpenTime,
-    @JsonKey(name: 'restdatefood') this.foodRestTime,
-  });
+  const _$DetailItemImpl(
+      {@JsonKey(name: 'contentid') required this.contentId,
+      @JsonKey(name: 'contenttypeid') required this.contentTypeId,
+      @JsonKey(name: 'opendate') this.openDate,
+      @JsonKey(name: 'restdate') this.restDate,
+      @JsonKey(name: 'usetime') this.useTime,
+      @JsonKey(name: 'usefee') this.culturePrice,
+      @JsonKey(name: 'infocenterculture') this.cultureInfoCenter,
+      @JsonKey(name: 'usetimeculture') this.cultureUseTime,
+      @JsonKey(name: 'restdateculture') this.cultureRestDate,
+      @JsonKey(name: 'parkingculture') this.cultureParking,
+      @JsonKey(name: 'parkingfee') this.cultureParkingFee,
+      @JsonKey(name: 'eventstartdate') this.eventStartDate,
+      @JsonKey(name: 'eventenddate') this.eventEndDate,
+      @JsonKey(name: 'playtime') this.eventPlayTime,
+      @JsonKey(name: 'eventplace') this.eventPlace,
+      @JsonKey(name: 'usetimefestival') this.eventUsePrice,
+      @JsonKey(name: 'sponsor1') this.eventSponsor,
+      @JsonKey(name: 'sponsor1tel') this.eventSponsorTel,
+      @JsonKey(name: 'reservation') this.activityReservation,
+      @JsonKey(name: 'infocenterleports') this.activityInfoCenter,
+      @JsonKey(name: 'restdateleports') this.activityRestDate,
+      @JsonKey(name: 'usetimeleports') this.activityUseTime,
+      @JsonKey(name: 'expagerangeleports') this.activityPossibleAge,
+      @JsonKey(name: 'parkingleports') this.activityParking,
+      @JsonKey(name: 'firstmenu') this.foodFirstMenu,
+      @JsonKey(name: 'treatmenu') this.foodTreatMenu,
+      @JsonKey(name: 'infocenterfood') this.foodInfoCenter,
+      @JsonKey(name: 'packing') this.foodTakeOut,
+      @JsonKey(name: 'opentimefood') this.foodOpenTime,
+      @JsonKey(name: 'restdatefood') this.foodRestTime});
 
   factory _$DetailItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailItemImplFromJson(json);
@@ -1507,7 +1409,7 @@ class _$DetailItemImpl implements _DetailItem {
   @override
   @JsonKey(name: 'contenttypeid')
   final String contentTypeId;
-  // 여행지
+// 여행지
   @override
   @JsonKey(name: 'opendate')
   final String? openDate;
@@ -1517,7 +1419,7 @@ class _$DetailItemImpl implements _DetailItem {
   @override
   @JsonKey(name: 'usetime')
   final String? useTime;
-  // 문화시설
+// 문화시설
   @override
   @JsonKey(name: 'usefee')
   final String? culturePrice;
@@ -1536,7 +1438,7 @@ class _$DetailItemImpl implements _DetailItem {
   @override
   @JsonKey(name: 'parkingfee')
   final String? cultureParkingFee;
-  // 축제
+// 축제
   @override
   @JsonKey(name: 'eventstartdate')
   final String? eventStartDate;
@@ -1558,7 +1460,7 @@ class _$DetailItemImpl implements _DetailItem {
   @override
   @JsonKey(name: 'sponsor1tel')
   final String? eventSponsorTel;
-  // 액티비티
+// 액티비티
   @override
   @JsonKey(name: 'reservation')
   final String? activityReservation;
@@ -1577,7 +1479,7 @@ class _$DetailItemImpl implements _DetailItem {
   @override
   @JsonKey(name: 'parkingleports')
   final String? activityParking;
-  // 음식
+// 음식
   @override
   @JsonKey(name: 'firstmenu')
   final String? foodFirstMenu;
@@ -1671,38 +1573,38 @@ class _$DetailItemImpl implements _DetailItem {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    contentId,
-    contentTypeId,
-    openDate,
-    restDate,
-    useTime,
-    culturePrice,
-    cultureInfoCenter,
-    cultureUseTime,
-    cultureRestDate,
-    cultureParking,
-    cultureParkingFee,
-    eventStartDate,
-    eventEndDate,
-    eventPlayTime,
-    eventPlace,
-    eventUsePrice,
-    eventSponsor,
-    eventSponsorTel,
-    activityReservation,
-    activityInfoCenter,
-    activityRestDate,
-    activityUseTime,
-    activityPossibleAge,
-    activityParking,
-    foodFirstMenu,
-    foodTreatMenu,
-    foodInfoCenter,
-    foodTakeOut,
-    foodOpenTime,
-    foodRestTime,
-  ]);
+        runtimeType,
+        contentId,
+        contentTypeId,
+        openDate,
+        restDate,
+        useTime,
+        culturePrice,
+        cultureInfoCenter,
+        cultureUseTime,
+        cultureRestDate,
+        cultureParking,
+        cultureParkingFee,
+        eventStartDate,
+        eventEndDate,
+        eventPlayTime,
+        eventPlace,
+        eventUsePrice,
+        eventSponsor,
+        eventSponsorTel,
+        activityReservation,
+        activityInfoCenter,
+        activityRestDate,
+        activityUseTime,
+        activityPossibleAge,
+        activityParking,
+        foodFirstMenu,
+        foodTreatMenu,
+        foodInfoCenter,
+        foodTakeOut,
+        foodOpenTime,
+        foodRestTime
+      ]);
 
   /// Create a copy of DetailItem
   /// with the given fields replaced by the non-null parameter values.
@@ -1714,43 +1616,45 @@ class _$DetailItemImpl implements _DetailItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DetailItemImplToJson(this);
+    return _$$DetailItemImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _DetailItem implements DetailItem {
-  const factory _DetailItem({
-    @JsonKey(name: 'contentid') required final String contentId,
-    @JsonKey(name: 'contenttypeid') required final String contentTypeId,
-    @JsonKey(name: 'opendate') final String? openDate,
-    @JsonKey(name: 'restdate') final String? restDate,
-    @JsonKey(name: 'usetime') final String? useTime,
-    @JsonKey(name: 'usefee') final String? culturePrice,
-    @JsonKey(name: 'infocenterculture') final String? cultureInfoCenter,
-    @JsonKey(name: 'usetimeculture') final String? cultureUseTime,
-    @JsonKey(name: 'restdateculture') final String? cultureRestDate,
-    @JsonKey(name: 'parkingculture') final String? cultureParking,
-    @JsonKey(name: 'parkingfee') final String? cultureParkingFee,
-    @JsonKey(name: 'eventstartdate') final String? eventStartDate,
-    @JsonKey(name: 'eventenddate') final String? eventEndDate,
-    @JsonKey(name: 'playtime') final String? eventPlayTime,
-    @JsonKey(name: 'eventplace') final String? eventPlace,
-    @JsonKey(name: 'usetimefestival') final String? eventUsePrice,
-    @JsonKey(name: 'sponsor1') final String? eventSponsor,
-    @JsonKey(name: 'sponsor1tel') final String? eventSponsorTel,
-    @JsonKey(name: 'reservation') final String? activityReservation,
-    @JsonKey(name: 'infocenterleports') final String? activityInfoCenter,
-    @JsonKey(name: 'restdateleports') final String? activityRestDate,
-    @JsonKey(name: 'usetimeleports') final String? activityUseTime,
-    @JsonKey(name: 'expagerangeleports') final String? activityPossibleAge,
-    @JsonKey(name: 'parkingleports') final String? activityParking,
-    @JsonKey(name: 'firstmenu') final String? foodFirstMenu,
-    @JsonKey(name: 'treatmenu') final String? foodTreatMenu,
-    @JsonKey(name: 'infocenterfood') final String? foodInfoCenter,
-    @JsonKey(name: 'packing') final String? foodTakeOut,
-    @JsonKey(name: 'opentimefood') final String? foodOpenTime,
-    @JsonKey(name: 'restdatefood') final String? foodRestTime,
-  }) = _$DetailItemImpl;
+  const factory _DetailItem(
+      {@JsonKey(name: 'contentid') required final String contentId,
+      @JsonKey(name: 'contenttypeid') required final String contentTypeId,
+      @JsonKey(name: 'opendate') final String? openDate,
+      @JsonKey(name: 'restdate') final String? restDate,
+      @JsonKey(name: 'usetime') final String? useTime,
+      @JsonKey(name: 'usefee') final String? culturePrice,
+      @JsonKey(name: 'infocenterculture') final String? cultureInfoCenter,
+      @JsonKey(name: 'usetimeculture') final String? cultureUseTime,
+      @JsonKey(name: 'restdateculture') final String? cultureRestDate,
+      @JsonKey(name: 'parkingculture') final String? cultureParking,
+      @JsonKey(name: 'parkingfee') final String? cultureParkingFee,
+      @JsonKey(name: 'eventstartdate') final String? eventStartDate,
+      @JsonKey(name: 'eventenddate') final String? eventEndDate,
+      @JsonKey(name: 'playtime') final String? eventPlayTime,
+      @JsonKey(name: 'eventplace') final String? eventPlace,
+      @JsonKey(name: 'usetimefestival') final String? eventUsePrice,
+      @JsonKey(name: 'sponsor1') final String? eventSponsor,
+      @JsonKey(name: 'sponsor1tel') final String? eventSponsorTel,
+      @JsonKey(name: 'reservation') final String? activityReservation,
+      @JsonKey(name: 'infocenterleports') final String? activityInfoCenter,
+      @JsonKey(name: 'restdateleports') final String? activityRestDate,
+      @JsonKey(name: 'usetimeleports') final String? activityUseTime,
+      @JsonKey(name: 'expagerangeleports') final String? activityPossibleAge,
+      @JsonKey(name: 'parkingleports') final String? activityParking,
+      @JsonKey(name: 'firstmenu') final String? foodFirstMenu,
+      @JsonKey(name: 'treatmenu') final String? foodTreatMenu,
+      @JsonKey(name: 'infocenterfood') final String? foodInfoCenter,
+      @JsonKey(name: 'packing') final String? foodTakeOut,
+      @JsonKey(name: 'opentimefood') final String? foodOpenTime,
+      @JsonKey(name: 'restdatefood')
+      final String? foodRestTime}) = _$DetailItemImpl;
 
   factory _DetailItem.fromJson(Map<String, dynamic> json) =
       _$DetailItemImpl.fromJson;

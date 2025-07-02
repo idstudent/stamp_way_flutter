@@ -12,8 +12,7 @@ part of 'tour_mapper.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TourMapper _$TourMapperFromJson(Map<String, dynamic> json) {
   return _TourMapper.fromJson(json);
@@ -61,37 +60,35 @@ mixin _$TourMapper {
 /// @nodoc
 abstract class $TourMapperCopyWith<$Res> {
   factory $TourMapperCopyWith(
-    TourMapper value,
-    $Res Function(TourMapper) then,
-  ) = _$TourMapperCopyWithImpl<$Res, TourMapper>;
+          TourMapper value, $Res Function(TourMapper) then) =
+      _$TourMapperCopyWithImpl<$Res, TourMapper>;
   @useResult
-  $Res call({
-    int numOfRows,
-    int pageNo,
-    int totalCount,
-    String addr1,
-    String addr2,
-    String areacode,
-    String booktour,
-    String cat1,
-    String cat2,
-    String cat3,
-    int timestamp,
-    @JsonKey(name: 'contentid') int contentid,
-    int contenttypeid,
-    String createdtime,
-    String dist,
-    String firstimage,
-    String firstimage2,
-    String cpyrhtDivCd,
-    double mapx,
-    double mapy,
-    String mlevel,
-    String modifiedtime,
-    String sigungucode,
-    String tel,
-    String title,
-  });
+  $Res call(
+      {int numOfRows,
+      int pageNo,
+      int totalCount,
+      String addr1,
+      String addr2,
+      String areacode,
+      String booktour,
+      String cat1,
+      String cat2,
+      String cat3,
+      int timestamp,
+      @JsonKey(name: 'contentid') int contentid,
+      int contenttypeid,
+      String createdtime,
+      String dist,
+      String firstimage,
+      String firstimage2,
+      String cpyrhtDivCd,
+      double mapx,
+      double mapy,
+      String mlevel,
+      String modifiedtime,
+      String sigungucode,
+      String tel,
+      String title});
 }
 
 /// @nodoc
@@ -135,136 +132,108 @@ class _$TourMapperCopyWithImpl<$Res, $Val extends TourMapper>
     Object? tel = null,
     Object? title = null,
   }) {
-    return _then(
-      _value.copyWith(
-            numOfRows:
-                null == numOfRows
-                    ? _value.numOfRows
-                    : numOfRows // ignore: cast_nullable_to_non_nullable
-                        as int,
-            pageNo:
-                null == pageNo
-                    ? _value.pageNo
-                    : pageNo // ignore: cast_nullable_to_non_nullable
-                        as int,
-            totalCount:
-                null == totalCount
-                    ? _value.totalCount
-                    : totalCount // ignore: cast_nullable_to_non_nullable
-                        as int,
-            addr1:
-                null == addr1
-                    ? _value.addr1
-                    : addr1 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            addr2:
-                null == addr2
-                    ? _value.addr2
-                    : addr2 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            areacode:
-                null == areacode
-                    ? _value.areacode
-                    : areacode // ignore: cast_nullable_to_non_nullable
-                        as String,
-            booktour:
-                null == booktour
-                    ? _value.booktour
-                    : booktour // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cat1:
-                null == cat1
-                    ? _value.cat1
-                    : cat1 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cat2:
-                null == cat2
-                    ? _value.cat2
-                    : cat2 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cat3:
-                null == cat3
-                    ? _value.cat3
-                    : cat3 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            timestamp:
-                null == timestamp
-                    ? _value.timestamp
-                    : timestamp // ignore: cast_nullable_to_non_nullable
-                        as int,
-            contentid:
-                null == contentid
-                    ? _value.contentid
-                    : contentid // ignore: cast_nullable_to_non_nullable
-                        as int,
-            contenttypeid:
-                null == contenttypeid
-                    ? _value.contenttypeid
-                    : contenttypeid // ignore: cast_nullable_to_non_nullable
-                        as int,
-            createdtime:
-                null == createdtime
-                    ? _value.createdtime
-                    : createdtime // ignore: cast_nullable_to_non_nullable
-                        as String,
-            dist:
-                null == dist
-                    ? _value.dist
-                    : dist // ignore: cast_nullable_to_non_nullable
-                        as String,
-            firstimage:
-                null == firstimage
-                    ? _value.firstimage
-                    : firstimage // ignore: cast_nullable_to_non_nullable
-                        as String,
-            firstimage2:
-                null == firstimage2
-                    ? _value.firstimage2
-                    : firstimage2 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cpyrhtDivCd:
-                null == cpyrhtDivCd
-                    ? _value.cpyrhtDivCd
-                    : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
-                        as String,
-            mapx:
-                null == mapx
-                    ? _value.mapx
-                    : mapx // ignore: cast_nullable_to_non_nullable
-                        as double,
-            mapy:
-                null == mapy
-                    ? _value.mapy
-                    : mapy // ignore: cast_nullable_to_non_nullable
-                        as double,
-            mlevel:
-                null == mlevel
-                    ? _value.mlevel
-                    : mlevel // ignore: cast_nullable_to_non_nullable
-                        as String,
-            modifiedtime:
-                null == modifiedtime
-                    ? _value.modifiedtime
-                    : modifiedtime // ignore: cast_nullable_to_non_nullable
-                        as String,
-            sigungucode:
-                null == sigungucode
-                    ? _value.sigungucode
-                    : sigungucode // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tel:
-                null == tel
-                    ? _value.tel
-                    : tel // ignore: cast_nullable_to_non_nullable
-                        as String,
-            title:
-                null == title
-                    ? _value.title
-                    : title // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      numOfRows: null == numOfRows
+          ? _value.numOfRows
+          : numOfRows // ignore: cast_nullable_to_non_nullable
+              as int,
+      pageNo: null == pageNo
+          ? _value.pageNo
+          : pageNo // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _value.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      addr1: null == addr1
+          ? _value.addr1
+          : addr1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      addr2: null == addr2
+          ? _value.addr2
+          : addr2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      areacode: null == areacode
+          ? _value.areacode
+          : areacode // ignore: cast_nullable_to_non_nullable
+              as String,
+      booktour: null == booktour
+          ? _value.booktour
+          : booktour // ignore: cast_nullable_to_non_nullable
+              as String,
+      cat1: null == cat1
+          ? _value.cat1
+          : cat1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      cat2: null == cat2
+          ? _value.cat2
+          : cat2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      cat3: null == cat3
+          ? _value.cat3
+          : cat3 // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      contentid: null == contentid
+          ? _value.contentid
+          : contentid // ignore: cast_nullable_to_non_nullable
+              as int,
+      contenttypeid: null == contenttypeid
+          ? _value.contenttypeid
+          : contenttypeid // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdtime: null == createdtime
+          ? _value.createdtime
+          : createdtime // ignore: cast_nullable_to_non_nullable
+              as String,
+      dist: null == dist
+          ? _value.dist
+          : dist // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstimage: null == firstimage
+          ? _value.firstimage
+          : firstimage // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstimage2: null == firstimage2
+          ? _value.firstimage2
+          : firstimage2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      cpyrhtDivCd: null == cpyrhtDivCd
+          ? _value.cpyrhtDivCd
+          : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
+              as String,
+      mapx: null == mapx
+          ? _value.mapx
+          : mapx // ignore: cast_nullable_to_non_nullable
+              as double,
+      mapy: null == mapy
+          ? _value.mapy
+          : mapy // ignore: cast_nullable_to_non_nullable
+              as double,
+      mlevel: null == mlevel
+          ? _value.mlevel
+          : mlevel // ignore: cast_nullable_to_non_nullable
+              as String,
+      modifiedtime: null == modifiedtime
+          ? _value.modifiedtime
+          : modifiedtime // ignore: cast_nullable_to_non_nullable
+              as String,
+      sigungucode: null == sigungucode
+          ? _value.sigungucode
+          : sigungucode // ignore: cast_nullable_to_non_nullable
+              as String,
+      tel: null == tel
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -272,38 +241,36 @@ class _$TourMapperCopyWithImpl<$Res, $Val extends TourMapper>
 abstract class _$$TourMapperImplCopyWith<$Res>
     implements $TourMapperCopyWith<$Res> {
   factory _$$TourMapperImplCopyWith(
-    _$TourMapperImpl value,
-    $Res Function(_$TourMapperImpl) then,
-  ) = __$$TourMapperImplCopyWithImpl<$Res>;
+          _$TourMapperImpl value, $Res Function(_$TourMapperImpl) then) =
+      __$$TourMapperImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int numOfRows,
-    int pageNo,
-    int totalCount,
-    String addr1,
-    String addr2,
-    String areacode,
-    String booktour,
-    String cat1,
-    String cat2,
-    String cat3,
-    int timestamp,
-    @JsonKey(name: 'contentid') int contentid,
-    int contenttypeid,
-    String createdtime,
-    String dist,
-    String firstimage,
-    String firstimage2,
-    String cpyrhtDivCd,
-    double mapx,
-    double mapy,
-    String mlevel,
-    String modifiedtime,
-    String sigungucode,
-    String tel,
-    String title,
-  });
+  $Res call(
+      {int numOfRows,
+      int pageNo,
+      int totalCount,
+      String addr1,
+      String addr2,
+      String areacode,
+      String booktour,
+      String cat1,
+      String cat2,
+      String cat3,
+      int timestamp,
+      @JsonKey(name: 'contentid') int contentid,
+      int contenttypeid,
+      String createdtime,
+      String dist,
+      String firstimage,
+      String firstimage2,
+      String cpyrhtDivCd,
+      double mapx,
+      double mapy,
+      String mlevel,
+      String modifiedtime,
+      String sigungucode,
+      String tel,
+      String title});
 }
 
 /// @nodoc
@@ -311,9 +278,8 @@ class __$$TourMapperImplCopyWithImpl<$Res>
     extends _$TourMapperCopyWithImpl<$Res, _$TourMapperImpl>
     implements _$$TourMapperImplCopyWith<$Res> {
   __$$TourMapperImplCopyWithImpl(
-    _$TourMapperImpl _value,
-    $Res Function(_$TourMapperImpl) _then,
-  ) : super(_value, _then);
+      _$TourMapperImpl _value, $Res Function(_$TourMapperImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TourMapper
   /// with the given fields replaced by the non-null parameter values.
@@ -346,168 +312,140 @@ class __$$TourMapperImplCopyWithImpl<$Res>
     Object? tel = null,
     Object? title = null,
   }) {
-    return _then(
-      _$TourMapperImpl(
-        numOfRows:
-            null == numOfRows
-                ? _value.numOfRows
-                : numOfRows // ignore: cast_nullable_to_non_nullable
-                    as int,
-        pageNo:
-            null == pageNo
-                ? _value.pageNo
-                : pageNo // ignore: cast_nullable_to_non_nullable
-                    as int,
-        totalCount:
-            null == totalCount
-                ? _value.totalCount
-                : totalCount // ignore: cast_nullable_to_non_nullable
-                    as int,
-        addr1:
-            null == addr1
-                ? _value.addr1
-                : addr1 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        addr2:
-            null == addr2
-                ? _value.addr2
-                : addr2 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        areacode:
-            null == areacode
-                ? _value.areacode
-                : areacode // ignore: cast_nullable_to_non_nullable
-                    as String,
-        booktour:
-            null == booktour
-                ? _value.booktour
-                : booktour // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cat1:
-            null == cat1
-                ? _value.cat1
-                : cat1 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cat2:
-            null == cat2
-                ? _value.cat2
-                : cat2 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cat3:
-            null == cat3
-                ? _value.cat3
-                : cat3 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        timestamp:
-            null == timestamp
-                ? _value.timestamp
-                : timestamp // ignore: cast_nullable_to_non_nullable
-                    as int,
-        contentid:
-            null == contentid
-                ? _value.contentid
-                : contentid // ignore: cast_nullable_to_non_nullable
-                    as int,
-        contenttypeid:
-            null == contenttypeid
-                ? _value.contenttypeid
-                : contenttypeid // ignore: cast_nullable_to_non_nullable
-                    as int,
-        createdtime:
-            null == createdtime
-                ? _value.createdtime
-                : createdtime // ignore: cast_nullable_to_non_nullable
-                    as String,
-        dist:
-            null == dist
-                ? _value.dist
-                : dist // ignore: cast_nullable_to_non_nullable
-                    as String,
-        firstimage:
-            null == firstimage
-                ? _value.firstimage
-                : firstimage // ignore: cast_nullable_to_non_nullable
-                    as String,
-        firstimage2:
-            null == firstimage2
-                ? _value.firstimage2
-                : firstimage2 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cpyrhtDivCd:
-            null == cpyrhtDivCd
-                ? _value.cpyrhtDivCd
-                : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
-                    as String,
-        mapx:
-            null == mapx
-                ? _value.mapx
-                : mapx // ignore: cast_nullable_to_non_nullable
-                    as double,
-        mapy:
-            null == mapy
-                ? _value.mapy
-                : mapy // ignore: cast_nullable_to_non_nullable
-                    as double,
-        mlevel:
-            null == mlevel
-                ? _value.mlevel
-                : mlevel // ignore: cast_nullable_to_non_nullable
-                    as String,
-        modifiedtime:
-            null == modifiedtime
-                ? _value.modifiedtime
-                : modifiedtime // ignore: cast_nullable_to_non_nullable
-                    as String,
-        sigungucode:
-            null == sigungucode
-                ? _value.sigungucode
-                : sigungucode // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tel:
-            null == tel
-                ? _value.tel
-                : tel // ignore: cast_nullable_to_non_nullable
-                    as String,
-        title:
-            null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$TourMapperImpl(
+      numOfRows: null == numOfRows
+          ? _value.numOfRows
+          : numOfRows // ignore: cast_nullable_to_non_nullable
+              as int,
+      pageNo: null == pageNo
+          ? _value.pageNo
+          : pageNo // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _value.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      addr1: null == addr1
+          ? _value.addr1
+          : addr1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      addr2: null == addr2
+          ? _value.addr2
+          : addr2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      areacode: null == areacode
+          ? _value.areacode
+          : areacode // ignore: cast_nullable_to_non_nullable
+              as String,
+      booktour: null == booktour
+          ? _value.booktour
+          : booktour // ignore: cast_nullable_to_non_nullable
+              as String,
+      cat1: null == cat1
+          ? _value.cat1
+          : cat1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      cat2: null == cat2
+          ? _value.cat2
+          : cat2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      cat3: null == cat3
+          ? _value.cat3
+          : cat3 // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      contentid: null == contentid
+          ? _value.contentid
+          : contentid // ignore: cast_nullable_to_non_nullable
+              as int,
+      contenttypeid: null == contenttypeid
+          ? _value.contenttypeid
+          : contenttypeid // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdtime: null == createdtime
+          ? _value.createdtime
+          : createdtime // ignore: cast_nullable_to_non_nullable
+              as String,
+      dist: null == dist
+          ? _value.dist
+          : dist // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstimage: null == firstimage
+          ? _value.firstimage
+          : firstimage // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstimage2: null == firstimage2
+          ? _value.firstimage2
+          : firstimage2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      cpyrhtDivCd: null == cpyrhtDivCd
+          ? _value.cpyrhtDivCd
+          : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
+              as String,
+      mapx: null == mapx
+          ? _value.mapx
+          : mapx // ignore: cast_nullable_to_non_nullable
+              as double,
+      mapy: null == mapy
+          ? _value.mapy
+          : mapy // ignore: cast_nullable_to_non_nullable
+              as double,
+      mlevel: null == mlevel
+          ? _value.mlevel
+          : mlevel // ignore: cast_nullable_to_non_nullable
+              as String,
+      modifiedtime: null == modifiedtime
+          ? _value.modifiedtime
+          : modifiedtime // ignore: cast_nullable_to_non_nullable
+              as String,
+      sigungucode: null == sigungucode
+          ? _value.sigungucode
+          : sigungucode // ignore: cast_nullable_to_non_nullable
+              as String,
+      tel: null == tel
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TourMapperImpl implements _TourMapper {
-  const _$TourMapperImpl({
-    required this.numOfRows,
-    required this.pageNo,
-    required this.totalCount,
-    this.addr1 = '',
-    this.addr2 = '',
-    this.areacode = '',
-    this.booktour = '',
-    this.cat1 = '',
-    this.cat2 = '',
-    this.cat3 = '',
-    this.timestamp = 0,
-    @JsonKey(name: 'contentid') required this.contentid,
-    this.contenttypeid = 0,
-    this.createdtime = '',
-    this.dist = '',
-    this.firstimage = '',
-    this.firstimage2 = '',
-    this.cpyrhtDivCd = '',
-    this.mapx = 0.0,
-    this.mapy = 0.0,
-    this.mlevel = '',
-    this.modifiedtime = '',
-    this.sigungucode = '',
-    this.tel = '',
-    this.title = '',
-  });
+  const _$TourMapperImpl(
+      {required this.numOfRows,
+      required this.pageNo,
+      required this.totalCount,
+      this.addr1 = '',
+      this.addr2 = '',
+      this.areacode = '',
+      this.booktour = '',
+      this.cat1 = '',
+      this.cat2 = '',
+      this.cat3 = '',
+      this.timestamp = 0,
+      @JsonKey(name: 'contentid') required this.contentid,
+      this.contenttypeid = 0,
+      this.createdtime = '',
+      this.dist = '',
+      this.firstimage = '',
+      this.firstimage2 = '',
+      this.cpyrhtDivCd = '',
+      this.mapx = 0.0,
+      this.mapy = 0.0,
+      this.mlevel = '',
+      this.modifiedtime = '',
+      this.sigungucode = '',
+      this.tel = '',
+      this.title = ''});
 
   factory _$TourMapperImpl.fromJson(Map<String, dynamic> json) =>
       _$$TourMapperImplFromJson(json);
@@ -638,33 +576,33 @@ class _$TourMapperImpl implements _TourMapper {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    numOfRows,
-    pageNo,
-    totalCount,
-    addr1,
-    addr2,
-    areacode,
-    booktour,
-    cat1,
-    cat2,
-    cat3,
-    timestamp,
-    contentid,
-    contenttypeid,
-    createdtime,
-    dist,
-    firstimage,
-    firstimage2,
-    cpyrhtDivCd,
-    mapx,
-    mapy,
-    mlevel,
-    modifiedtime,
-    sigungucode,
-    tel,
-    title,
-  ]);
+        runtimeType,
+        numOfRows,
+        pageNo,
+        totalCount,
+        addr1,
+        addr2,
+        areacode,
+        booktour,
+        cat1,
+        cat2,
+        cat3,
+        timestamp,
+        contentid,
+        contenttypeid,
+        createdtime,
+        dist,
+        firstimage,
+        firstimage2,
+        cpyrhtDivCd,
+        mapx,
+        mapy,
+        mlevel,
+        modifiedtime,
+        sigungucode,
+        tel,
+        title
+      ]);
 
   /// Create a copy of TourMapper
   /// with the given fields replaced by the non-null parameter values.
@@ -676,38 +614,39 @@ class _$TourMapperImpl implements _TourMapper {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TourMapperImplToJson(this);
+    return _$$TourMapperImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _TourMapper implements TourMapper {
-  const factory _TourMapper({
-    required final int numOfRows,
-    required final int pageNo,
-    required final int totalCount,
-    final String addr1,
-    final String addr2,
-    final String areacode,
-    final String booktour,
-    final String cat1,
-    final String cat2,
-    final String cat3,
-    final int timestamp,
-    @JsonKey(name: 'contentid') required final int contentid,
-    final int contenttypeid,
-    final String createdtime,
-    final String dist,
-    final String firstimage,
-    final String firstimage2,
-    final String cpyrhtDivCd,
-    final double mapx,
-    final double mapy,
-    final String mlevel,
-    final String modifiedtime,
-    final String sigungucode,
-    final String tel,
-    final String title,
-  }) = _$TourMapperImpl;
+  const factory _TourMapper(
+      {required final int numOfRows,
+      required final int pageNo,
+      required final int totalCount,
+      final String addr1,
+      final String addr2,
+      final String areacode,
+      final String booktour,
+      final String cat1,
+      final String cat2,
+      final String cat3,
+      final int timestamp,
+      @JsonKey(name: 'contentid') required final int contentid,
+      final int contenttypeid,
+      final String createdtime,
+      final String dist,
+      final String firstimage,
+      final String firstimage2,
+      final String cpyrhtDivCd,
+      final double mapx,
+      final double mapy,
+      final String mlevel,
+      final String modifiedtime,
+      final String sigungucode,
+      final String tel,
+      final String title}) = _$TourMapperImpl;
 
   factory _TourMapper.fromJson(Map<String, dynamic> json) =
       _$TourMapperImpl.fromJson;
@@ -793,9 +732,8 @@ mixin _$TourismResponse {
 /// @nodoc
 abstract class $TourismResponseCopyWith<$Res> {
   factory $TourismResponseCopyWith(
-    TourismResponse value,
-    $Res Function(TourismResponse) then,
-  ) = _$TourismResponseCopyWithImpl<$Res, TourismResponse>;
+          TourismResponse value, $Res Function(TourismResponse) then) =
+      _$TourismResponseCopyWithImpl<$Res, TourismResponse>;
   @useResult
   $Res call({Response response});
 
@@ -816,17 +754,15 @@ class _$TourismResponseCopyWithImpl<$Res, $Val extends TourismResponse>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? response = null}) {
-    return _then(
-      _value.copyWith(
-            response:
-                null == response
-                    ? _value.response
-                    : response // ignore: cast_nullable_to_non_nullable
-                        as Response,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? response = null,
+  }) {
+    return _then(_value.copyWith(
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as Response,
+    ) as $Val);
   }
 
   /// Create a copy of TourismResponse
@@ -843,10 +779,9 @@ class _$TourismResponseCopyWithImpl<$Res, $Val extends TourismResponse>
 /// @nodoc
 abstract class _$$TourismResponseImplCopyWith<$Res>
     implements $TourismResponseCopyWith<$Res> {
-  factory _$$TourismResponseImplCopyWith(
-    _$TourismResponseImpl value,
-    $Res Function(_$TourismResponseImpl) then,
-  ) = __$$TourismResponseImplCopyWithImpl<$Res>;
+  factory _$$TourismResponseImplCopyWith(_$TourismResponseImpl value,
+          $Res Function(_$TourismResponseImpl) then) =
+      __$$TourismResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Response response});
@@ -860,24 +795,22 @@ class __$$TourismResponseImplCopyWithImpl<$Res>
     extends _$TourismResponseCopyWithImpl<$Res, _$TourismResponseImpl>
     implements _$$TourismResponseImplCopyWith<$Res> {
   __$$TourismResponseImplCopyWithImpl(
-    _$TourismResponseImpl _value,
-    $Res Function(_$TourismResponseImpl) _then,
-  ) : super(_value, _then);
+      _$TourismResponseImpl _value, $Res Function(_$TourismResponseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TourismResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? response = null}) {
-    return _then(
-      _$TourismResponseImpl(
-        response:
-            null == response
-                ? _value.response
-                : response // ignore: cast_nullable_to_non_nullable
-                    as Response,
-      ),
-    );
+  $Res call({
+    Object? response = null,
+  }) {
+    return _then(_$TourismResponseImpl(
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as Response,
+    ));
   }
 }
 
@@ -917,13 +850,13 @@ class _$TourismResponseImpl implements _TourismResponse {
   @pragma('vm:prefer-inline')
   _$$TourismResponseImplCopyWith<_$TourismResponseImpl> get copyWith =>
       __$$TourismResponseImplCopyWithImpl<_$TourismResponseImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TourismResponseImplToJson(this);
+    return _$$TourismResponseImplToJson(
+      this,
+    );
   }
 }
 
@@ -989,22 +922,20 @@ class _$ResponseCopyWithImpl<$Res, $Val extends Response>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? header = null, Object? body = null}) {
-    return _then(
-      _value.copyWith(
-            header:
-                null == header
-                    ? _value.header
-                    : header // ignore: cast_nullable_to_non_nullable
-                        as Header,
-            body:
-                null == body
-                    ? _value.body
-                    : body // ignore: cast_nullable_to_non_nullable
-                        as Body,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? header = null,
+    Object? body = null,
+  }) {
+    return _then(_value.copyWith(
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as Header,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as Body,
+    ) as $Val);
   }
 
   /// Create a copy of Response
@@ -1032,9 +963,8 @@ class _$ResponseCopyWithImpl<$Res, $Val extends Response>
 abstract class _$$ResponseImplCopyWith<$Res>
     implements $ResponseCopyWith<$Res> {
   factory _$$ResponseImplCopyWith(
-    _$ResponseImpl value,
-    $Res Function(_$ResponseImpl) then,
-  ) = __$$ResponseImplCopyWithImpl<$Res>;
+          _$ResponseImpl value, $Res Function(_$ResponseImpl) then) =
+      __$$ResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Header header, Body body});
@@ -1050,29 +980,27 @@ class __$$ResponseImplCopyWithImpl<$Res>
     extends _$ResponseCopyWithImpl<$Res, _$ResponseImpl>
     implements _$$ResponseImplCopyWith<$Res> {
   __$$ResponseImplCopyWithImpl(
-    _$ResponseImpl _value,
-    $Res Function(_$ResponseImpl) _then,
-  ) : super(_value, _then);
+      _$ResponseImpl _value, $Res Function(_$ResponseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Response
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? header = null, Object? body = null}) {
-    return _then(
-      _$ResponseImpl(
-        header:
-            null == header
-                ? _value.header
-                : header // ignore: cast_nullable_to_non_nullable
-                    as Header,
-        body:
-            null == body
-                ? _value.body
-                : body // ignore: cast_nullable_to_non_nullable
-                    as Body,
-      ),
-    );
+  $Res call({
+    Object? header = null,
+    Object? body = null,
+  }) {
+    return _then(_$ResponseImpl(
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as Header,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as Body,
+    ));
   }
 }
 
@@ -1117,15 +1045,16 @@ class _$ResponseImpl implements _Response {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ResponseImplToJson(this);
+    return _$$ResponseImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Response implements Response {
-  const factory _Response({
-    required final Header header,
-    required final Body body,
-  }) = _$ResponseImpl;
+  const factory _Response(
+      {required final Header header,
+      required final Body body}) = _$ResponseImpl;
 
   factory _Response.fromJson(Map<String, dynamic> json) =
       _$ResponseImpl.fromJson;
@@ -1183,31 +1112,28 @@ class _$HeaderCopyWithImpl<$Res, $Val extends Header>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? resultCode = null, Object? resultMsg = null}) {
-    return _then(
-      _value.copyWith(
-            resultCode:
-                null == resultCode
-                    ? _value.resultCode
-                    : resultCode // ignore: cast_nullable_to_non_nullable
-                        as String,
-            resultMsg:
-                null == resultMsg
-                    ? _value.resultMsg
-                    : resultMsg // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? resultCode = null,
+    Object? resultMsg = null,
+  }) {
+    return _then(_value.copyWith(
+      resultCode: null == resultCode
+          ? _value.resultCode
+          : resultCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      resultMsg: null == resultMsg
+          ? _value.resultMsg
+          : resultMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$HeaderImplCopyWith<$Res> implements $HeaderCopyWith<$Res> {
   factory _$$HeaderImplCopyWith(
-    _$HeaderImpl value,
-    $Res Function(_$HeaderImpl) then,
-  ) = __$$HeaderImplCopyWithImpl<$Res>;
+          _$HeaderImpl value, $Res Function(_$HeaderImpl) then) =
+      __$$HeaderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String resultCode, String resultMsg});
@@ -1218,29 +1144,27 @@ class __$$HeaderImplCopyWithImpl<$Res>
     extends _$HeaderCopyWithImpl<$Res, _$HeaderImpl>
     implements _$$HeaderImplCopyWith<$Res> {
   __$$HeaderImplCopyWithImpl(
-    _$HeaderImpl _value,
-    $Res Function(_$HeaderImpl) _then,
-  ) : super(_value, _then);
+      _$HeaderImpl _value, $Res Function(_$HeaderImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Header
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? resultCode = null, Object? resultMsg = null}) {
-    return _then(
-      _$HeaderImpl(
-        resultCode:
-            null == resultCode
-                ? _value.resultCode
-                : resultCode // ignore: cast_nullable_to_non_nullable
-                    as String,
-        resultMsg:
-            null == resultMsg
-                ? _value.resultMsg
-                : resultMsg // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? resultCode = null,
+    Object? resultMsg = null,
+  }) {
+    return _then(_$HeaderImpl(
+      resultCode: null == resultCode
+          ? _value.resultCode
+          : resultCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      resultMsg: null == resultMsg
+          ? _value.resultMsg
+          : resultMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1287,15 +1211,16 @@ class _$HeaderImpl implements _Header {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HeaderImplToJson(this);
+    return _$$HeaderImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Header implements Header {
-  const factory _Header({
-    required final String resultCode,
-    required final String resultMsg,
-  }) = _$HeaderImpl;
+  const factory _Header(
+      {required final String resultCode,
+      required final String resultMsg}) = _$HeaderImpl;
 
   factory _Header.fromJson(Map<String, dynamic> json) = _$HeaderImpl.fromJson;
 
@@ -1362,31 +1287,24 @@ class _$BodyCopyWithImpl<$Res, $Val extends Body>
     Object? pageNo = null,
     Object? totalCount = null,
   }) {
-    return _then(
-      _value.copyWith(
-            items:
-                null == items
-                    ? _value.items
-                    : items // ignore: cast_nullable_to_non_nullable
-                        as Items,
-            numOfRows:
-                null == numOfRows
-                    ? _value.numOfRows
-                    : numOfRows // ignore: cast_nullable_to_non_nullable
-                        as int,
-            pageNo:
-                null == pageNo
-                    ? _value.pageNo
-                    : pageNo // ignore: cast_nullable_to_non_nullable
-                        as int,
-            totalCount:
-                null == totalCount
-                    ? _value.totalCount
-                    : totalCount // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as Items,
+      numOfRows: null == numOfRows
+          ? _value.numOfRows
+          : numOfRows // ignore: cast_nullable_to_non_nullable
+              as int,
+      pageNo: null == pageNo
+          ? _value.pageNo
+          : pageNo // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _value.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 
   /// Create a copy of Body
@@ -1403,9 +1321,8 @@ class _$BodyCopyWithImpl<$Res, $Val extends Body>
 /// @nodoc
 abstract class _$$BodyImplCopyWith<$Res> implements $BodyCopyWith<$Res> {
   factory _$$BodyImplCopyWith(
-    _$BodyImpl value,
-    $Res Function(_$BodyImpl) then,
-  ) = __$$BodyImplCopyWithImpl<$Res>;
+          _$BodyImpl value, $Res Function(_$BodyImpl) then) =
+      __$$BodyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Items items, int numOfRows, int pageNo, int totalCount});
@@ -1419,7 +1336,7 @@ class __$$BodyImplCopyWithImpl<$Res>
     extends _$BodyCopyWithImpl<$Res, _$BodyImpl>
     implements _$$BodyImplCopyWith<$Res> {
   __$$BodyImplCopyWithImpl(_$BodyImpl _value, $Res Function(_$BodyImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of Body
   /// with the given fields replaced by the non-null parameter values.
@@ -1431,42 +1348,35 @@ class __$$BodyImplCopyWithImpl<$Res>
     Object? pageNo = null,
     Object? totalCount = null,
   }) {
-    return _then(
-      _$BodyImpl(
-        items:
-            null == items
-                ? _value.items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as Items,
-        numOfRows:
-            null == numOfRows
-                ? _value.numOfRows
-                : numOfRows // ignore: cast_nullable_to_non_nullable
-                    as int,
-        pageNo:
-            null == pageNo
-                ? _value.pageNo
-                : pageNo // ignore: cast_nullable_to_non_nullable
-                    as int,
-        totalCount:
-            null == totalCount
-                ? _value.totalCount
-                : totalCount // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_$BodyImpl(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as Items,
+      numOfRows: null == numOfRows
+          ? _value.numOfRows
+          : numOfRows // ignore: cast_nullable_to_non_nullable
+              as int,
+      pageNo: null == pageNo
+          ? _value.pageNo
+          : pageNo // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _value.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BodyImpl implements _Body {
-  const _$BodyImpl({
-    required this.items,
-    required this.numOfRows,
-    required this.pageNo,
-    required this.totalCount,
-  });
+  const _$BodyImpl(
+      {required this.items,
+      required this.numOfRows,
+      required this.pageNo,
+      required this.totalCount});
 
   factory _$BodyImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyImplFromJson(json);
@@ -1513,17 +1423,18 @@ class _$BodyImpl implements _Body {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BodyImplToJson(this);
+    return _$$BodyImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Body implements Body {
-  const factory _Body({
-    required final Items items,
-    required final int numOfRows,
-    required final int pageNo,
-    required final int totalCount,
-  }) = _$BodyImpl;
+  const factory _Body(
+      {required final Items items,
+      required final int numOfRows,
+      required final int pageNo,
+      required final int totalCount}) = _$BodyImpl;
 
   factory _Body.fromJson(Map<String, dynamic> json) = _$BodyImpl.fromJson;
 
@@ -1583,26 +1494,23 @@ class _$ItemsCopyWithImpl<$Res, $Val extends Items>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? item = null}) {
-    return _then(
-      _value.copyWith(
-            item:
-                null == item
-                    ? _value.item
-                    : item // ignore: cast_nullable_to_non_nullable
-                        as List<TourItem>,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_value.copyWith(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as List<TourItem>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ItemsImplCopyWith<$Res> implements $ItemsCopyWith<$Res> {
   factory _$$ItemsImplCopyWith(
-    _$ItemsImpl value,
-    $Res Function(_$ItemsImpl) then,
-  ) = __$$ItemsImplCopyWithImpl<$Res>;
+          _$ItemsImpl value, $Res Function(_$ItemsImpl) then) =
+      __$$ItemsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<TourItem> item});
@@ -1613,24 +1521,22 @@ class __$$ItemsImplCopyWithImpl<$Res>
     extends _$ItemsCopyWithImpl<$Res, _$ItemsImpl>
     implements _$$ItemsImplCopyWith<$Res> {
   __$$ItemsImplCopyWithImpl(
-    _$ItemsImpl _value,
-    $Res Function(_$ItemsImpl) _then,
-  ) : super(_value, _then);
+      _$ItemsImpl _value, $Res Function(_$ItemsImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Items
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? item = null}) {
-    return _then(
-      _$ItemsImpl(
-        item:
-            null == item
-                ? _value._item
-                : item // ignore: cast_nullable_to_non_nullable
-                    as List<TourItem>,
-      ),
-    );
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$ItemsImpl(
+      item: null == item
+          ? _value._item
+          : item // ignore: cast_nullable_to_non_nullable
+              as List<TourItem>,
+    ));
   }
 }
 
@@ -1678,7 +1584,9 @@ class _$ItemsImpl implements _Items {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ItemsImplToJson(this);
+    return _$$ItemsImplToJson(
+      this,
+    );
   }
 }
 
@@ -1741,29 +1649,28 @@ abstract class $TourItemCopyWith<$Res> {
   factory $TourItemCopyWith(TourItem value, $Res Function(TourItem) then) =
       _$TourItemCopyWithImpl<$Res, TourItem>;
   @useResult
-  $Res call({
-    String? addr1,
-    String? addr2,
-    String? areacode,
-    String? booktour,
-    String? cat1,
-    String? cat2,
-    String? cat3,
-    String? contentid,
-    String? contenttypeid,
-    String? createdtime,
-    String? dist,
-    String? firstimage,
-    String? firstimage2,
-    String? cpyrhtDivCd,
-    String? mapx,
-    String? mapy,
-    String? mlevel,
-    String? modifiedtime,
-    String? sigungucode,
-    String? tel,
-    String? title,
-  });
+  $Res call(
+      {String? addr1,
+      String? addr2,
+      String? areacode,
+      String? booktour,
+      String? cat1,
+      String? cat2,
+      String? cat3,
+      String? contentid,
+      String? contenttypeid,
+      String? createdtime,
+      String? dist,
+      String? firstimage,
+      String? firstimage2,
+      String? cpyrhtDivCd,
+      String? mapx,
+      String? mapy,
+      String? mlevel,
+      String? modifiedtime,
+      String? sigungucode,
+      String? tel,
+      String? title});
 }
 
 /// @nodoc
@@ -1803,116 +1710,92 @@ class _$TourItemCopyWithImpl<$Res, $Val extends TourItem>
     Object? tel = freezed,
     Object? title = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            addr1:
-                freezed == addr1
-                    ? _value.addr1
-                    : addr1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            addr2:
-                freezed == addr2
-                    ? _value.addr2
-                    : addr2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            areacode:
-                freezed == areacode
-                    ? _value.areacode
-                    : areacode // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            booktour:
-                freezed == booktour
-                    ? _value.booktour
-                    : booktour // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cat1:
-                freezed == cat1
-                    ? _value.cat1
-                    : cat1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cat2:
-                freezed == cat2
-                    ? _value.cat2
-                    : cat2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cat3:
-                freezed == cat3
-                    ? _value.cat3
-                    : cat3 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            contentid:
-                freezed == contentid
-                    ? _value.contentid
-                    : contentid // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            contenttypeid:
-                freezed == contenttypeid
-                    ? _value.contenttypeid
-                    : contenttypeid // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            createdtime:
-                freezed == createdtime
-                    ? _value.createdtime
-                    : createdtime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            dist:
-                freezed == dist
-                    ? _value.dist
-                    : dist // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            firstimage:
-                freezed == firstimage
-                    ? _value.firstimage
-                    : firstimage // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            firstimage2:
-                freezed == firstimage2
-                    ? _value.firstimage2
-                    : firstimage2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cpyrhtDivCd:
-                freezed == cpyrhtDivCd
-                    ? _value.cpyrhtDivCd
-                    : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            mapx:
-                freezed == mapx
-                    ? _value.mapx
-                    : mapx // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            mapy:
-                freezed == mapy
-                    ? _value.mapy
-                    : mapy // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            mlevel:
-                freezed == mlevel
-                    ? _value.mlevel
-                    : mlevel // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            modifiedtime:
-                freezed == modifiedtime
-                    ? _value.modifiedtime
-                    : modifiedtime // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sigungucode:
-                freezed == sigungucode
-                    ? _value.sigungucode
-                    : sigungucode // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tel:
-                freezed == tel
-                    ? _value.tel
-                    : tel // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            title:
-                freezed == title
-                    ? _value.title
-                    : title // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      addr1: freezed == addr1
+          ? _value.addr1
+          : addr1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addr2: freezed == addr2
+          ? _value.addr2
+          : addr2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      areacode: freezed == areacode
+          ? _value.areacode
+          : areacode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      booktour: freezed == booktour
+          ? _value.booktour
+          : booktour // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cat1: freezed == cat1
+          ? _value.cat1
+          : cat1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cat2: freezed == cat2
+          ? _value.cat2
+          : cat2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cat3: freezed == cat3
+          ? _value.cat3
+          : cat3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contentid: freezed == contentid
+          ? _value.contentid
+          : contentid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contenttypeid: freezed == contenttypeid
+          ? _value.contenttypeid
+          : contenttypeid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdtime: freezed == createdtime
+          ? _value.createdtime
+          : createdtime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dist: freezed == dist
+          ? _value.dist
+          : dist // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstimage: freezed == firstimage
+          ? _value.firstimage
+          : firstimage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstimage2: freezed == firstimage2
+          ? _value.firstimage2
+          : firstimage2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cpyrhtDivCd: freezed == cpyrhtDivCd
+          ? _value.cpyrhtDivCd
+          : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mapx: freezed == mapx
+          ? _value.mapx
+          : mapx // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mapy: freezed == mapy
+          ? _value.mapy
+          : mapy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mlevel: freezed == mlevel
+          ? _value.mlevel
+          : mlevel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedtime: freezed == modifiedtime
+          ? _value.modifiedtime
+          : modifiedtime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sigungucode: freezed == sigungucode
+          ? _value.sigungucode
+          : sigungucode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tel: freezed == tel
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -1920,34 +1803,32 @@ class _$TourItemCopyWithImpl<$Res, $Val extends TourItem>
 abstract class _$$TourItemImplCopyWith<$Res>
     implements $TourItemCopyWith<$Res> {
   factory _$$TourItemImplCopyWith(
-    _$TourItemImpl value,
-    $Res Function(_$TourItemImpl) then,
-  ) = __$$TourItemImplCopyWithImpl<$Res>;
+          _$TourItemImpl value, $Res Function(_$TourItemImpl) then) =
+      __$$TourItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? addr1,
-    String? addr2,
-    String? areacode,
-    String? booktour,
-    String? cat1,
-    String? cat2,
-    String? cat3,
-    String? contentid,
-    String? contenttypeid,
-    String? createdtime,
-    String? dist,
-    String? firstimage,
-    String? firstimage2,
-    String? cpyrhtDivCd,
-    String? mapx,
-    String? mapy,
-    String? mlevel,
-    String? modifiedtime,
-    String? sigungucode,
-    String? tel,
-    String? title,
-  });
+  $Res call(
+      {String? addr1,
+      String? addr2,
+      String? areacode,
+      String? booktour,
+      String? cat1,
+      String? cat2,
+      String? cat3,
+      String? contentid,
+      String? contenttypeid,
+      String? createdtime,
+      String? dist,
+      String? firstimage,
+      String? firstimage2,
+      String? cpyrhtDivCd,
+      String? mapx,
+      String? mapy,
+      String? mlevel,
+      String? modifiedtime,
+      String? sigungucode,
+      String? tel,
+      String? title});
 }
 
 /// @nodoc
@@ -1955,9 +1836,8 @@ class __$$TourItemImplCopyWithImpl<$Res>
     extends _$TourItemCopyWithImpl<$Res, _$TourItemImpl>
     implements _$$TourItemImplCopyWith<$Res> {
   __$$TourItemImplCopyWithImpl(
-    _$TourItemImpl _value,
-    $Res Function(_$TourItemImpl) _then,
-  ) : super(_value, _then);
+      _$TourItemImpl _value, $Res Function(_$TourItemImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TourItem
   /// with the given fields replaced by the non-null parameter values.
@@ -1986,144 +1866,120 @@ class __$$TourItemImplCopyWithImpl<$Res>
     Object? tel = freezed,
     Object? title = freezed,
   }) {
-    return _then(
-      _$TourItemImpl(
-        addr1:
-            freezed == addr1
-                ? _value.addr1
-                : addr1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        addr2:
-            freezed == addr2
-                ? _value.addr2
-                : addr2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        areacode:
-            freezed == areacode
-                ? _value.areacode
-                : areacode // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        booktour:
-            freezed == booktour
-                ? _value.booktour
-                : booktour // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cat1:
-            freezed == cat1
-                ? _value.cat1
-                : cat1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cat2:
-            freezed == cat2
-                ? _value.cat2
-                : cat2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cat3:
-            freezed == cat3
-                ? _value.cat3
-                : cat3 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        contentid:
-            freezed == contentid
-                ? _value.contentid
-                : contentid // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        contenttypeid:
-            freezed == contenttypeid
-                ? _value.contenttypeid
-                : contenttypeid // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        createdtime:
-            freezed == createdtime
-                ? _value.createdtime
-                : createdtime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        dist:
-            freezed == dist
-                ? _value.dist
-                : dist // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        firstimage:
-            freezed == firstimage
-                ? _value.firstimage
-                : firstimage // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        firstimage2:
-            freezed == firstimage2
-                ? _value.firstimage2
-                : firstimage2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cpyrhtDivCd:
-            freezed == cpyrhtDivCd
-                ? _value.cpyrhtDivCd
-                : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        mapx:
-            freezed == mapx
-                ? _value.mapx
-                : mapx // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        mapy:
-            freezed == mapy
-                ? _value.mapy
-                : mapy // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        mlevel:
-            freezed == mlevel
-                ? _value.mlevel
-                : mlevel // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        modifiedtime:
-            freezed == modifiedtime
-                ? _value.modifiedtime
-                : modifiedtime // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sigungucode:
-            freezed == sigungucode
-                ? _value.sigungucode
-                : sigungucode // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tel:
-            freezed == tel
-                ? _value.tel
-                : tel // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        title:
-            freezed == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$TourItemImpl(
+      addr1: freezed == addr1
+          ? _value.addr1
+          : addr1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addr2: freezed == addr2
+          ? _value.addr2
+          : addr2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      areacode: freezed == areacode
+          ? _value.areacode
+          : areacode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      booktour: freezed == booktour
+          ? _value.booktour
+          : booktour // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cat1: freezed == cat1
+          ? _value.cat1
+          : cat1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cat2: freezed == cat2
+          ? _value.cat2
+          : cat2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cat3: freezed == cat3
+          ? _value.cat3
+          : cat3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contentid: freezed == contentid
+          ? _value.contentid
+          : contentid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contenttypeid: freezed == contenttypeid
+          ? _value.contenttypeid
+          : contenttypeid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdtime: freezed == createdtime
+          ? _value.createdtime
+          : createdtime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dist: freezed == dist
+          ? _value.dist
+          : dist // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstimage: freezed == firstimage
+          ? _value.firstimage
+          : firstimage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      firstimage2: freezed == firstimage2
+          ? _value.firstimage2
+          : firstimage2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cpyrhtDivCd: freezed == cpyrhtDivCd
+          ? _value.cpyrhtDivCd
+          : cpyrhtDivCd // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mapx: freezed == mapx
+          ? _value.mapx
+          : mapx // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mapy: freezed == mapy
+          ? _value.mapy
+          : mapy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mlevel: freezed == mlevel
+          ? _value.mlevel
+          : mlevel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedtime: freezed == modifiedtime
+          ? _value.modifiedtime
+          : modifiedtime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sigungucode: freezed == sigungucode
+          ? _value.sigungucode
+          : sigungucode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tel: freezed == tel
+          ? _value.tel
+          : tel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TourItemImpl implements _TourItem {
-  const _$TourItemImpl({
-    this.addr1,
-    this.addr2,
-    this.areacode,
-    this.booktour,
-    this.cat1,
-    this.cat2,
-    this.cat3,
-    this.contentid,
-    this.contenttypeid,
-    this.createdtime,
-    this.dist,
-    this.firstimage,
-    this.firstimage2,
-    this.cpyrhtDivCd,
-    this.mapx,
-    this.mapy,
-    this.mlevel,
-    this.modifiedtime,
-    this.sigungucode,
-    this.tel,
-    this.title,
-  });
+  const _$TourItemImpl(
+      {this.addr1,
+      this.addr2,
+      this.areacode,
+      this.booktour,
+      this.cat1,
+      this.cat2,
+      this.cat3,
+      this.contentid,
+      this.contenttypeid,
+      this.createdtime,
+      this.dist,
+      this.firstimage,
+      this.firstimage2,
+      this.cpyrhtDivCd,
+      this.mapx,
+      this.mapy,
+      this.mlevel,
+      this.modifiedtime,
+      this.sigungucode,
+      this.tel,
+      this.title});
 
   factory _$TourItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$TourItemImplFromJson(json);
@@ -2217,29 +2073,29 @@ class _$TourItemImpl implements _TourItem {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    addr1,
-    addr2,
-    areacode,
-    booktour,
-    cat1,
-    cat2,
-    cat3,
-    contentid,
-    contenttypeid,
-    createdtime,
-    dist,
-    firstimage,
-    firstimage2,
-    cpyrhtDivCd,
-    mapx,
-    mapy,
-    mlevel,
-    modifiedtime,
-    sigungucode,
-    tel,
-    title,
-  ]);
+        runtimeType,
+        addr1,
+        addr2,
+        areacode,
+        booktour,
+        cat1,
+        cat2,
+        cat3,
+        contentid,
+        contenttypeid,
+        createdtime,
+        dist,
+        firstimage,
+        firstimage2,
+        cpyrhtDivCd,
+        mapx,
+        mapy,
+        mlevel,
+        modifiedtime,
+        sigungucode,
+        tel,
+        title
+      ]);
 
   /// Create a copy of TourItem
   /// with the given fields replaced by the non-null parameter values.
@@ -2251,34 +2107,35 @@ class _$TourItemImpl implements _TourItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TourItemImplToJson(this);
+    return _$$TourItemImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _TourItem implements TourItem {
-  const factory _TourItem({
-    final String? addr1,
-    final String? addr2,
-    final String? areacode,
-    final String? booktour,
-    final String? cat1,
-    final String? cat2,
-    final String? cat3,
-    final String? contentid,
-    final String? contenttypeid,
-    final String? createdtime,
-    final String? dist,
-    final String? firstimage,
-    final String? firstimage2,
-    final String? cpyrhtDivCd,
-    final String? mapx,
-    final String? mapy,
-    final String? mlevel,
-    final String? modifiedtime,
-    final String? sigungucode,
-    final String? tel,
-    final String? title,
-  }) = _$TourItemImpl;
+  const factory _TourItem(
+      {final String? addr1,
+      final String? addr2,
+      final String? areacode,
+      final String? booktour,
+      final String? cat1,
+      final String? cat2,
+      final String? cat3,
+      final String? contentid,
+      final String? contenttypeid,
+      final String? createdtime,
+      final String? dist,
+      final String? firstimage,
+      final String? firstimage2,
+      final String? cpyrhtDivCd,
+      final String? mapx,
+      final String? mapy,
+      final String? mlevel,
+      final String? modifiedtime,
+      final String? sigungucode,
+      final String? tel,
+      final String? title}) = _$TourItemImpl;
 
   factory _TourItem.fromJson(Map<String, dynamic> json) =
       _$TourItemImpl.fromJson;

@@ -24,16 +24,18 @@ class _TourDetailPageState extends ConsumerState<TourDetailPage> {
   TourMapper? tourMapper;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    tourMapper ??= GoRouterState.of(context).extra as TourMapper?;
+  void initState() {
+    super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
+        setState(() {
+          tourMapper ??= GoRouterState.of(context).extra as TourMapper?;
+        });
+
         ref.read(tourDetailProvider.notifier).getTourDetail(
-          tourMapper?.contentid ?? -1,
-          tourMapper?.contenttypeid ?? -1
+            tourMapper?.contentid ?? -1,
+            tourMapper?.contenttypeid ?? -1
         );
       }
     });
