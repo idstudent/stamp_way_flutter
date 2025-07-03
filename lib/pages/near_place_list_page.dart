@@ -42,7 +42,7 @@ class _NearPlaceListPageState extends ConsumerState<NearPlaceListPage> {
   @override
   void initState() {
     super.initState();
-    
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _checkLocationPermission();

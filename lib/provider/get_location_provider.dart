@@ -12,7 +12,7 @@ class GetLocationProvider extends Notifier<AsyncValue<List<TourMapper>>>{
 
   @override
   AsyncValue<List<TourMapper>> build() {
-    ref.keepAlive(); // 이 한 줄만 추가
+    ref.keepAlive();
     return const AsyncValue.loading();
   }
 
@@ -46,7 +46,4 @@ class GetLocationProvider extends Notifier<AsyncValue<List<TourMapper>>>{
       await getLocationTourList(longitude, latitude, _currentPage + 1, contentTypeId);
     }
   }
-
-  bool get isLoading => _isLoading;
-  bool get hasMore => _hasMore;
 }
