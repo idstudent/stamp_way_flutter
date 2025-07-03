@@ -5,12 +5,12 @@ import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 
-class GridNearTourItemWidget extends ConsumerStatefulWidget {
+class NearTourItemWidget extends ConsumerStatefulWidget {
   final TourMapper item;
   final Function(TourMapper) itemClick;
   final VoidCallback buttonClick;
 
-  const GridNearTourItemWidget({
+  const NearTourItemWidget({
     required this.item,
     required this.itemClick,
     required this.buttonClick,
@@ -18,10 +18,10 @@ class GridNearTourItemWidget extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<GridNearTourItemWidget> createState() => _GridNearTourItemWidgetState();
+  ConsumerState<NearTourItemWidget> createState() => _NearTourItemWidgetState();
 }
 
-class _GridNearTourItemWidgetState extends ConsumerState<GridNearTourItemWidget> {
+class _NearTourItemWidgetState extends ConsumerState<NearTourItemWidget> {
   @override
   Widget build(BuildContext context) {
     final savedLocations = ref.watch(savedLocationProvider);

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/provider/get_location_provider.dart';
+import 'package:stamp_way_flutter/provider/get_recently_search_provider.dart';
 
 import '../model/save_result.dart';
 import '../model/tour_mapper.dart';
@@ -12,6 +13,7 @@ import '../provider/saved_location_provider.dart';
 import '../routes/app_routes.dart';
 import '../util/location_permission_dialog.dart';
 import '../util/show_toast.dart';
+import '../widgets/near_tour_item_widget.dart';
 import '../widgets/tour_item_widget.dart';
 
 final keywordProvider = StateProvider<String?>((ref) => null);
@@ -26,7 +28,6 @@ class SearchPage extends ConsumerStatefulWidget {
 
 
 class _SearchPageState extends ConsumerState<SearchPage> {
-  List<TourMapper> recentlySearchItem = [];
   bool hasPermission = false;
   double? longitude;
   double? latitude;
@@ -47,6 +48,8 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final contentTypeId = ref.watch(contentTypeIdProvider);
+    final recentlyResults = ref.watch(getRecentlySearchStreamProvider);
+
     String filterText = '검색할 분류를 선택해주세요';
 
     switch(contentTypeId) {
@@ -148,7 +151,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 Text('최근 검색', style: AppTextStyle.fontSize20WhiteExtraBold,),
                 const SizedBox(height: 16,),
                 Container(
-                  child: _getRecentlySearchResult(recentlySearchItem),
+                  child: _getRecentlySearchResult(recentlyResults),
                 ),
                 const SizedBox(height: 48,),
                 Text('내 근처에는 뭐가 있지', style: AppTextStyle.fontSize20WhiteExtraBold,),
@@ -224,12 +227,22 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     );
   }
 
-  Widget _getRecentlySearchResult(List<TourMapper> item) {
-    if(item.isEmpty) {
-      return SizedBox(height: 160, child: _emptyResultView());
-    }else {
-      return SizedBox(height: 160, child: _recentlyResultView());
-    }
+  Widget _getRecentlySearchResult(AsyncValue<List<TourMapper>> recentlyResult) {
+    return recentlyResult.when(
+      data: (item) {
+        print('Recently search items count: ${item.length}');
+        if(item.isEmpty) {
+          return SizedBox(height: 160, child: _emptyResultView());
+        }else {
+          return SizedBox(height: 370, child: _recentlyResultView(item));
+        }
+      },
+      error: (error, stackTrace) {
+        print('error $error}');
+        return SizedBox(height: 160, child: _emptyResultView());
+      },
+      loading: () => SizedBox(height: 160, child: Center(child: CircularProgressIndicator()),),
+    );
   }
 
   Widget _emptyResultView() {
@@ -244,8 +257,43 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     );
   }
 
-  Widget _recentlyResultView() {
-    return Placeholder();
+  Widget _recentlyResultView(List<TourMapper> items) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return Container(
+          width: 300,
+          margin: EdgeInsets.only(right: 12),
+          child: NearTourItemWidget(
+            item: item,
+            itemClick: (item) {
+              context.pushNamed(AppRoutes.searchTourDetail, extra: item);
+            },
+            buttonClick: () {
+              ref.read(savedLocationProvider.notifier).saveTourLocation(item, (result) {
+                switch(result) {
+                  case Success():
+                    showToast(result.message);
+                    break;
+                  case Failure():
+                    showToast(result.message);
+                    break;
+                  case LoginRequired():
+                    showToast(result.message);
+                    context.pushNamed(AppRoutes.login);
+                    break;
+                  case MaxLimitReached():
+                    showToast(result.message);
+                    break;
+                }
+              });
+            },
+          ),
+        );
+      }
+    );
   }
 
   Widget _getMyNearSearchResult() {

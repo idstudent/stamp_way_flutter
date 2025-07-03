@@ -54,15 +54,10 @@ final locationTourRepositoryProvider = Provider<LocationTourRepository>((ref) {
   return LocationTourRepository(apiService);
 });
 
-final tourDetailRepositoryProvider = Provider<TourDetailRepository>((ref) {
+final tourDetailRepositoryProvider = FutureProvider<TourDetailRepository>((ref) async {
   final apiService = ref.watch(apiServiceProvider);
-  final database = ref.watch(databaseProvider);
-
-  return database.when(
-    data: (db) => TourDetailRepository(apiService, db),
-    error: (error, stack) => throw error,
-    loading: () => throw Exception('db exception')
-  );
+  final database = await ref.watch(databaseProvider.future);
+  return TourDetailRepository(apiService, database);
 });
 
 final searchKeywordRepositoryProvider = Provider<SearchKeywordRepository>((ref) {

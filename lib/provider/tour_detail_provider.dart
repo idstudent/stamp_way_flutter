@@ -11,22 +11,20 @@ class TourDetailProvider extends Notifier<AsyncValue<List<DetailItem>>> {
   AsyncValue<List<DetailItem>> build() {
     return const AsyncValue.loading();
   }
-  
+
   Future<void> getTourDetail(int contentId, int contentTypeId) async {
     state = const AsyncValue.loading();
-
     try {
-      final repository = ref.read(tourDetailRepositoryProvider);
-
+      final repository = await ref.read(tourDetailRepositoryProvider.future);
       final tourDetailInfo = await repository.getTourDetail(contentId, contentTypeId);
       state = AsyncValue.data(tourDetailInfo);
-    }catch(e, stackTrace) {
+    } catch(e, stackTrace) {
       state = AsyncValue.error(e, stackTrace);
     }
   }
 
   Future<void> insertItem(TourMapper item) async {
-    final repository = ref.read(tourDetailRepositoryProvider);
+    final repository = await ref.read(tourDetailRepositoryProvider.future);
     final currentList = await repository.selectAllSearchItem().first;
     final updatedItem = item.copyWith(timestamp: DateTime.now().millisecondsSinceEpoch);
 

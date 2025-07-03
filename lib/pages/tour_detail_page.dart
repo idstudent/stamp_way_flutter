@@ -47,6 +47,12 @@ class _TourDetailPageState extends ConsumerState<TourDetailPage> {
     final savedLocations = ref.watch(savedLocationProvider);
     final isSaved = savedLocations.any((location) => location.contentId == tourMapper?.contentid);
 
+    if (tourMapper == null) {
+      return Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

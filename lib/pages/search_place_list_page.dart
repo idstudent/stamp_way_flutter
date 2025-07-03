@@ -12,7 +12,7 @@ import 'package:stamp_way_flutter/util/location_permission_dialog.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 
 import '../routes/app_routes.dart';
-import '../widgets/grid_near_tour_item_widget.dart';
+import '../widgets/near_tour_item_widget.dart';
 
 class SearchPlaceListPage extends ConsumerStatefulWidget {
   const SearchPlaceListPage({super.key});
@@ -137,10 +137,10 @@ class _SearchPlacePageListState extends ConsumerState<SearchPlaceListPage> {
         itemBuilder: (context, index) {
           final location = allItems[index];
 
-          return GridNearTourItemWidget(
+          return NearTourItemWidget(
             item: location,
             itemClick: (item) {
-             context.pushNamed(AppRoutes.tourDetail, extra: location);
+             context.pushNamed(AppRoutes.searchTourDetail, extra: location);
             },
             buttonClick: () {
               ref.read(savedLocationProvider.notifier).saveTourLocation(location, (result) {

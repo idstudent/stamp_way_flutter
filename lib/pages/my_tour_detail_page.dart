@@ -52,8 +52,12 @@ class _MyTourDetailPageState extends ConsumerState<MyTourDetailPage> {
   @override
   Widget build(BuildContext context) {
     final detailItem = ref.watch(tourDetailProvider);
-    final savedLocations = ref.watch(savedLocationProvider);
-    final isSaved = savedLocations.any((location) => location.contentId == savedLocation?.contentId);
+
+    if (savedLocation == null) {
+      return Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
 
     return Scaffold(
       body: SafeArea(
