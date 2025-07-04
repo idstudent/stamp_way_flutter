@@ -22,27 +22,28 @@ class SearchTourDetailPage extends ConsumerStatefulWidget {
 
 class _SearchTourDetailPageState extends ConsumerState<SearchTourDetailPage> {
   TourMapper? tourMapper;
+  bool _hasInitialized = false;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        setState(() {
-          tourMapper ??= GoRouterState.of(context).extra as TourMapper?;
+    if (!_hasInitialized) {
+      tourMapper = GoRouterState.of(context).extra as TourMapper?;
+      _hasInitialized = true;
+
+      if (tourMapper != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if(mounted) {
+            ref.read(tourDetailProvider.notifier).getTourDetail(
+                tourMapper?.contentid ?? -1,
+                tourMapper?.contenttypeid ?? -1
+            );
+            ref.read(tourDetailProvider.notifier).insertItem(tourMapper!);
+          }
         });
-
-        ref.read(tourDetailProvider.notifier).getTourDetail(
-            tourMapper?.contentid ?? -1,
-            tourMapper?.contenttypeid ?? -1
-        );
-
-        if(tourMapper != null) {
-          ref.read(tourDetailProvider.notifier).insertItem(tourMapper!);
-        }
       }
-    });
+    }
   }
 
   @override

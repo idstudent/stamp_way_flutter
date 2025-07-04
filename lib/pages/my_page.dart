@@ -22,6 +22,7 @@ class _MyPageState extends ConsumerState<MyPage> {
   Widget build(BuildContext context) {
     final userInfo = ref.watch(loginProvider);
     final visitedLocation = ref.watch(visitedLocationProvider);
+    final certifyCount = ref.watch(certificationCountProvider);
 
     final allList = visitedLocation['allList'] as List<SavedLocation>? ?? [];
 
@@ -42,8 +43,6 @@ class _MyPageState extends ConsumerState<MyPage> {
 
     final completeCount = allList.where((location) => location.isVisited).length;
     final notCompleteCount = allList.where((location) => !location.isVisited).length;
-
-    final certifyCount = userInfo?['certificationCount'] as int? ?? 0;
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -147,18 +146,29 @@ class _MyPageState extends ConsumerState<MyPage> {
                       ),
 
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 16),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 20,),
-                              Icon(Icons.auto_awesome, size: 40, color: AppColors.colorFF8C00,),
-                              const SizedBox(height: 8,),
-                              Text(certifyCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
-                              Text('인증 획득', style: AppTextStyle.fontSize16WhiteExtraBold,),
-                              const SizedBox(height: 20,)
-                            ],
+                        child: GestureDetector(
+                          onTap: () => {
+                            context.pushNamed(AppRoutes.myCertification, extra: {
+                              'tourList': tourList,
+                              'cultureList': cultureList,
+                              'eventList': eventList,
+                              'activityList': activityList,
+                              'foodList': foodList,
+                            })
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 20,),
+                                Icon(Icons.auto_awesome, size: 40, color: AppColors.colorFF8C00,),
+                                const SizedBox(height: 8,),
+                                Text(certifyCount.toString(), style: AppTextStyle.fontSize20WhiteExtraBold,),
+                                Text('인증 획득', style: AppTextStyle.fontSize16WhiteExtraBold,),
+                                const SizedBox(height: 20,)
+                              ],
+                            ),
                           ),
                         ),
                       ),

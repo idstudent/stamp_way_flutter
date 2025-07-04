@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/pages/login_page.dart';
 import 'package:stamp_way_flutter/pages/main_page.dart';
+import 'package:stamp_way_flutter/pages/my_certification_page.dart';
 import 'package:stamp_way_flutter/pages/my_complete_list_page.dart';
 import 'package:stamp_way_flutter/pages/my_tour_list_page.dart';
 import 'package:stamp_way_flutter/pages/near_place_list_page.dart';
@@ -24,6 +25,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String signUp = '/sign-up';
   static const String setting = '/setting';
+  static const String myCertification = '/my-certification';
 }
 
 final GoRouter router = GoRouter(
@@ -62,46 +64,53 @@ final GoRouter router = GoRouter(
       }
     ),
     GoRoute(
-        path: AppRoutes.myTourDetail,
-        name: AppRoutes.myTourDetail,
-        builder: (context, state) {
-          return MyTourDetailPage();
-        }
+      path: AppRoutes.myTourDetail,
+      name: AppRoutes.myTourDetail,
+      builder: (context, state) {
+        return MyTourDetailPage();
+      }
     ),
     GoRoute(
-        path: AppRoutes.setting,
-        name: AppRoutes.setting,
-        builder: (context, state) {
-          return SettingPage();
-        }
+      path: AppRoutes.setting,
+      name: AppRoutes.setting,
+      builder: (context, state) {
+        return SettingPage();
+      }
     ),
     GoRoute(
-        path: AppRoutes.myCompleteList,
-        name: AppRoutes.myCompleteList,
-        builder: (context, state) {
-          return MyCompleteListPage();
-        }
+      path: AppRoutes.myCompleteList,
+      name: AppRoutes.myCompleteList,
+      builder: (context, state) {
+        return MyCompleteListPage();
+      }
     ),
     GoRoute(
-        path: AppRoutes.signUp,
-        name: AppRoutes.signUp,
-        builder: (context, state) {
-          return SignUpPage();
-        }
+      path: AppRoutes.signUp,
+      name: AppRoutes.signUp,
+      builder: (context, state) {
+        return SignUpPage();
+      }
     ),
     GoRoute(
-        path: AppRoutes.searchTourDetail,
-        name: AppRoutes.searchTourDetail,
-        builder: (context, state) {
-          return SearchTourDetailPage();
-        }
+      path: AppRoutes.searchTourDetail,
+      name: AppRoutes.searchTourDetail,
+      builder: (context, state) {
+        return SearchTourDetailPage();
+      }
     ),
     GoRoute(
-        path: AppRoutes.searchPlaceList,
-        name: AppRoutes.searchPlaceList,
-        builder: (context, state) {
-          return SearchPlaceListPage();
-        }
+      path: AppRoutes.searchPlaceList,
+      name: AppRoutes.searchPlaceList,
+      builder: (context, state) {
+        return SearchPlaceListPage();
+      }
+    ),
+    GoRoute(
+      path: AppRoutes.myCertification,
+      name: AppRoutes.myCertification,
+      builder: (context, state) {
+        return MyCertificationPage();
+      }
     ),
   ],
 );

@@ -44,7 +44,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     final unVisitedLocations = ref.watch(unVisitedLocationProvider);
-    final nearTourList = ref.watch(getLocationProvider);
+    final nearTourList = ref.watch(getLocationProvider(12));
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -166,7 +166,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     if (hasPermission) {
       try {
         Position position = await Geolocator.getCurrentPosition();
-        ref.read(getLocationProvider.notifier).getLocationTourList(position.longitude, position.latitude, 1, 12);
+        ref.read(getLocationProvider(12).notifier).getLocationTourList(position.longitude, position.latitude, 1);
       } catch (e) {
         if (mounted && ref.read(currentTabProvider) == 0) {
           showToast('위치 정보를 가져올 수 없어요');

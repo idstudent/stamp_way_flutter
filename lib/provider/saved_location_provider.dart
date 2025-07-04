@@ -40,8 +40,25 @@ final visitedLocationProvider = Provider<Map<String, dynamic>>((ref) {
   };
 });
 
+final certificationCountProvider = Provider<int>((ref) {
+  final visitedLocation = ref.watch(visitedLocationProvider);
+
+  final tourList = (visitedLocation['tourPlaceList'] as List<SavedLocation>? ?? []);
+  final cultureList = (visitedLocation['cultureList'] as List<SavedLocation>? ?? []);
+  final eventList = (visitedLocation['eventList'] as List<SavedLocation>? ?? []);
+  final activityList = (visitedLocation['activityList'] as List<SavedLocation>? ?? []);
+  final foodList = (visitedLocation['foodList'] as List<SavedLocation>? ?? []);
+
+  final tourBadges = calculateBadgeCount(tourList.length);
+  final cultureBadges = calculateBadgeCount(cultureList.length);
+  final eventBadges = calculateBadgeCount(eventList.length);
+  final activityBadges = calculateBadgeCount(activityList.length);
+  final foodBadges = calculateBadgeCount(foodList.length);
+
+  return tourBadges + cultureBadges + eventBadges + activityBadges + foodBadges;
+});
+
 int calculateBadgeCount(int visitedCount) {
-  if (visitedCount >= 100) return 4;
   if (visitedCount >= 50) return 3;
   if (visitedCount >= 30) return 2;
   if (visitedCount >= 10) return 1;

@@ -207,7 +207,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
         ref.read(contentTypeIdProvider.notifier).state = contentTypeId;
 
         if(longitude != null && latitude != null) {
-          ref.read(getLocationProvider.notifier).getLocationTourList(longitude!, latitude!, 1, contentTypeId);
+          ref.read(getLocationProvider(contentTypeId).notifier).getLocationTourList(longitude!, latitude!, 1);
         }else {
           showToast('위치 정보를 가져올 수 없어요');
         }
@@ -302,7 +302,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
       return SizedBox(height: 160, child: _emptyNearResultView());
     }
 
-    final getNearLocations = ref.watch(getLocationProvider);
+    final getNearLocations = ref.watch(getLocationProvider(contentTypeId));
 
     return getNearLocations.when(
       data: (item) {
