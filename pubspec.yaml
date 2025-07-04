@@ -76,7 +76,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/
+    - assets/images/
     - .env
   fonts:
     - family: noto_regular

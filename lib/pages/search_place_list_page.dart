@@ -30,6 +30,11 @@ class _SearchPlacePageListState extends ConsumerState<SearchPlaceListPage> {
   @override
   void initState() {
     super.initState();
+
+    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+    typeId = data?['contentTypeId'] as int?;
+    keyword = data?['keyword'] as String;
+
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent * 0.8) {
         if (keyword.isNotEmpty && typeId != null) {
@@ -43,14 +48,6 @@ class _SearchPlacePageListState extends ConsumerState<SearchPlaceListPage> {
         _checkLocationPermission();
       }
     });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-    typeId = data?['contentTypeId'] as int?;
-    keyword = data?['keyword'] as String;
   }
 
   @override
