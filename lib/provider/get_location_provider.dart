@@ -2,27 +2,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 import 'package:stamp_way_flutter/provider/dio_provider.dart';
 
-final getLocationProvider = NotifierProvider<GetLocationProvider, AsyncValue<List<TourMapper>>>(GetLocationProvider.new);
+final getLocationProvider = NotifierProvider.family<GetLocationProvider, AsyncValue<List<TourMapper>>, int>(GetLocationProvider.new);
 
-class GetLocationProvider extends Notifier<AsyncValue<List<TourMapper>>>{
+class GetLocationProvider extends FamilyNotifier<AsyncValue<List<TourMapper>>, int>{
   List<TourMapper> _allItems = [];
   int _currentPage = 1;
   bool _hasMore = true;
   bool _isLoading = false;
 
   @override
-  AsyncValue<List<TourMapper>> build() {
+  AsyncValue<List<TourMapper>> build(int arg) {
     ref.keepAlive();
     return const AsyncValue.loading();
   }
 
-  Future<void> getLocationTourList(double longitude, double latitude, int pageNo, int contentTypeId) async {
+  Future<void> getLocationTourList(double longitude, double latitude, int pageNo) async {
     if (_isLoading) return;
     _isLoading = true;
 
     try {
       final repository = ref.read(locationTourRepositoryProvider);
-      final item = await repository.getLocationTourList(longitude, latitude, pageNo, contentTypeId);
+      final item = await repository.getLocationTourList(longitude, latitude, pageNo, arg);
 
       if (pageNo == 1) {
         _allItems = item;
@@ -41,9 +41,9 @@ class GetLocationProvider extends Notifier<AsyncValue<List<TourMapper>>>{
     }
   }
 
-  Future<void> loadNext(double longitude, double latitude, int contentTypeId) async {
+  Future<void> loadNext(double longitude, double latitude) async {
     if (!_isLoading && _hasMore) {
-      await getLocationTourList(longitude, latitude, _currentPage + 1, contentTypeId);
+      await getLocationTourList(longitude, latitude, _currentPage + 1);
     }
   }
 }

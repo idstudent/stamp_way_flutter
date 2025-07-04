@@ -52,7 +52,7 @@ class _NearPlaceListPageState extends ConsumerState<NearPlaceListPage> {
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent * 0.8) {
         if (longitude != null && latitude != null) {
-          ref.read(getLocationProvider.notifier).loadNext(longitude!, latitude!, typeId!);
+          ref.read(getLocationProvider(typeId!).notifier).loadNext(longitude!, latitude!);
         }
       }
     });
@@ -60,8 +60,6 @@ class _NearPlaceListPageState extends ConsumerState<NearPlaceListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final locationData = ref.watch(getLocationProvider);
-
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -83,7 +81,7 @@ class _NearPlaceListPageState extends ConsumerState<NearPlaceListPage> {
     );
   }
   Widget _getGridListView() {
-    final locationData = ref.watch(getLocationProvider);
+    final locationData = ref.watch(getLocationProvider(typeId!));
 
     return locationData.when(
       data: (items) {
@@ -146,7 +144,7 @@ class _NearPlaceListPageState extends ConsumerState<NearPlaceListPage> {
         latitude = position.latitude;
 
         if (mounted) {
-          ref.read(getLocationProvider.notifier).getLocationTourList(longitude!, latitude!, 1, typeId!);
+          ref.read(getLocationProvider(typeId!).notifier).getLocationTourList(longitude!, latitude!, 1);
         }
       }catch(e) {
         showToast('위치 정보를 가져올 수 없어요');

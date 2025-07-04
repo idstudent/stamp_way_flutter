@@ -28,32 +28,37 @@ class _SearchPlacePageListState extends ConsumerState<SearchPlaceListPage> {
   double? latitude;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
     final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-    typeId = data?['contentTypeId'] as int?;
-    keyword = data?['keyword'] as String;
+    typeId ??= data?['contentTypeId'] as int?;
+    if (keyword.isEmpty) {
+      keyword = data?['keyword'] as String? ?? '';
+    }
+  }
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent * 0.8) {
-        if (keyword.isNotEmpty && typeId != null) {
-          ref.read(searchKeywordProvider.notifier).loadNext(keyword, typeId!);
-        }
-      }
-    });
+  @override
+  void initState() {
+    super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _checkLocationPermission();
       }
     });
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent * 0.8) {
+        if (keyword.isNotEmpty && typeId != null) {
+          ref.read(searchKeywordProvider(typeId!).notifier).loadNext(keyword);
+        }
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final searchData = ref.watch(searchKeywordProvider);
-
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -76,7 +81,7 @@ class _SearchPlacePageListState extends ConsumerState<SearchPlaceListPage> {
   }
 
   Widget _getGridListView() {
-    final searchData = ref.watch(searchKeywordProvider);
+    final searchData = ref.watch(searchKeywordProvider(typeId!));
 
     return searchData.when(
       data: (items) {
@@ -139,7 +144,7 @@ class _SearchPlacePageListState extends ConsumerState<SearchPlaceListPage> {
         latitude = position.latitude;
 
         if (mounted && keyword.isNotEmpty && typeId != null) {
-          ref.read(searchKeywordProvider.notifier).getSearchKeywordResult(keyword, typeId!, 1);
+          ref.read(searchKeywordProvider(typeId!).notifier).getSearchKeywordResult(keyword, 1);
         }
       }catch(e) {
         showToast('위치 정보를 가져올 수 없어요');

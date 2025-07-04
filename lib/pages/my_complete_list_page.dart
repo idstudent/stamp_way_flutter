@@ -15,28 +15,23 @@ class MyCompleteListPage extends ConsumerStatefulWidget {
 }
 
 class _MyCompleteListPageState extends ConsumerState<MyCompleteListPage> {
-  List<SavedLocation> tourList = [];
-  List<SavedLocation> cultureList = [];
-  List<SavedLocation> eventList = [];
-  List<SavedLocation> activityList = [];
-  List<SavedLocation> foodList = [];
+  List<SavedLocation>? tourList;
+  List<SavedLocation>? cultureList;
+  List<SavedLocation>? eventList;
+  List<SavedLocation>? activityList;
+  List<SavedLocation>? foodList;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-        setState(() {
-          tourList = data?['tourList'] as List<SavedLocation>? ?? [];
-          cultureList = data?['cultureList'] as List<SavedLocation>? ?? [];
-          eventList = data?['eventList'] as List<SavedLocation>? ?? [];
-          activityList = data?['activityList'] as List<SavedLocation>? ?? [];
-          foodList = data?['foodList'] as List<SavedLocation>? ?? [];
-        });
-      }
-    });
+    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+
+    tourList ??= data?['tourList'] as List<SavedLocation>? ?? [];
+    cultureList ??= data?['cultureList'] as List<SavedLocation>? ?? [];
+    eventList ??= data?['eventList'] as List<SavedLocation>? ?? [];
+    activityList ??= data?['activityList'] as List<SavedLocation>? ?? [];
+    foodList ??= data?['foodList'] as List<SavedLocation>? ?? [];
   }
 
   @override
@@ -51,11 +46,11 @@ class _MyCompleteListPageState extends ConsumerState<MyCompleteListPage> {
                 padding: EdgeInsets.only(top: 20, left: 20),
                 child: Text('완료한 곳', style: AppTextStyle.fontSize20WhiteExtraBold,),
               ),
-              _getGridListView('여행지',tourList),
-              _getGridListView('문화',cultureList),
-              _getGridListView('축제',eventList),
-              _getGridListView('액티비티',activityList),
-              _getGridListView('음식',foodList),
+              _getGridListView('여행지',tourList!),
+              _getGridListView('문화',cultureList!),
+              _getGridListView('축제',eventList!),
+              _getGridListView('액티비티',activityList!),
+              _getGridListView('음식',foodList!),
 
             ],
           ),

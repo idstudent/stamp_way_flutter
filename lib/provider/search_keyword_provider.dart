@@ -2,27 +2,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stamp_way_flutter/model/tour_mapper.dart';
 import 'package:stamp_way_flutter/provider/dio_provider.dart';
 
-final searchKeywordProvider = NotifierProvider<SearchKeywordProvider, AsyncValue<List<TourMapper>>>(SearchKeywordProvider.new);
+final searchKeywordProvider = NotifierProvider.family<SearchKeywordProvider, AsyncValue<List<TourMapper>>,int>(SearchKeywordProvider.new);
 
-class SearchKeywordProvider extends Notifier<AsyncValue<List<TourMapper>>> {
+class SearchKeywordProvider extends FamilyNotifier<AsyncValue<List<TourMapper>>, int> {
   List<TourMapper> _allItems = [];
   int _currentPage = 1;
   bool _hasMore = true;
   bool _isLoading = false;
 
   @override
-  AsyncValue<List<TourMapper>> build() {
+  AsyncValue<List<TourMapper>> build(int arg) {
     ref.keepAlive();
     return const AsyncValue.loading();
   }
 
-  Future<void> getSearchKeywordResult(String keyword, int contentTypeId, int pageNo) async {
+  Future<void> getSearchKeywordResult(String keyword, int pageNo) async {
     if (_isLoading) return;
     _isLoading = true;
 
     try {
       final repository = ref.read(searchKeywordRepositoryProvider);
-      final result = await repository.getSearchKeyword(keyword, contentTypeId, pageNo);
+      final result = await repository.getSearchKeyword(keyword, arg, pageNo);
 
       if (pageNo == 1) {
         _allItems = result;
@@ -41,9 +41,9 @@ class SearchKeywordProvider extends Notifier<AsyncValue<List<TourMapper>>> {
     }
   }
 
-  Future<void> loadNext(String keyword, int contentTypeId) async {
+  Future<void> loadNext(String keyword) async {
     if (!_isLoading && _hasMore) {
-      await getSearchKeywordResult(keyword, contentTypeId, _currentPage + 1);
+      await getSearchKeywordResult(keyword, _currentPage + 1);
     }
   }
 }

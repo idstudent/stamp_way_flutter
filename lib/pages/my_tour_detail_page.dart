@@ -27,28 +27,32 @@ class _MyTourDetailPageState extends ConsumerState<MyTourDetailPage> {
   SavedLocation? savedLocation;
   bool hasPermission = false;
   bool btnVisible = true;
+  bool _hasInitialized = false;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async{
-      if(mounted) {
-        setState(() {
-          final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-          savedLocation = data?['savedLocation'] as SavedLocation?;
-          btnVisible = data?['btnVisible'] ?? true;
+    if (!_hasInitialized) {
+      final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+      savedLocation = data?['savedLocation'] as SavedLocation?;
+      btnVisible = data?['btnVisible'] as bool? ?? true;
+
+      hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
+
+      if(savedLocation != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if(mounted) {
+            ref.read(tourDetailProvider.notifier).getTourDetail(
+                savedLocation?.contentId ?? -1,
+                savedLocation?.contentTypeId ?? -1
+            );
+          }
         });
-
-        hasPermission = await LocationPermissionDialog.checkAndRequestLocationPermission(context);
-
-        ref.read(tourDetailProvider.notifier).getTourDetail(
-            savedLocation?.contentId ?? -1,
-            savedLocation?.contentTypeId ?? -1
-        );
       }
-    });
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     final detailItem = ref.watch(tourDetailProvider);

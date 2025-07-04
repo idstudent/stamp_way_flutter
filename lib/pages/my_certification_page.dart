@@ -13,33 +13,27 @@ class MyCertificationPage extends ConsumerStatefulWidget {
 }
 
 class _MyCertificationPageState extends ConsumerState<MyCertificationPage> {
-  List<SavedLocation> tourList = [];
-  List<SavedLocation> cultureList = [];
-  List<SavedLocation> eventList = [];
-  List<SavedLocation> activityList = [];
-  List<SavedLocation> foodList = [];
+  List<SavedLocation>? tourList;
+  List<SavedLocation>? cultureList;
+  List<SavedLocation>? eventList;
+  List<SavedLocation>? activityList;
+  List<SavedLocation>? foodList;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
-        setState(() {
-          tourList = data?['tourList'] as List<SavedLocation>? ?? [];
-          cultureList = data?['cultureList'] as List<SavedLocation>? ?? [];
-          eventList = data?['eventList'] as List<SavedLocation>? ?? [];
-          activityList = data?['activityList'] as List<SavedLocation>? ?? [];
-          foodList = data?['foodList'] as List<SavedLocation>? ?? [];
-        });
-      }
-    });
+    final data = GoRouterState.of(context).extra as Map<String, dynamic>?;
+
+    tourList ??= data?['tourList'] as List<SavedLocation>? ?? [];
+    cultureList ??= data?['cultureList'] as List<SavedLocation>? ?? [];
+    eventList ??= data?['eventList'] as List<SavedLocation>? ?? [];
+    activityList ??= data?['activityList'] as List<SavedLocation>? ?? [];
+    foodList ??= data?['foodList'] as List<SavedLocation>? ?? [];
   }
 
   @override
   Widget build(BuildContext context) {
-    print('문화 ${cultureList.length} 이벤트 ${eventList.length} 액티비티 ${activityList.length} 음식 ${foodList.length} 여행 ${tourList.length}');
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -55,7 +49,7 @@ class _MyCertificationPageState extends ConsumerState<MyCertificationPage> {
                   Text('여행지', style: AppTextStyle.fontSize16WhiteExtraBold),
                   const SizedBox(height: 20),
                   _badgeView(
-                      visitedCount: tourList.length,
+                      visitedCount: tourList!.length,
                       images: [
                         'assets/images/tour_img_1.png',
                         'assets/images/tour_img_2.png',
@@ -70,7 +64,7 @@ class _MyCertificationPageState extends ConsumerState<MyCertificationPage> {
                   Text('문화', style: AppTextStyle.fontSize16WhiteExtraBold),
                   const SizedBox(height: 20),
                   _badgeView(
-                      visitedCount: cultureList.length,
+                      visitedCount: cultureList!.length,
                       images: [
                         'assets/images/culture_img_1.png',
                         'assets/images/culture_img_2.png',
@@ -85,7 +79,7 @@ class _MyCertificationPageState extends ConsumerState<MyCertificationPage> {
                   Text('축제', style: AppTextStyle.fontSize16WhiteExtraBold),
                   const SizedBox(height: 20),
                   _badgeView(
-                      visitedCount: eventList.length,
+                      visitedCount: eventList!.length,
                       images: [
                         'assets/images/festival_img_1.png',
                         'assets/images/festival_img_2.png',
@@ -100,7 +94,7 @@ class _MyCertificationPageState extends ConsumerState<MyCertificationPage> {
                   Text('액티비티', style: AppTextStyle.fontSize16WhiteExtraBold),
                   const SizedBox(height: 20),
                   _badgeView(
-                      visitedCount: activityList.length,
+                      visitedCount: activityList!.length,
                       images: [
                         'assets/images/activity_img_1.png',
                         'assets/images/activity_img_2.png',
@@ -115,7 +109,7 @@ class _MyCertificationPageState extends ConsumerState<MyCertificationPage> {
                   Text('음식', style: AppTextStyle.fontSize16WhiteExtraBold),
                   const SizedBox(height: 20),
                   _badgeView(
-                      visitedCount: foodList.length,
+                      visitedCount: foodList!.length,
                       images: [
                         'assets/images/food_img_1.png',
                         'assets/images/food_img_2.png',
