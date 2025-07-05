@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
 
-final loginProvider = NotifierProvider<LoginProvider, Map<String, dynamic>?>(LoginProvider.new);
+final userProvider = NotifierProvider<UserProvider, Map<String, dynamic>?>(UserProvider.new);
 
-class LoginProvider extends Notifier<Map<String, dynamic>?> {
+class UserProvider extends Notifier<Map<String, dynamic>?> {
   final _auth = FirebaseAuth.instance;
   final _fireStore = FirebaseFirestore.instance;
 
@@ -116,6 +116,57 @@ class LoginProvider extends Notifier<Map<String, dynamic>?> {
     } catch (e) {
       print('error $e');
       return null;
+    }
+  }
+
+  Future<(bool, String)> deleteAccount(String password) async {
+    final user = _auth.currentUser;
+
+    if(user == null) {
+      return (false, '로그인된 사용자가 없습니다');
+    }
+
+    try {
+      final credential = EmailAuthProvider.credential(
+        email: user.email!,
+        password: password
+      );
+
+      await user.reauthenticateWithCredential(credential);
+
+      final savedLocationsQuery = await _fireStore
+          .collection('saved_locations')
+          .where('userId', isEqualTo: user.uid)
+          .get();
+
+      final batch = _fireStore.batch();
+      for (final doc in savedLocationsQuery.docs) {
+        batch.delete(doc.reference);
+      }
+      await batch.commit();
+
+      await _fireStore.collection('users').doc(user.uid).delete();
+      await user.delete();
+
+      state = null;
+
+      return (true, '회원탈퇴가 완료되었습니다');
+    }on FirebaseAuthException catch (e) {
+      String errorMessage;
+      switch (e.code) {
+        case 'wrong-password':
+        case 'invalid-credential':
+          errorMessage = '비밀번호가 일치하지 않습니다';
+          break;
+        case 'requires-recent-login':
+          errorMessage = '보안을 위해 다시 로그인 후 시도해주세요';
+          break;
+        default:
+          errorMessage = '계정 삭제 실패: ${e.message}';
+      }
+      return (false, errorMessage);
+    } catch (e) {
+      return (false, '회원 탈퇴 중 오류가 발생했습니다: ${e.toString()}');
     }
   }
 }

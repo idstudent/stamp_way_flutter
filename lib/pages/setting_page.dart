@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
+import 'package:stamp_way_flutter/routes/app_routes.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -26,8 +28,7 @@ class SettingPage extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () { //TODO: 회원탈퇴
-              } ,
+              onTap: () => context.pushNamed(AppRoutes.withdraw),
               child: Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(20),

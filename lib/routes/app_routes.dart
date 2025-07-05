@@ -10,6 +10,7 @@ import 'package:stamp_way_flutter/pages/search_tour_detail_page.dart';
 import 'package:stamp_way_flutter/pages/setting_page.dart';
 import 'package:stamp_way_flutter/pages/sign_up_page.dart';
 import 'package:stamp_way_flutter/pages/tour_detail_page.dart';
+import 'package:stamp_way_flutter/pages/with_draw_page.dart';
 
 import '../pages/my_tour_detail_page.dart';
 
@@ -26,6 +27,7 @@ class AppRoutes {
   static const String signUp = '/sign-up';
   static const String setting = '/setting';
   static const String myCertification = '/my-certification';
+  static const String withdraw = '/withdraw';
 }
 
 final GoRouter router = GoRouter(
@@ -112,5 +114,12 @@ final GoRouter router = GoRouter(
         return MyCertificationPage();
       }
     ),
+    GoRoute(
+      path: AppRoutes.withdraw,
+      name: AppRoutes.withdraw,
+      builder: (context, state) {
+        return WithDrawPage();
+      }
+    )
   ],
 );

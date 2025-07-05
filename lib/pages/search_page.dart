@@ -212,7 +212,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
           showToast('위치 정보를 가져올 수 없어요');
         }
 
-        Navigator.pop(context);
+        context.pop();
       },
       child: Container(
         alignment: Alignment.centerLeft,

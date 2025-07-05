@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
-import 'package:stamp_way_flutter/provider/login_provider.dart';
+import 'package:stamp_way_flutter/provider/user_provider.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 
 import '../routes/app_routes.dart';
@@ -80,10 +80,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     return;
                   }
 
-                  final (success, msg) = await ref.read(loginProvider.notifier).signIn(email, password);
+                  final (success, msg) = await ref.read(userProvider.notifier).signIn(email, password);
 
                   if(success) {
-                    Navigator.of(context).pop();
+                    context.pop();
                   }else {
                     showToast(msg!);
                   }

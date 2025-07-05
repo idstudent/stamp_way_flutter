@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
-import 'package:stamp_way_flutter/provider/login_provider.dart';
+import 'package:stamp_way_flutter/provider/user_provider.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
 
 final emailErrorProvider = StateProvider<String?>((ref) => null);
@@ -148,7 +148,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               GestureDetector(
                 onTap: () async {
                   if(_validateInput()) {
-                    final (success, message) = await ref.read(loginProvider.notifier).signUp(
+                    final (success, message) = await ref.read(userProvider.notifier).signUp(
                       _emailController.text.toString(),
                       _passwordController.text.toString(),
                       _nicknameController.text.toString()

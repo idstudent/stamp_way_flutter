@@ -5,7 +5,7 @@ import 'package:stamp_way_flutter/colors/app_colors.dart';
 import 'package:stamp_way_flutter/font_styles/app_text_style.dart';
 import 'package:stamp_way_flutter/model/level_info.dart';
 import 'package:stamp_way_flutter/model/saved_location.dart';
-import 'package:stamp_way_flutter/provider/login_provider.dart';
+import 'package:stamp_way_flutter/provider/user_provider.dart';
 import 'package:stamp_way_flutter/provider/saved_location_provider.dart';
 import 'package:stamp_way_flutter/routes/app_routes.dart';
 import 'package:stamp_way_flutter/util/show_toast.dart';
@@ -20,7 +20,7 @@ class MyPage extends ConsumerStatefulWidget {
 class _MyPageState extends ConsumerState<MyPage> {
   @override
   Widget build(BuildContext context) {
-    final userInfo = ref.watch(loginProvider);
+    final userInfo = ref.watch(userProvider);
     final visitedLocation = ref.watch(visitedLocationProvider);
     final certifyCount = ref.watch(certificationCountProvider);
 
@@ -206,7 +206,7 @@ class _MyPageState extends ConsumerState<MyPage> {
 
   Future<void> logout() async {
     try {
-      await ref.read(loginProvider.notifier).logout();
+      await ref.read(userProvider.notifier).logout();
       showToast('로그아웃 되었어요');
     }catch(e) {
       showToast('로그아웃이 실패했어요');
