@@ -124,9 +124,9 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
     try {
       final doc = await _db.collection('saved_locations')
           .where('userId', isEqualTo: userId)
-          .where('isVisited', isEqualTo: false)
+          .where('isStamped', isEqualTo: false)
           .get();
-
+      
       if(doc.docs.length >= 30) {
         onComplete(MaxLimitReached('최대 30개까지 저장 가능해요'));
         return;
@@ -143,7 +143,7 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
           'image': tour.firstimage,
           'latitude': tour.mapy,
           'longitude': tour.mapx,
-          'isVisited': false,
+          'isStamped': false,
           'savedAt': FieldValue.serverTimestamp(),
         });
 
@@ -175,7 +175,7 @@ class SavedLocationProvider extends Notifier<List<SavedLocation>> {
       await _db.collection('saved_locations')
           .doc('${userId}_$contentId')
           .update({
-            'isVisited': true,
+            'isStamped': true,
             'visitedAt': FieldValue.serverTimestamp()
           });
 
