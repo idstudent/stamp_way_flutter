@@ -19,7 +19,8 @@ class SettingPage extends StatelessWidget {
             ),
             SizedBox(height: 48,),
             GestureDetector(
-              onTap: () { //TODO: 웹뷰연결
+              onTap: () {
+                context.pushNamed(AppRoutes.privacy);
               } ,
               child: Container(
                 width: double.infinity,

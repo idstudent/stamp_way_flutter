@@ -5,6 +5,7 @@ import 'package:stamp_way_flutter/pages/my_certification_page.dart';
 import 'package:stamp_way_flutter/pages/my_complete_list_page.dart';
 import 'package:stamp_way_flutter/pages/my_tour_list_page.dart';
 import 'package:stamp_way_flutter/pages/near_place_list_page.dart';
+import 'package:stamp_way_flutter/pages/privacy_page.dart';
 import 'package:stamp_way_flutter/pages/search_place_list_page.dart';
 import 'package:stamp_way_flutter/pages/search_tour_detail_page.dart';
 import 'package:stamp_way_flutter/pages/setting_page.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String setting = '/setting';
   static const String myCertification = '/my-certification';
   static const String withdraw = '/withdraw';
+  static const String privacy = '/privacy';
 }
 
 final GoRouter router = GoRouter(
@@ -120,6 +122,13 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         return WithDrawPage();
       }
-    )
+    ),
+    GoRoute(
+      path: AppRoutes.privacy,
+      name: AppRoutes.privacy,
+      builder: (context, state) {
+        return PrivacyPage();
+      }
+    ),
   ],
 );
